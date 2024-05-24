@@ -1,0 +1,12 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "tfc:powder/flux"
+    }
+  ],
+  "result": {
+    "item": "minecraft:white_dye"
+  }
+}

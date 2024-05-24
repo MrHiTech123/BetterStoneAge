@@ -1,0 +1,22 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "H",
+    "R"
+  ],
+  "key": {
+    "H": {
+      "item": "tfc:stone/javelin_head/igneous_intrusive"
+    },
+    "R": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "tfc:stone/javelin/igneous_intrusive",
+    "nbt": {
+      "Damage": 30
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "replace": false,
+  "values": [
+    "tfc:ceramic/unfired_jug",
+    "better_stone_age:ceramic/jug/unfired/white",
+    "better_stone_age:ceramic/jug/unfired/orange",
+    "better_stone_age:ceramic/jug/unfired/magenta",
+    "better_stone_age:ceramic/jug/unfired/light_blue",
+    "better_stone_age:ceramic/jug/unfired/yellow",
+    "better_stone_age:ceramic/jug/unfired/lime",
+    "better_stone_age:ceramic/jug/unfired/pink",
+    "better_stone_age:ceramic/jug/unfired/gray",
+    "better_stone_age:ceramic/jug/unfired/light_gray",
+    "better_stone_age:ceramic/jug/unfired/cyan",
+    "better_stone_age:ceramic/jug/unfired/purple",
+    "better_stone_age:ceramic/jug/unfired/blue",
+    "better_stone_age:ceramic/jug/unfired/brown",
+    "better_stone_age:ceramic/jug/unfired/green",
+    "better_stone_age:ceramic/jug/unfired/red",
+    "better_stone_age:ceramic/jug/unfired/black"
+  ]
+}

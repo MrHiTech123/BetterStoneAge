@@ -1,0 +1,25 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:pot",
+  "ingredients": [
+    {
+      "tag": "tfc:makes_white_dye"
+    },
+    {
+      "tag": "tfc:makes_white_dye"
+    },
+    {
+      "tag": "tfc:makes_white_dye"
+    }
+  ],
+  "fluid_ingredient": {
+    "ingredient": "minecraft:water",
+    "amount": 300
+  },
+  "duration": 2000,
+  "temperature": 730,
+  "fluid_output": {
+    "fluid": "tfc:white_dye",
+    "amount": 300
+  }
+}

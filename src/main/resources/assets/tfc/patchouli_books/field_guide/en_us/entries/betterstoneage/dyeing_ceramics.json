@@ -1,0 +1,22 @@
+{
+  "name": "Dyeing Ceramics",
+  "category": "tfc:better_stone_age",
+  "icon": "tfc:ceramic/red_glazed_vessel",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Ceramic Vessels, Large Vessels, and Jugs can now be dyed using liquid dye, without a barrel (also, Jugs can be dyed at all).<br><br>In order to do this, fill a Ceramic Jug (or another liquid container) with at least 100 mb of liquid dye, and craft it with the item you want to dye."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "better_stone_age:crafting/ceramic/black_unfired_jug_liquid_dye",
+      "recipe2": "better_stone_age:crafting/ceramic/magenta_unfired_vessel_liquid_dye"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "better_stone_age:crafting/ceramic/red_unfired_large_vessel_liquid_dye"
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 2
+}

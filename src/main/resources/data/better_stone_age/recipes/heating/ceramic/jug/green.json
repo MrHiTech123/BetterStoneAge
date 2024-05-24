@@ -1,0 +1,11 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "better_stone_age:ceramic/jug/unfired/green"
+  },
+  "result_item": {
+    "item": "better_stone_age:ceramic/jug/glazed/green"
+  },
+  "temperature": 1399
+}
