@@ -44,7 +44,7 @@ import java.util.logging.Logger;
 public class DryingSinewBlock extends BottomSupportedDeviceBlock {
 
     public BooleanProperty DRIED = BetterStoneAgeBlockStateProperties.DRIED;
-    public static final VoxelShape SHAPE = box(5.0D, 0.0D, 5.0D, 11.0D, 2.0D, 11.0D);
+    public static final VoxelShape SHAPE = box(0D, 0D, 0D, 16.0D, 1.0D, 16.0D);
     private final Supplier<? extends Item> dryItem;
 
     public DryingSinewBlock(ExtendedProperties properties, Supplier<? extends Item> f_dryItem) {
@@ -68,17 +68,6 @@ public class DryingSinewBlock extends BottomSupportedDeviceBlock {
 
     }
 
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
-        if (!player.isCreative() && level instanceof ServerLevel serverLevel) {
-            BlockEntity entity = state.hasBlockEntity() ? level.getBlockEntity(pos) : null;
-            getDrops(state, serverLevel, pos, entity, (Entity)null, ItemStack.EMPTY).forEach((stackToSpawn) -> {
-                ItemHandlerHelper.giveItemToPlayer(player, stackToSpawn);
-            });
-        }
-
-        level.removeBlock(pos, false);
-        return InteractionResult.SUCCESS;
-    }
 
     public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
         return state.getValue(DRIED) ? dryItem.get().getDefaultInstance() : super.getCloneItemStack(state, target, level, pos, player);
@@ -127,6 +116,7 @@ public class DryingSinewBlock extends BottomSupportedDeviceBlock {
         });
 
     }
+    
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

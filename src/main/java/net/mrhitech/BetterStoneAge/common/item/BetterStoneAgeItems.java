@@ -3,15 +3,12 @@ package net.mrhitech.BetterStoneAge.common.item;
 import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.config.TFCConfig;
 import net.dries007.tfc.util.Helpers;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.WritableBookItem;
-import net.minecraft.world.item.WrittenBookItem;
+import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.mrhitech.BetterStoneAge.BetterStoneAge;
-import net.minecraft.world.item.DyeColor;
 import net.dries007.tfc.common.blocks.rock.RockCategory;
 
 import java.util.Map;
@@ -30,7 +27,7 @@ public class BetterStoneAgeItems {
     public static final Map<RockCategory, RegistryObject<Item>> MULTITOOL_HEADS = Helpers.mapOfKeys(RockCategory.class, rock_category ->
             ITEMS.register("stone/multitool_head/" + rock_category.toString().toLowerCase(), () -> new Item(new Item.Properties())));
 
-    public static final RegistryObject<Item> SINEW = ITEMS.register("sinew", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SINEW = ITEMS.register("sinew", () -> new BlockItem(BetterStoneAgeBlocks.SINEW.get(), new Item.Properties()));
     public static final RegistryObject<Item> DRIED_SINEW = ITEMS.register("dried_sinew", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> POUNDED_SINEW = ITEMS.register("pounded_sinew", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SINEW_STRING = ITEMS.register("sinew_string", () -> new Item(new Item.Properties()));

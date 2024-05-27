@@ -12,6 +12,8 @@ BINDING_BONUSES = {'weak': 0, 'medium': 2, 'strong': 4}
 ROCK_CATEGORY_DURABILITIES = {'igneous_extrusive': 70, 'igneous_intrusive': 60, 'metamorphic': 55, 'sedimentary': 50}
 with open('templates/pot_model.json', 'r') as f:
     pot_template = f.read()
+with open('templates/flat_block_model.json', 'r') as f:
+    flat_block_template = f.read()
 
 def loot_modifier_add_itemstack(rm: ResourceManager, loot_modifiers: list, name_parts, entity_tag, item, count):
     
@@ -67,7 +69,7 @@ def loot_modifier(rm: ResourceManager, loot_modifiers: list, name_parts, data):
     
 def create_anvil_recipes():
     print('\tCreating anvil recipes...')
-    anvil_recipe(rm, ('pounded_sinew'), 'better_stone_age:dried_sinew', 'better_stone_age:pounded_sinew', Rules.hit_third_last, Rules.hit_second_last, Rules.hit_last)
+    anvil_recipe(rm, ('pounded_sinew'), 'better_stone_age:dried_sinew', 'better_stone_age:pounded_sinew', 0, Rules.hit_third_last, Rules.hit_second_last, Rules.hit_last)
 
 def create_barrel_recipes():
     print('\tCreating barrel recipes...')
@@ -212,6 +214,14 @@ def create_block_models():
             ).with_lang(lang(f'{color} Pot')).with_block_loot('tfc:powder/wood_ash', f'better_stone_age:ceramic/pot/glazed/{color}')
         rm.item_model('pot', 'tfc:item/firepit_pot')
         
+    read_data_from_template(rm, ('src', 'main', 'resources', 'assets', 'better_stone_age', 'models', 'block', 'drying_sinew'), flat_block_template % ('better_stone_age:block/drying_sinew', 'better_stone_age:block/dried_sinew'))
+    read_data_from_template(rm, ('src', 'main', 'resources', 'assets', 'better_stone_age', 'models', 'block', 'dried_sinew'), flat_block_template % ('better_stone_age:block/dried_sinew', 'better_stone_age:block/dried_sinew'))
+    
+    
+    rm.blockstate_multipart('sinew',
+        ({'dried': False}, {'model': 'better_stone_age:block/drying_sinew'}),
+        ({'dried': True}, {'model': 'better_stone_age:block/dried_sinew'})
+    )
 
 
 
@@ -224,7 +234,7 @@ def create_misc_lang():
     for rock_category in ROCK_CATEGORIES:
         rm.lang(f'item.better_stone_age.stone.multitool_head.{rock_category}', lang(f'Stone Multitool Head'))
     
-    rm.lang('item.better_stone_age.sinew', 'Sinew')
+    rm.lang('block.better_stone_age.sinew', 'Sinew')
     rm.lang('item.better_stone_age.dried_sinew', 'Dried Sinew')
     rm.lang('item.better_stone_age.pounded_sinew', 'Pounded Sinew')
     rm.lang('item.better_stone_age.sinew_string', 'Sinew String')
@@ -234,6 +244,9 @@ def create_loot_tables():
     print('\tCreating loot tables...')
     tfc_rm.block_loot('tfc:calcite', {'name': 'tfc:powder/flux', 'functions': [utils.loot_functions({'function': 'minecraft:set_count', 'count': {'min': 1, 'max': 2, 'type': 'minecraft:uniform'}})]})
     tfc_rm.block_loot('tfc:charcoal_pile', {'type': 'minecraft:alternatives', 'children': [{'type': 'minecraft:item', 'name': 'tfc:powder/charcoal', 'conditions': [{'condition': 'minecraft:match_tool', 'predicate': {'tag': 'tfc:hammers'}}], 'functions': [{'function': 'minecraft:set_count', 'count': 2}]}, {'type': 'minecraft:item', 'name': 'minecraft:charcoal'}]})
+    rm.block_loot('better_stone_age:sinew', {'name': 'better_stone_age:sinew', 'conditions': [loot_tables.block_state_property('better_stone_age:sinew[dried=false]')]}, {'name': 'better_stone_age:dried_sinew', 'conditions': [loot_tables.block_state_property('better_stone_age:sinew[dried=true]')]})
+    
+    
     
 def create_loot_modifiers():
     print('Creating loot modifiers...')

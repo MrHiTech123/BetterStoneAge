@@ -43,9 +43,7 @@ public class BetterStoneAgeBlocks {
     public static final Map<DyeColor, RegistryObject<Block>> GLAZED_POTS = Helpers.mapOfKeys(DyeColor.class, color ->
             BLOCKS.register("ceramic/pot/" + color, () -> new CustomPotBlock(ExtendedProperties.of(MapColor.DIRT).strength(0.4F, 0.4F).sound(SoundType.NETHER_WART).randomTicks().noOcclusion().lightLevel(litBlockEmission(15)).blockEntity(TFCBlockEntities.POT).pathType(BlockPathTypes.DAMAGE_FIRE).<AbstractFirepitBlockEntity<?>>ticks(AbstractFirepitBlockEntity::serverTick, AbstractFirepitBlockEntity::clientTick), () -> BetterStoneAgeItems.GLAZED_POTS.get(color).get(), () -> BetterStoneAgeBlockEntities.GLAZED_POTS.get(color).get(), color)));
     public static final RegistryObject<Block> SINEW = BLOCKS.register("sinew", () -> new DryingSinewBlock(ExtendedProperties.of(MapColor.COLOR_PINK).noCollission().noOcclusion().instabreak().blockEntity(BetterStoneAgeBlockEntities.TICK_COUNTER), () -> BetterStoneAgeItems.DRIED_SINEW.get()));
-    public static final RegistryObject<Block> DRIED_SINEW = register("dried_sinew", () -> {
-        return new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK).strength(3.0F));
-    });
+
 
 
 
