@@ -1,0 +1,24 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:damage_inputs_shapeless_crafting",
+  "recipe": {
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+      {
+        "item": "tfc:medium_raw_hide"
+      },
+      {
+        "item": "tfc:medium_raw_hide"
+      },
+      {
+        "tag": "forge:string"
+      },
+      {
+        "item": "tfc:bone_needle"
+      }
+    ],
+    "result": {
+      "item": "tfc:large_raw_hide"
+    }
+  }
+}

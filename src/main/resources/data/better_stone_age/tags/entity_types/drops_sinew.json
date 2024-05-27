@@ -1,0 +1,22 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "replace": false,
+  "values": [
+    "#tfc:bears",
+    "tfc:deer",
+    "tfc:bongo",
+    "tfc:panda",
+    "tfc:caribou",
+    "tfc:gazelle",
+    "tfc:pig",
+    "tfc:cow",
+    "tfc:goat",
+    "tfc:yak",
+    "tfc:alpaca",
+    "tfc:sheep",
+    "tfc:musk_ox",
+    "tfc:horse",
+    "tfc:donkey",
+    "tfc:mule"
+  ]
+}

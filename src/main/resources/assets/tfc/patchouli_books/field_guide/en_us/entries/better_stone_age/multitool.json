@@ -1,0 +1,38 @@
+{
+  "name": "Multitools",
+  "category": "tfc:better_stone_age",
+  "icon": "better_stone_age:stone/multitool_head/igneous_extrusive",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Want to pre-knap a tool head before knowing what it'll be? Try a multitool! This stone tool head can be crafted into any tool, depending on the orientation of the stick and the multitool head in the crafting grid."
+    },
+    {
+      "type": "tfc:knapping_recipe",
+      "recipe": "better_stone_age:rock_knapping/stone/multitool_head/igneous_extrusive"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "better_stone_age:crafting/stone/axe/igneous_extrusive/multitool",
+      "text": "Tools crafted using a multitool head cannot also have a $(l:tfc:better_stone_age/tool_bindings)tool binding$(). A tool crafted with a multitool head was built for a specific task, and rarely lasts much beyond that task."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "better_stone_age:crafting/stone/hammer/igneous_extrusive/multitool",
+      "recipe2": "better_stone_age:crafting/stone/hoe/igneous_extrusive/multitool"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "better_stone_age:crafting/stone/javelin/igneous_extrusive/multitool",
+      "recipe2": "better_stone_age:crafting/stone/shovel/igneous_extrusive/multitool"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "better_stone_age:crafting/stone/knife/igneous_extrusive/multitool",
+      "text": "A multitool head can also be crafted into a knife head. Unlike other tools crafted with multitool heads, knives can have bindings like normal."
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 10
+
+}

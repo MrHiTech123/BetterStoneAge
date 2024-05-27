@@ -10,7 +10,7 @@
     {
       "type": "patchouli:crafting",
       "text": "Since there is nothing binding the head to the handle, this tool is extremely fragile, and has only half its durability when crafted.",
-      "recipe": "better_stone_age:crafting/tools/knife/igneous_extrusive/no_binding"
+      "recipe": "better_stone_age:crafting/stone/knife/igneous_extrusive/no_binding"
     },
     {
       "type": "patchouli:text",
@@ -18,7 +18,7 @@
     },
     {
       "type": "patchouli:crafting",
-      "recipe": "better_stone_age:crafting/tools/axe/igneous_extrusive/weak_binding"
+      "recipe": "better_stone_age:crafting/stone/axe/igneous_extrusive/weak_binding"
     },
     {
       "type": "patchouli:text",
@@ -26,7 +26,7 @@
     },
     {
       "type": "patchouli:crafting",
-      "recipe": "better_stone_age:crafting/tools/shovel/igneous_extrusive/medium_binding"
+      "recipe": "better_stone_age:crafting/stone/shovel/igneous_extrusive/medium_binding"
     },
     {
       "type": "patchouli:text",
@@ -34,7 +34,7 @@
     },
     {
       "type": "patchouli:crafting",
-      "recipe": "better_stone_age:crafting/tools/javelin/igneous_extrusive/strong_binding"
+      "recipe": "better_stone_age:crafting/stone/javelin/igneous_extrusive/strong_binding"
     }
   ],
   "read_by_default": true,

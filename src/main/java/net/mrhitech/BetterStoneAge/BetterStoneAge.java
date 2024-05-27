@@ -1,6 +1,7 @@
 package net.mrhitech.BetterStoneAge;
 
 import com.mojang.logging.LogUtils;
+import net.dries007.tfc.common.blocks.rock.RockCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Blocks;
@@ -17,10 +18,12 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.mrhitech.BetterStoneAge.client.ClientEventHandler;
+import net.mrhitech.BetterStoneAge.client.screen.ClayTabletEditScreen;
 import net.mrhitech.BetterStoneAge.common.blockentities.BetterStoneAgeBlockEntities;
 import net.mrhitech.BetterStoneAge.common.blocks.BetterStoneAgeBlocks;
 import net.mrhitech.BetterStoneAge.common.item.BetterStoneAgeItems;
 import net.mrhitech.BetterStoneAge.common.blockentities.BetterStoneAgeBlockEntities;
+import net.mrhitech.BetterStoneAge.loot.BetterStoneAgeLootModifiers;
 import org.slf4j.Logger;
 
 import net.dries007.tfc.common.TFCCreativeTabs;
@@ -39,11 +42,10 @@ public class BetterStoneAge
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-
-
         BetterStoneAgeItems.register(modEventBus);
         BetterStoneAgeBlocks.register(modEventBus);
         BetterStoneAgeBlockEntities.register(modEventBus);
+        BetterStoneAgeLootModifiers.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -57,6 +59,7 @@ public class BetterStoneAge
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -75,7 +78,17 @@ public class BetterStoneAge
                 event.accept(BetterStoneAgeItems.GLAZED_CERAMIC_JUGS.get(color));
                 event.accept(BetterStoneAgeItems.GLAZED_POTS.get(color));
             }
-            LOGGER.info("Hello world");
+
+            for (RockCategory rock_category : RockCategory.values()) {
+                event.accept(BetterStoneAgeItems.MULTITOOL_HEADS.get(rock_category));
+            }
+        }
+        if (event.getTabKey() == TFCCreativeTabs.MISC.tab().getKey()) {
+            event.accept(BetterStoneAgeItems.SINEW);
+            event.accept(BetterStoneAgeItems.DRIED_SINEW);
+            event.accept(BetterStoneAgeItems.POUNDED_SINEW);
+            event.accept(BetterStoneAgeItems.SINEW_STRING);
+
         }
     }
 

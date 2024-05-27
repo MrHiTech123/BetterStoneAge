@@ -1,7 +1,7 @@
 {
   "name": "Dyeing Ceramics",
   "category": "tfc:better_stone_age",
-  "icon": "tfc:ceramic/red_glazed_vessel",
+  "icon": "better_stone_age:ceramic/jug/glazed/red",
   "pages": [
     {
       "type": "patchouli:text",
@@ -18,5 +18,5 @@
     }
   ],
   "read_by_default": true,
-  "sortnum": 2
+  "sortnum": 30
 }

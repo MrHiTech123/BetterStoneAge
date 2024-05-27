@@ -1,0 +1,15 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "better_stone_age:stone/multitool_head/metamorphic"
+    }
+  ],
+  "result": {
+    "item": "tfc:stone/knife_head/metamorphic",
+    "nbt": {
+      "Damage": 27
+    }
+  }
+}

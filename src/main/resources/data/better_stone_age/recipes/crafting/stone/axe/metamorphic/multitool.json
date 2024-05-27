@@ -1,0 +1,21 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RM"
+  ],
+  "key": {
+    "M": {
+      "item": "better_stone_age:stone/multitool_head/metamorphic"
+    },
+    "R": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "tfc:stone/axe/metamorphic",
+    "nbt": {
+      "Damage": 27
+    }
+  }
+}
