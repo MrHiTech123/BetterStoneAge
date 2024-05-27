@@ -116,7 +116,7 @@ public class DryingSinewBlock extends BottomSupportedDeviceBlock {
         });
 
     }
-    
+
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

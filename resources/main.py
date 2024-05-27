@@ -92,7 +92,7 @@ def create_crafting_recipes():
     rm.crafting_shapeless(('crafting', 'dye', 'darken_purple'), ('minecraft:magenta_dye', 'minecraft:black_dye'), utils.item_stack({'item': 'minecraft:purple_dye', 'count': 2}))
     
     rm.crafting_shapeless(('crafting', 'dye', 'white_from_flux'), 'tfc:powder/flux', 'minecraft:white_dye')
-    rm.crafting_shapeless('crafting', 'better_stone_age:pounded_sinew', 'better_stone_age:sinew_string')
+    rm.crafting_shapeless(('crafting', 'sinew_string'), 'better_stone_age:pounded_sinew', 'better_stone_age:sinew_string')
     
     print('\t\tCreating rock category-dependant recipes...')
     for rock_category in ROCK_CATEGORIES:
@@ -183,6 +183,8 @@ def create_item_tags():
     rm.item_tag('bindings/weak', 'tfc:straw', 'tfc:groundcover/dead_grass', 'tfc:glue')
     rm.item_tag('bindings/medium', 'tfc:jute', 'tfc:plant/ivy', 'tfc:plant/hanging_vines', 'tfc:plant/jungle_vines')
     rm.item_tag('bindings/strong', 'tfc:jute_fiber', '#forge:string')
+    
+    rm.item_tag('sinew_display', 'better_stone_age:sinew', 'better_stone_age:dried_sinew', 'better_stone_age:pounded_sinew', 'better_stone_age:sinew_string')
     
     forge_rm.item_tag('string', 'better_stone_age:sinew_string')
     

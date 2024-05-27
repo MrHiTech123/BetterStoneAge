@@ -1,0 +1,46 @@
+{
+  "name": "Sinew Processing",
+  "category": "tfc:better_stone_age",
+  "icon": "better_stone_age:sinew_string",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "tag": "better_stone_age:sinew_display"
+      },
+      "text": "Sinew is dropped by most large animals, and can be processed into $(bold)Sinew String$().$(br)$(br)The first step in processing sinew is placing it on the ground to dry. This takes 48 hours (two in-game days) and yields $(bold)Dried Sinew$()."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Drying Sinew",
+      "multiblock": {
+        "mapping": {
+          "0": "better_stone_age:sinew[dried=false]",
+          "D": "tfc:grass/loam"
+        },
+        "pattern": [
+          [
+            "0"
+          ],
+          [
+            "D"
+          ]
+        ]
+      },
+      "enable_visualize": false
+    },
+    {
+      "type": "tfc:anvil_recipe",
+      "recipe": "better_stone_age:anvil/pounded_sinew",
+      "text": "Once sinew has dried, it can be pounded on an anvil to make $(bold)Pounded Sinew$()."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "better_stone_age:crafting/sinew_string",
+      "text": "Finally, the Pounded Sinew can be crafted into $(bold)Sinew String$()."
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 10
+
+}
