@@ -14,7 +14,7 @@
     {
       "type": "patchouli:crafting",
       "recipe": "better_stone_age:crafting/stone/axe/igneous_extrusive/multitool",
-      "text": "Tools crafted using a multitool head cannot also have a $(l:tfc:better_stone_age/tool_bindings)tool binding$(). A tool crafted with a multitool head was built for a specific task, and rarely lasts much beyond that task."
+      "text": "Tools crafted using a multitool head cannot also have a $(l:tfc:better_stone_age/tool_bindings)tool binding$(). A tool crafted with a multitool head is usually built to fulfill a specific need, and rarely lasts much longer once that need is met."
     },
     {
       "type": "patchouli:crafting",
@@ -33,6 +33,11 @@
     }
   ],
   "read_by_default": true,
-  "sortnum": 20
-
+  "sortnum": 20,
+  "extra_recipe_mappings": {
+    "better_stone_age:stone/multitool_head/igneous_extrusive": 0,
+    "better_stone_age:stone/multitool_head/igneous_intrusive": 0,
+    "better_stone_age:stone/multitool_head/metamorphic": 0,
+    "better_stone_age:stone/multitool_head/sedimentary": 0
+  }
 }

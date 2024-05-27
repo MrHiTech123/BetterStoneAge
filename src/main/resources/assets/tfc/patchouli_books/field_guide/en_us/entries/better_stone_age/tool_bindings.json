@@ -5,6 +5,10 @@
   "pages": [
     {
       "type": "patchouli:text",
+      "text": "In Better Stone Age, tool heads can be bound to their handles. If there is no binding, the tool's durability is penalized. However, stronger bindings also grant higher forging bonuses to the tool they are used to craft."
+    },
+    {
+      "type": "patchouli:text",
       "text": "When you first load a world of TerraFirmaCraft, your first tools will likely be made without any sort of binding between the tool head and handle at all. This is done by a process known as hafting, in which the handle is split and the tool head is wedged into the crack and held there with friction."
     },
     {
