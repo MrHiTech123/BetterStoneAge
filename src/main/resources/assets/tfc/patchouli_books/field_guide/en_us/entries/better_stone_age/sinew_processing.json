@@ -32,12 +32,12 @@
     {
       "type": "tfc:anvil_recipe",
       "recipe": "better_stone_age:anvil/pounded_sinew",
-      "text": "Once sinew has dried, it can be pounded on an anvil to make $(bold)Pounded Sinew$()."
+      "text": "Once sinew has dried, it can be pounded on an anvil to make $(bold)Pounded Sinew$(). $(br)$(br)If you do not yet have a metal anvil, you can also perform this operation on a $(l:tfc:getting_started/primitive_anvils)Primitive Anvil$()."
     },
     {
       "type": "patchouli:crafting",
       "recipe": "better_stone_age:crafting/sinew_string",
-      "text": "Finally, the Pounded Sinew can be crafted into $(bold)Sinew String$()."
+      "text": "Finally, the Pounded Sinew can be crafted into $(bold)Sinew String$().$(br)$(br)Among other things, Sinew String can be used as a $(l:tfc:better_stone_age/tool_bindings)tool binding$() to give your stone tools the $(bold)Perfectly Forged!$() trait."
     }
   ],
   "read_by_default": true,

@@ -9,6 +9,10 @@
     },
     {
       "type": "patchouli:text",
+      "text": ""
+    },
+    {
+      "type": "patchouli:text",
       "text": "When you first load a world of TerraFirmaCraft, your first tools will likely be made without any sort of binding between the tool head and handle at all. This is done by a process known as hafting, in which the handle is split and the tool head is wedged into the crack and held there with friction."
     },
     {
@@ -18,7 +22,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "Once you have hafted a stone knife, you can use it to break tall grass to obtain $(bold)Straw$(), which can be used to bind the tool a little more securely. If you are lucky, you might find some $(bold)Dead Grass$() on the ground, which will allow you to do this without needing to haft a knife at all."
+      "text": "Once you have hafted a stone knife, you can use it to break tall grass to obtain $(bold)Straw$(), which can be used to bind the tool a little more securely.$(br)$(br)If you are lucky, you might find some $(bold)Dead Grass$() on the ground, which will allow you to do this without needing to haft a knife at all."
     },
     {
       "type": "patchouli:crafting",
@@ -34,7 +38,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "The highest tier of tool binding is processed string-like items, such as $(bold)Jute Fibers$() or $(bold)Wool Yarn$(). $(bold)Spider Silk$(), dropped by spiders and cobwebs, is also of this caliber. Tools bound with these materials have the $(bold)Perfectly Forged$() trait."
+      "text": "The highest tier of tool binding is processed string-like items, such as $(bold)Jute Fibers$(), $(bold)Wool Yarn$(), or $(bold)$(l:tfc:better_stone_age/sinew_processing)Sinew String$(). $(bold)Spider Silk$(), dropped by spiders and cobwebs, is also of this caliber.$(br)$(br)Tools bound with these materials have the $(bold)Perfectly Forged$() trait."
     },
     {
       "type": "patchouli:crafting",
