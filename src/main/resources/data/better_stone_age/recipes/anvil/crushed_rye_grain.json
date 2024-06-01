@@ -1,0 +1,24 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:anvil",
+  "input": {
+    "type": "tfc:not_rotten",
+    "ingredient": {
+      "item": "tfc:food/rye_grain"
+    }
+  },
+  "result": {
+    "stack": {
+      "item": "better_stone_age:food/crushed_rye_grain"
+    },
+    "modifiers": [
+      "tfc:copy_oldest_food"
+    ]
+  },
+  "tier": 0,
+  "rules": [
+    "hit_third_last",
+    "hit_second_last",
+    "hit_last"
+  ]
+}

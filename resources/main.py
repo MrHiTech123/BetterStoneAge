@@ -2,6 +2,7 @@ import json
 
 from alcs_funcs import *
 from mcresources.resource_manager import ResourceManager, utils
+from itertools import repeat
 
 rm = ResourceManager('better_stone_age', 'src/main/resources', 2, False, 'en_us')
 tfc_rm = ResourceManager('tfc', 'src/main/resources', 2, False, 'en_us')
@@ -10,10 +11,14 @@ STONE_TOOL_HEADS = ('hammer', 'hoe', 'javelin', 'knife', 'shovel', 'axe')
 STONE_TOOL_BINDINGS = ('weak', 'medium', 'strong')
 BINDING_BONUSES = {'weak': 0, 'medium': 2, 'strong': 4}
 ROCK_CATEGORY_DURABILITIES = {'igneous_extrusive': 70, 'igneous_intrusive': 60, 'metamorphic': 55, 'sedimentary': 50}
+NON_BROKEN_GRAINS = ('barley', 'oat', 'rye', 'wheat')
+BROKEN_GRAINS = ('maize', 'rice')
+
 with open('templates/pot_model.json', 'r') as f:
     pot_template = f.read()
 with open('templates/flat_block_model.json', 'r') as f:
     flat_block_template = f.read()
+
 
 def loot_modifier_add_itemstack(rm: ResourceManager, loot_modifiers: list, name_parts, entity_tag, item, count):
     
@@ -55,7 +60,7 @@ def loot_modifier_add_itemstack_min_max(rm: ResourceManager, loot_modifiers: lis
     }
     
     loot_modifier(rm, loot_modifiers, name_parts, data)
-    
+
     
 def loot_modifier(rm: ResourceManager, loot_modifiers: list, name_parts, data):
 
@@ -67,9 +72,131 @@ def loot_modifier(rm: ResourceManager, loot_modifiers: list, name_parts, data):
     loot_modifiers.append(f'better_stone_age:{"/".join(name_parts)}')
     
     
+def read_data_from_template(rm: ResourceManager, name_parts, template: str):
+    rm.write(name_parts, json.loads(template))
+
+def create_block_models():
+    print("Creating block models...")
+    for color in COLORS:
+        read_data_from_template(rm, ('src', 'main', 'resources', 'assets', 'better_stone_age', 'models', 'block', 'firepit_pot', color), pot_template % (color, color, color))
+        
+        rm.blockstate_multipart(f'ceramic/pot/{color}',
+                ({'axis': 'x'}, {'model': f'better_stone_age:block/firepit_pot/{color}'}),
+                ({'axis': 'z'}, {'model': f'better_stone_age:block/firepit_pot/{color}', 'y': 90}),
+                ({'lit': True, 'axis': 'x'}, {'model': 'tfc:block/firepit_lit_low'}),
+                ({'lit': True, 'axis': 'z'}, {'model': 'tfc:block/firepit_lit_low', 'y': 90}),
+                ({'lit': False, 'axis': 'x'}, {'model': 'tfc:block/firepit_unlit'}),
+                ({'lit': False, 'axis': 'z'}, {'model': 'tfc:block/firepit_unlit', 'y': 90})
+            ).with_lang(lang(f'{color} Pot')).with_block_loot('tfc:powder/wood_ash', f'better_stone_age:ceramic/pot/glazed/{color}')
+        rm.item_model('pot', 'tfc:item/firepit_pot')
+        
+    read_data_from_template(rm, ('src', 'main', 'resources', 'assets', 'better_stone_age', 'models', 'block', 'drying_sinew'), flat_block_template % ('better_stone_age:block/drying_sinew', 'better_stone_age:block/dried_sinew'))
+    read_data_from_template(rm, ('src', 'main', 'resources', 'assets', 'better_stone_age', 'models', 'block', 'dried_sinew'), flat_block_template % ('better_stone_age:block/dried_sinew', 'better_stone_age:block/dried_sinew'))
+    
+    
+    rm.blockstate_multipart('sinew',
+        ({'dried': False}, {'model': 'better_stone_age:block/drying_sinew'}),
+        ({'dried': True}, {'model': 'better_stone_age:block/dried_sinew'})
+    )
+    
+
+def create_item_foods():
+    print('Creating item foods...')
+    for grain in GRAINS:
+        food_item(rm, f'coarse_{grain}_flour', f'better_stone_age:food/coarse_{grain}_flour', Category.grain, 4, 0, 0, 0.5)
+    for grain in NON_BROKEN_GRAINS:
+        food_item(rm, f'crushed_{grain}_grain', f'better_stone_age:food/crushed_{grain}_grain', Category.grain, 4, 0.25, 0, 0.375)
+    
+
+def create_item_heats():
+    print('Creating item heat data...')
+    item_heat(rm, ('ceramic', 'unfired_ceramic_jugs'), '#better_stone_age:unfired_ceramic_jugs', 0.8)    
+
+def create_item_models():
+    print('Creating item models...')
+    for color in COLORS:
+        rm.item_model(('ceramic', 'jug', 'unfired', f'{color}')).with_lang(lang(f'{color} Unfired Jug'))
+        contained_fluid(rm, ('ceramic', 'jug', 'glazed', f'{color}'), f'better_stone_age:item/ceramic/jug/glazed/{color}_empty', 'tfc:item/ceramic/jug_overlay').with_lang(lang(f'{color} Glazed Ceramic Jug'))
+        rm.item_model(('ceramic', 'pot', 'glazed', color), f'better_stone_age:item/ceramic/pot/glazed/{color}')
+    for rock_category in ROCK_CATEGORIES:
+        rm.item_model(('stone', 'multitool_head', rock_category), 'better_stone_age:item/stone/multitool_head')
+    
+    rm.item_model(('clay_tablet'), 'better_stone_age:item/clay_tablet')
+    rm.item_model(('writeable_clay_tablet'), 'better_stone_age:item/writeable_clay_tablet')
+    rm.item_model(('written_clay_tablet'), 'better_stone_age:item/written_clay_tablet')
+    
+    rm.item_model(('sinew'), 'better_stone_age:item/sinew')
+    rm.item_model(('dried_sinew'), 'better_stone_age:item/dried_sinew')
+    rm.item_model(('pounded_sinew'), 'better_stone_age:item/pounded_sinew')
+    rm.item_model(('sinew_string'), 'better_stone_age:item/sinew_string')
+    
+    for grain in GRAINS:
+        rm.item_model(('food', f'coarse_{grain}_flour'), f'better_stone_age:item/food/coarse_{grain}_flour')
+    
+    for grain in NON_BROKEN_GRAINS:
+        rm.item_model(('food', f'crushed_{grain}_grain'), f'better_stone_age:item/food/crushed_{grain}_grain')
+
+def create_loot_tables():
+    print('\tCreating loot tables...')
+    tfc_rm.block_loot('tfc:calcite', {'name': 'tfc:powder/flux', 'functions': [utils.loot_functions({'function': 'minecraft:set_count', 'count': {'min': 1, 'max': 2, 'type': 'minecraft:uniform'}})]})
+    tfc_rm.block_loot('tfc:charcoal_pile', {'type': 'minecraft:alternatives', 'children': [{'type': 'minecraft:item', 'name': 'tfc:powder/charcoal', 'conditions': [{'condition': 'minecraft:match_tool', 'predicate': {'tag': 'tfc:hammers'}}], 'functions': [{'function': 'minecraft:set_count', 'count': 2}]}, {'type': 'minecraft:item', 'name': 'minecraft:charcoal'}]})
+    rm.block_loot('better_stone_age:sinew', {'name': 'better_stone_age:sinew', 'conditions': [loot_tables.block_state_property('better_stone_age:sinew[dried=false]')]}, {'name': 'better_stone_age:dried_sinew', 'conditions': [loot_tables.block_state_property('better_stone_age:sinew[dried=true]')]})
+    
+    
+    
+def create_loot_modifiers():
+    print('Creating loot modifiers...')
+    
+    loot_modifiers = []
+    loot_modifier_add_itemstack_min_max(rm, loot_modifiers, 'animals_drop_sinew', '#better_stone_age:drops_sinew', 'better_stone_age:sinew', 1, 3)
+    
+    
+    forge_rm.data(('loot_modifiers', 'global_loot_modifiers'), {'replace': False, 'entries': loot_modifiers})
+
+
+def create_loot():
+    print('Creating loot...')
+    create_loot_tables()
+    create_loot_modifiers()
+
+
+def create_misc_lang():
+    print('Creating misc translations...')
+    rm.lang('item.minecraft.string', 'Spider Silk')
+    for color in COLORS:
+        rm.lang(f'item.better_stone_age.ceramic.jug.glazed.{color}.filled', '%s ' + lang(f'{color} Glazed Ceramic Jug'))
+        rm.lang(f'item.better_stone_age.ceramic.pot.glazed.{color}', lang(f'{color} Pot'))
+    for rock_category in ROCK_CATEGORIES:
+        rm.lang(f'item.better_stone_age.stone.multitool_head.{rock_category}', lang(f'Stone Multitool Head'))
+    
+    rm.lang('block.better_stone_age.sinew', 'Sinew')
+    rm.lang('item.better_stone_age.dried_sinew', 'Dried Sinew')
+    rm.lang('item.better_stone_age.pounded_sinew', 'Pounded Sinew')
+    rm.lang('item.better_stone_age.sinew_string', 'Sinew String')
+    
+    for grain in NON_BROKEN_GRAINS:
+        rm.lang(f'item.better_stone_age.food.crushed_{grain}_grain', lang(f'Crushed {grain} Grain'))
+    
+    for grain in GRAINS:
+        rm.lang(f'item.better_stone_age.food.coarse_{grain}_flour', lang(f'Coarse {grain} Flour'))
+    
+    
+    
+
+
 def create_anvil_recipes():
     print('\tCreating anvil recipes...')
     anvil_recipe(rm, ('pounded_sinew'), 'better_stone_age:dried_sinew', 'better_stone_age:pounded_sinew', 0, Rules.hit_third_last, Rules.hit_second_last, Rules.hit_last)
+    
+    for grain in NON_BROKEN_GRAINS:
+        anvil_recipe(rm, (f'crushed_{grain}_grain'), not_rotten(f'tfc:food/{grain}_grain'), item_stack_provider(f'better_stone_age:food/crushed_{grain}_grain', copy_oldest_food=True), 0, Rules.hit_third_last, Rules.hit_second_last, Rules.hit_last)
+        anvil_recipe(rm, (f'coarse_{grain}_flour'), not_rotten(f'better_stone_age:food/crushed_{grain}_grain'), item_stack_provider(f'better_stone_age:food/coarse_{grain}_flour', copy_oldest_food=True), 0, Rules.draw_third_last, Rules.draw_second_last, Rules.draw_last)
+    
+    for grain in BROKEN_GRAINS:
+        anvil_recipe(rm, f'coarse_{grain}_flour', not_rotten(f'tfc:food/{grain}_grain'), item_stack_provider(f'better_stone_age:food/coarse_{grain}_flour', copy_oldest_food=True), 0, Rules.draw_third_last, Rules.draw_second_last, Rules.draw_last)    
+    
+    
+    
 
 def create_barrel_recipes():
     print('\tCreating barrel recipes...')
@@ -116,24 +243,36 @@ def create_crafting_recipes():
     damage_shapeless(rm, ('crafting', 'hide_sewing', '1_plus_2'), ('tfc:small_raw_hide', 'tfc:medium_raw_hide', '#forge:string', 'tfc:bone_needle'), "tfc:large_raw_hide")
     damage_shapeless(rm, ('crafting', 'hide_sewing', '2_plus_2'), ('tfc:medium_raw_hide', 'tfc:medium_raw_hide', '#forge:string', 'tfc:bone_needle'), "tfc:large_raw_hide")
     
+    for grain in GRAINS:
+        for i in range(1, 1 + 8):
+            advanced_shapeless(rm, f'crafting/dough/{grain}/{i}_from_coarse_flour', (fluid_item_ingredient('100 minecraft:water'), *repeat(not_rotten(f'better_stone_age:food/coarse_{grain}_flour'), i)), item_stack_provider(f'{i} tfc:food/{grain}_dough', copy_oldest_food=True))
     
 
 def create_heating_recipes():
     print('\tCreating heating recipes...')
     for color in COLORS:
-        heat_recipe(rm, ('ceramic', 'jug', f'{color}'), f'better_stone_age:ceramic/jug/unfired/{color}', POTTERY_MELT, f'better_stone_age:ceramic/jug/glazed/{color}')
-
+        heat_recipe(rm, ('ceramic', 'jug', f'{color}'), f'better_stone_age:ceramic/jug/unfired/{color}', POTTERY_MELT, f'better_stone_age:ceramic/jug/glazed/{color}')    
+    
 def create_knapping_recipes():
     print('\tCreating knapping recipes...')
     for rock_category in ROCK_CATEGORIES:
         predicate = f'#tfc:{rock_category}_rock'
         rock_knapping(rm, ('stone', 'multitool_head', rock_category), ['  X  ', ' XXX ', ' XXX ', 'XXXXX', ' XXX '], f'better_stone_age:stone/multitool_head/{rock_category}', predicate)
+
 def create_pot_recipes():
     print('\tCreating pot recipes...')
     for color in COLORS:
         for count in range(1, 1 + 5):
             simple_pot_recipe(rm, f'{color}_dye_from_flower_{count}', [utils.ingredient(f'#tfc:makes_{color}_dye')] * count, str(100 * count) + ' minecraft:water', str(100 * count) + f' tfc:{color}_dye', None, 2000, 730)
 
+def create_quern_recipes():
+    print('\tCreating quern recipes...')
+    for grain in NON_BROKEN_GRAINS:
+        quern_recipe(rm, f'crushed_{grain}_grain', f'better_stone_age:food/crushed_{grain}_grain', item_stack_provider(f'tfc:food/{grain}_flour', copy_oldest_food=True))
+    
+    for grain in GRAINS:
+        quern_recipe(rm, f'coarse_{grain}_flour', f'better_stone_age:food/coarse_{grain}_flour', item_stack_provider(f'tfc:food/{grain}_flour', copy_oldest_food=True))
+    
 def create_recipes():
     print('Creating recipes...')
     create_anvil_recipes()
@@ -142,36 +281,12 @@ def create_recipes():
     create_heating_recipes()
     create_knapping_recipes()
     create_pot_recipes()
-    
-
-def create_item_models():
-    print('Creating item models...')
-    for color in COLORS:
-        rm.item_model(('ceramic', 'jug', 'unfired', f'{color}')).with_lang(lang(f'{color} Unfired Jug'))
-        contained_fluid(rm, ('ceramic', 'jug', 'glazed', f'{color}'), f'better_stone_age:item/ceramic/jug/glazed/{color}_empty', 'tfc:item/ceramic/jug_overlay').with_lang(lang(f'{color} Glazed Ceramic Jug'))
-        rm.item_model(('ceramic', 'pot', 'glazed', color), f'better_stone_age:item/ceramic/pot/glazed/{color}')
-    for rock_category in ROCK_CATEGORIES:
-        rm.item_model(('stone', 'multitool_head', rock_category), 'better_stone_age:item/stone/multitool_head')
-    
-    rm.item_model(('clay_tablet'), 'better_stone_age:item/clay_tablet')
-    rm.item_model(('writeable_clay_tablet'), 'better_stone_age:item/writeable_clay_tablet')
-    rm.item_model(('written_clay_tablet'), 'better_stone_age:item/written_clay_tablet')
-    
-    rm.item_model(('sinew'), 'better_stone_age:item/sinew')
-    rm.item_model(('dried_sinew'), 'better_stone_age:item/dried_sinew')
-    rm.item_model(('pounded_sinew'), 'better_stone_age:item/pounded_sinew')
-    rm.item_model(('sinew_string'), 'better_stone_age:item/sinew_string')
-    
-    
-    
-def create_item_heats():
-    print('Creating item heat data...')
-    item_heat(rm, ('ceramic', 'unfired_ceramic_jugs'), '#better_stone_age:unfired_ceramic_jugs', 0.8)
-
+    create_quern_recipes()
 
 def create_entity_tags():
     print('\tCreating entity tags...')
     rm.entity_tag('drops_sinew', 'tfc:orca', 'tfc:dolphin', 'tfc:manatee', 'tfc:grizzly_bear', 'tfc:polar_bear', 'tfc:black_bear', 'tfc:cougar', 'tfc:lion', 'tfc:sabertooth', 'tfc:tiger', 'tfc:crocodile', 'tfc:wolf', 'tfc:hyena', 'tfc:direwolf', 'tfc:pig', 'tfc:cow', 'tfc:goat', 'tfc:yak', 'tfc:alpaca', 'tfc:sheep', 'tfc:musk_ox', 'tfc:panda', 'tfc:deer', 'tfc:caribou', 'tfc:bongo', 'tfc:gazelle', 'tfc:boar', 'tfc:moose', 'tfc:wildebeest', 'tfc:donkey', 'tfc:mule', 'tfc:horse')
+
 def create_item_tags():
     print('\tCreating item tags...')
     rm.item_tag('unfired_ceramic_jugs', 'tfc:ceramic/unfired_jug', *[f'better_stone_age:ceramic/jug/unfired/{color}' for color in COLORS])
@@ -183,95 +298,31 @@ def create_item_tags():
     rm.item_tag('bindings/medium', 'tfc:jute', 'tfc:plant/ivy', 'tfc:plant/hanging_vines', 'tfc:plant/jungle_vines')
     rm.item_tag('bindings/strong', 'tfc:jute_fiber', '#forge:string')
     
+    for rock_category in ROCK_CATEGORIES:
+        tfc_rm.item_tag(f'{rock_category}_items', f'better_stone_age:stone/multitool_head/{rock_category}')
+    
     rm.item_tag('sinew_display', 'better_stone_age:sinew', 'better_stone_age:dried_sinew', 'better_stone_age:pounded_sinew', 'better_stone_age:sinew_string')
     
     forge_rm.item_tag('string', 'better_stone_age:sinew_string')
-    
-    
-    for rock_category in ROCK_CATEGORIES:
-        tfc_rm.item_tag(f'{rock_category}_items', f'better_stone_age:stone/multitool_head/{rock_category}')
 
 def create_tags():
     print('Creating tags...')
     create_entity_tags()
     create_item_tags()
 
-
-def read_data_from_template(rm: ResourceManager, name_parts, template: str):
-    rm.write(name_parts, json.loads(template))
-
-def create_block_models():
-    print("Creating block models...")
-    for color in COLORS:
-        read_data_from_template(rm, ('src', 'main', 'resources', 'assets', 'better_stone_age', 'models', 'block', 'firepit_pot', color), pot_template % (color, color, color))
-        
-        rm.blockstate_multipart(f'ceramic/pot/{color}',
-                ({'axis': 'x'}, {'model': f'better_stone_age:block/firepit_pot/{color}'}),
-                ({'axis': 'z'}, {'model': f'better_stone_age:block/firepit_pot/{color}', 'y': 90}),
-                ({'lit': True, 'axis': 'x'}, {'model': 'tfc:block/firepit_lit_low'}),
-                ({'lit': True, 'axis': 'z'}, {'model': 'tfc:block/firepit_lit_low', 'y': 90}),
-                ({'lit': False, 'axis': 'x'}, {'model': 'tfc:block/firepit_unlit'}),
-                ({'lit': False, 'axis': 'z'}, {'model': 'tfc:block/firepit_unlit', 'y': 90})
-            ).with_lang(lang(f'{color} Pot')).with_block_loot('tfc:powder/wood_ash', f'better_stone_age:ceramic/pot/glazed/{color}')
-        rm.item_model('pot', 'tfc:item/firepit_pot')
-        
-    read_data_from_template(rm, ('src', 'main', 'resources', 'assets', 'better_stone_age', 'models', 'block', 'drying_sinew'), flat_block_template % ('better_stone_age:block/drying_sinew', 'better_stone_age:block/dried_sinew'))
-    read_data_from_template(rm, ('src', 'main', 'resources', 'assets', 'better_stone_age', 'models', 'block', 'dried_sinew'), flat_block_template % ('better_stone_age:block/dried_sinew', 'better_stone_age:block/dried_sinew'))
-    
-    
-    rm.blockstate_multipart('sinew',
-        ({'dried': False}, {'model': 'better_stone_age:block/drying_sinew'}),
-        ({'dried': True}, {'model': 'better_stone_age:block/dried_sinew'})
-    )
-
-
-
-def create_misc_lang():
-    print('Creating misc translations...')
-    rm.lang('item.minecraft.string', 'Spider Silk')
-    for color in COLORS:
-        rm.lang(f'item.better_stone_age.ceramic.jug.glazed.{color}.filled', '%s ' + lang(f'{color} Glazed Ceramic Jug'))
-        rm.lang(f'item.better_stone_age.ceramic.pot.glazed.{color}', lang(f'{color} Pot'))
-    for rock_category in ROCK_CATEGORIES:
-        rm.lang(f'item.better_stone_age.stone.multitool_head.{rock_category}', lang(f'Stone Multitool Head'))
-    
-    rm.lang('block.better_stone_age.sinew', 'Sinew')
-    rm.lang('item.better_stone_age.dried_sinew', 'Dried Sinew')
-    rm.lang('item.better_stone_age.pounded_sinew', 'Pounded Sinew')
-    rm.lang('item.better_stone_age.sinew_string', 'Sinew String')
     
 
-def create_loot_tables():
-    print('\tCreating loot tables...')
-    tfc_rm.block_loot('tfc:calcite', {'name': 'tfc:powder/flux', 'functions': [utils.loot_functions({'function': 'minecraft:set_count', 'count': {'min': 1, 'max': 2, 'type': 'minecraft:uniform'}})]})
-    tfc_rm.block_loot('tfc:charcoal_pile', {'type': 'minecraft:alternatives', 'children': [{'type': 'minecraft:item', 'name': 'tfc:powder/charcoal', 'conditions': [{'condition': 'minecraft:match_tool', 'predicate': {'tag': 'tfc:hammers'}}], 'functions': [{'function': 'minecraft:set_count', 'count': 2}]}, {'type': 'minecraft:item', 'name': 'minecraft:charcoal'}]})
-    rm.block_loot('better_stone_age:sinew', {'name': 'better_stone_age:sinew', 'conditions': [loot_tables.block_state_property('better_stone_age:sinew[dried=false]')]}, {'name': 'better_stone_age:dried_sinew', 'conditions': [loot_tables.block_state_property('better_stone_age:sinew[dried=true]')]})
-    
-    
-    
-def create_loot_modifiers():
-    print('Creating loot modifiers...')
-    
-    loot_modifiers = []
-    loot_modifier_add_itemstack_min_max(rm, loot_modifiers, 'animals_drop_sinew', '#better_stone_age:drops_sinew', 'better_stone_age:sinew', 1, 3)
-    
-    
-    forge_rm.data(('loot_modifiers', 'global_loot_modifiers'), {'replace': False, 'entries': loot_modifiers})
-
-
-def create_loot():
-    print('Creating loot...')
-    create_loot_tables()
-    create_loot_modifiers()
 
 def main():
-    create_item_models()
-    create_item_heats()
-    create_tags()
-    create_misc_lang()
-    create_loot()
-    create_recipes()
     create_block_models()
+    create_item_foods()
+    create_item_heats()
+    create_item_models()
+    create_loot()
+    create_misc_lang()
+    create_recipes()
+    create_tags()
+    
     
     forge_rm.flush()
     rm.flush()

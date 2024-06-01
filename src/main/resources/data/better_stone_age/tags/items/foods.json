@@ -1,0 +1,16 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "replace": false,
+  "values": [
+    "better_stone_age:food/coarse_barley_flour",
+    "better_stone_age:food/coarse_maize_flour",
+    "better_stone_age:food/coarse_oat_flour",
+    "better_stone_age:food/coarse_rice_flour",
+    "better_stone_age:food/coarse_rye_flour",
+    "better_stone_age:food/coarse_wheat_flour",
+    "better_stone_age:food/crushed_barley_grain",
+    "better_stone_age:food/crushed_oat_grain",
+    "better_stone_age:food/crushed_rye_grain",
+    "better_stone_age:food/crushed_wheat_grain"
+  ]
+}

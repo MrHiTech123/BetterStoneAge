@@ -25,6 +25,7 @@ import net.mrhitech.BetterStoneAge.client.ClientEventHandler;
 import net.mrhitech.BetterStoneAge.client.screen.ClayTabletEditScreen;
 import net.mrhitech.BetterStoneAge.common.blockentities.BetterStoneAgeBlockEntities;
 import net.mrhitech.BetterStoneAge.common.blocks.BetterStoneAgeBlocks;
+import net.mrhitech.BetterStoneAge.common.food.BetterStoneAgeFoods;
 import net.mrhitech.BetterStoneAge.common.item.BetterStoneAgeItems;
 import net.mrhitech.BetterStoneAge.common.blockentities.BetterStoneAgeBlockEntities;
 import net.mrhitech.BetterStoneAge.loot.BetterStoneAgeLootModifiers;
@@ -92,6 +93,19 @@ public class BetterStoneAge
             event.accept(BetterStoneAgeItems.DRIED_SINEW);
             event.accept(BetterStoneAgeItems.POUNDED_SINEW);
             event.accept(BetterStoneAgeItems.SINEW_STRING);
+        }
+        if (event.getTabKey() == TFCCreativeTabs.FOOD.tab().getKey()) {
+            event.accept(BetterStoneAgeItems.CRUSHED_BARLEY_GRAIN);
+            event.accept(BetterStoneAgeItems.CRUSHED_OAT_GRAIN);
+            event.accept(BetterStoneAgeItems.CRUSHED_RYE_GRAIN);
+            event.accept(BetterStoneAgeItems.CRUSHED_WHEAT_GRAIN);
+
+            event.accept(BetterStoneAgeItems.COARSE_BARLEY_FLOUR);
+            event.accept(BetterStoneAgeItems.COARSE_MAIZE_FLOUR);
+            event.accept(BetterStoneAgeItems.COARSE_OAT_FLOUR);
+            event.accept(BetterStoneAgeItems.COARSE_RICE_FLOUR);
+            event.accept(BetterStoneAgeItems.COARSE_RYE_FLOUR);
+            event.accept(BetterStoneAgeItems.COARSE_WHEAT_FLOUR);
 
         }
     }
