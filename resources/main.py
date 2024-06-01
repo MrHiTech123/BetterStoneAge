@@ -171,8 +171,7 @@ def create_item_heats():
 
 def create_entity_tags():
     print('\tCreating entity tags...')
-    rm.entity_tag('drops_sinew', '#tfc:bears', 'tfc:deer', 'tfc:bongo', 'tfc:panda', 'tfc:caribou', 'tfc:gazelle', 'tfc:pig', 'tfc:cow', 'tfc:goat', 'tfc:yak', 'tfc:alpaca', 'tfc:sheep', 'tfc:musk_ox', 'tfc:horse', 'tfc:donkey', 'tfc:mule')
-
+    rm.entity_tag('drops_sinew', 'tfc:orca', 'tfc:dolphin', 'tfc:manatee', 'tfc:grizzly_bear', 'tfc:polar_bear', 'tfc:black_bear', 'tfc:cougar', 'tfc:lion', 'tfc:sabertooth', 'tfc:tiger', 'tfc:crocodile', 'tfc:wolf', 'tfc:hyena', 'tfc:direwolf', 'tfc:pig', 'tfc:cow', 'tfc:goat', 'tfc:yak', 'tfc:alpaca', 'tfc:sheep', 'tfc:musk_ox', 'tfc:panda', 'tfc:deer', 'tfc:caribou', 'tfc:bongo', 'tfc:gazelle', 'tfc:boar', 'tfc:moose', 'tfc:wildebeest', 'tfc:donkey', 'tfc:mule', 'tfc:horse')
 def create_item_tags():
     print('\tCreating item tags...')
     rm.item_tag('unfired_ceramic_jugs', 'tfc:ceramic/unfired_jug', *[f'better_stone_age:ceramic/jug/unfired/{color}' for color in COLORS])
