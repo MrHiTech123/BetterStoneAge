@@ -26,4 +26,9 @@ public class BetterStoneAgeFoods {
     public static final FoodProperties COARSE_WHEAT_FLOUR =
             new FoodProperties.Builder().nutrition(0).saturationMod(0).build();
 
+    public static final FoodProperties PORRIDGE =
+            new FoodProperties.Builder().nutrition(0).saturationMod(0).build();
+
+
+
 }

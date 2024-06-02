@@ -43,6 +43,7 @@ public class BetterStoneAgeItems {
     public static final RegistryObject<Item> COARSE_RYE_FLOUR = ITEMS.register("food/coarse_rye_flour", () -> new Item(new Item.Properties().food(BetterStoneAgeFoods.COARSE_RYE_FLOUR)));
     public static final RegistryObject<Item> COARSE_WHEAT_FLOUR = ITEMS.register("food/coarse_wheat_flour", () -> new Item(new Item.Properties().food(BetterStoneAgeFoods.COARSE_WHEAT_FLOUR)));
 
+    public static final RegistryObject<Item> PORRIDGE = ITEMS.register("food/porridge", () -> new Item(new Item.Properties().food(BetterStoneAgeFoods.PORRIDGE)));
 
     public static final RegistryObject<Item> SINEW = ITEMS.register("sinew", () -> new BlockItem(BetterStoneAgeBlocks.SINEW.get(), new Item.Properties()));
     public static final RegistryObject<Item> DRIED_SINEW = ITEMS.register("dried_sinew", () -> new Item(new Item.Properties()));

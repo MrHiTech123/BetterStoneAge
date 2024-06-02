@@ -5,5 +5,6 @@
   },
   "hunger": 4,
   "saturation": 0.25,
-  "decay_modifier": 0.375
+  "decay_modifier": 0.375,
+  "grain": 0.2
 }

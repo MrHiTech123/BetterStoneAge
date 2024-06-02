@@ -28,6 +28,7 @@ import net.mrhitech.BetterStoneAge.common.blocks.BetterStoneAgeBlocks;
 import net.mrhitech.BetterStoneAge.common.food.BetterStoneAgeFoods;
 import net.mrhitech.BetterStoneAge.common.item.BetterStoneAgeItems;
 import net.mrhitech.BetterStoneAge.common.blockentities.BetterStoneAgeBlockEntities;
+import net.mrhitech.BetterStoneAge.common.recipes.BetterStoneAgeRecipeSerializers;
 import net.mrhitech.BetterStoneAge.loot.BetterStoneAgeLootModifiers;
 import org.slf4j.Logger;
 
@@ -51,6 +52,8 @@ public class BetterStoneAge
         BetterStoneAgeBlocks.register(modEventBus);
         BetterStoneAgeBlockEntities.register(modEventBus);
         BetterStoneAgeLootModifiers.register(modEventBus);
+        BetterStoneAgeRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
+
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -106,6 +109,8 @@ public class BetterStoneAge
             event.accept(BetterStoneAgeItems.COARSE_RICE_FLOUR);
             event.accept(BetterStoneAgeItems.COARSE_RYE_FLOUR);
             event.accept(BetterStoneAgeItems.COARSE_WHEAT_FLOUR);
+
+            event.accept(BetterStoneAgeItems.PORRIDGE);
 
         }
     }

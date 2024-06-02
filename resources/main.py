@@ -99,14 +99,16 @@ def create_block_models():
         ({'dried': True}, {'model': 'better_stone_age:block/dried_sinew'})
     )
     
+    
 
 def create_item_foods():
     print('Creating item foods...')
     for grain in GRAINS:
-        food_item(rm, f'coarse_{grain}_flour', f'better_stone_age:food/coarse_{grain}_flour', Category.grain, 4, 0, 0, 0.5)
+        food_item(rm, f'coarse_{grain}_flour', f'better_stone_age:food/coarse_{grain}_flour', Category.grain, 4, 0, 0, 0.5, grain=0.3)
+        food_item(tfc_rm, f'{grain}_flour', f'tfc:food/{grain}_flour', Category.grain, 4, 0, 0, 0.5, grain=0.4)
     for grain in NON_BROKEN_GRAINS:
-        food_item(rm, f'crushed_{grain}_grain', f'better_stone_age:food/crushed_{grain}_grain', Category.grain, 4, 0.25, 0, 0.375)
-    
+        food_item(rm, f'crushed_{grain}_grain', f'better_stone_age:food/crushed_{grain}_grain', Category.grain, 4, 0.25, 0, 0.375, grain=0.2)
+    dynamic_food_item(rm, 'porridge', 'better_stone_age:food/porridge', 'dynamic_bowl')
 
 def create_item_heats():
     print('Creating item heat data...')
@@ -130,11 +132,14 @@ def create_item_models():
     rm.item_model(('pounded_sinew'), 'better_stone_age:item/pounded_sinew')
     rm.item_model(('sinew_string'), 'better_stone_age:item/sinew_string')
     
+    
     for grain in GRAINS:
         rm.item_model(('food', f'coarse_{grain}_flour'), f'better_stone_age:item/food/coarse_{grain}_flour')
     
     for grain in NON_BROKEN_GRAINS:
         rm.item_model(('food', f'crushed_{grain}_grain'), f'better_stone_age:item/food/crushed_{grain}_grain')
+        
+    rm.item_model(('food/porridge'), 'better_stone_age:item/food/porridge')
 
 def create_loot_tables():
     print('\tCreating loot tables...')
@@ -179,6 +184,9 @@ def create_misc_lang():
     
     for grain in GRAINS:
         rm.lang(f'item.better_stone_age.food.coarse_{grain}_flour', lang(f'Coarse {grain} Flour'))
+    
+    rm.lang('item.better_stone_age.food.porridge', 'Porridge')
+    rm.lang('tfc.jei.porridge_pot', 'Porridge Pot')
     
     
     
@@ -264,6 +272,16 @@ def create_pot_recipes():
     for color in COLORS:
         for count in range(1, 1 + 5):
             simple_pot_recipe(rm, f'{color}_dye_from_flower_{count}', [utils.ingredient(f'#tfc:makes_{color}_dye')] * count, str(100 * count) + ' minecraft:water', str(100 * count) + f' tfc:{color}_dye', None, 2000, 730)
+    
+    porridge_food = not_rotten(utils.ingredient('#better_stone_age:usable_in_porridge'))
+    for duration, count in ((1000, 3), (1150, 4), (1300, 5)):
+        rm.recipe(('pot', f'porridge_{count}'), 'better_stone_age:pot_porridge', {
+            'ingredients': [porridge_food] * count,
+            'fluid_ingredient': fluid_stack_ingredient('100 minecraft:water'),
+            'duration': duration,
+            'temperature': 300
+        })
+
 
 def create_quern_recipes():
     print('\tCreating quern recipes...')
@@ -304,7 +322,10 @@ def create_item_tags():
     rm.item_tag('sinew_display', 'better_stone_age:sinew', 'better_stone_age:dried_sinew', 'better_stone_age:pounded_sinew', 'better_stone_age:sinew_string')
     
     forge_rm.item_tag('string', 'better_stone_age:sinew_string')
-
+    
+    rm.item_tag('usable_in_porridge', *[f'better_stone_age:food/crushed_{grain}_grain' for grain in NON_BROKEN_GRAINS])
+    tfc_rm.item_tag('dynamic_bowl_items', 'better_stone_age:food/porridge')
+    
 def create_tags():
     print('Creating tags...')
     create_entity_tags()

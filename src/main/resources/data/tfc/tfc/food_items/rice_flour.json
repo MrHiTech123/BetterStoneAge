@@ -1,10 +1,10 @@
 {
   "__comment__": "This file was automatically created by mcresources",
   "ingredient": {
-    "item": "better_stone_age:food/coarse_maize_flour"
+    "item": "tfc:food/rice_flour"
   },
   "hunger": 4,
   "saturation": 0,
   "decay_modifier": 0.5,
-  "grain": 0.3
+  "grain": 0.4
 }
