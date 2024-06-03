@@ -216,8 +216,8 @@ def create_crafting_recipes():
     
     print('\t\tCreating color recipes...')
     for color in COLORS:
-        rm.crafting_shapeless(('crafting', 'ceramic', 'jug', 'unfired' f'{color}'), ('tfc:ceramic/unfired_jug', f'minecraft:{color.lower()}_dye'), f'better_stone_age:ceramic/jug/unfired/{color}')
-        rm.crafting_shapeless(('crafting', 'ceramic', 'jug', 'unfired' f'{color}_liquid_dye'), ('tfc:ceramic/unfired_jug', fluid_item_ingredient(f'100 tfc:{color}_dye')), f'better_stone_age:ceramic/jug/unfired/{color}')
+        rm.crafting_shapeless(('crafting', 'ceramic', 'jug', 'unfired', f'{color}'), ('tfc:ceramic/unfired_jug', f'minecraft:{color.lower()}_dye'), f'better_stone_age:ceramic/jug/unfired/{color}')
+        rm.crafting_shapeless(('crafting', 'ceramic', 'jug', 'unfired', f'{color}_liquid_dye'), ('tfc:ceramic/unfired_jug', fluid_item_ingredient(f'100 tfc:{color}_dye')), f'better_stone_age:ceramic/jug/unfired/{color}')
         rm.crafting_shapeless(('crafting', 'ceramic', f'{color}_unfired_vessel_liquid_dye'), ('tfc:ceramic/unfired_vessel', fluid_item_ingredient(f'100 tfc:{color}_dye')), f'tfc:ceramic/{color}_unfired_vessel')
         rm.crafting_shapeless(('crafting', 'ceramic', f'{color}_unfired_large_vessel_liquid_dye'), ('tfc:ceramic/unfired_large_vessel', fluid_item_ingredient(f'100 tfc:{color}_dye')), f'tfc:ceramic/unfired_large_vessel/{color}')
     
@@ -279,7 +279,8 @@ def create_pot_recipes():
             'ingredients': [porridge_food] * count,
             'fluid_ingredient': fluid_stack_ingredient('100 minecraft:water'),
             'duration': duration,
-            'temperature': 300
+            'temperature': 300,
+            'texture': 'minecraft:block/orange_glazed_terracotta'
         })
 
 

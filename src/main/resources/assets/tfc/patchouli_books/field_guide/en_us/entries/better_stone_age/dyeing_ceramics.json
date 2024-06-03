@@ -9,8 +9,8 @@
     },
     {
       "type": "patchouli:crafting",
-      "recipe": "better_stone_age:crafting/ceramic/black_unfired_jug_liquid_dye",
-      "recipe2": "better_stone_age:crafting/ceramic/magenta_unfired_vessel_liquid_dye"
+      "recipe": "better_stone_age:crafting/ceramic/magenta_unfired_vessel_liquid_dye",
+      "recipe2": "better_stone_age:crafting/ceramic/jug/unfired/black_liquid_dye"
     },
     {
       "type": "patchouli:crafting",

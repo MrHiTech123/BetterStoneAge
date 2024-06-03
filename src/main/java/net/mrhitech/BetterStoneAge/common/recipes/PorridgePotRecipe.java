@@ -5,13 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.JsonObject;
 import net.dries007.tfc.client.render.blockentity.PotBlockEntityRenderer;
+import net.dries007.tfc.common.recipes.JamPotRecipe;
 import net.dries007.tfc.common.recipes.PotRecipe;
+import net.dries007.tfc.util.JsonHelpers;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -35,24 +38,26 @@ import net.dries007.tfc.compat.jade.common.BlockEntityTooltips;
 import net.dries007.tfc.util.Helpers;
 
 
-
 public class PorridgePotRecipe extends PotRecipe
 {
     public static final OutputType OUTPUT_TYPE = nbt -> {
         ItemStack stack = ItemStack.of(nbt.getCompound("item"));
-        return new PorridgeOutput(stack);
+        ResourceLocation texture = new ResourceLocation(nbt.getString("texture"));
+        return new PorridgeOutput(stack, texture);
     };
 
     public static final int PORRIDGE_HUNGER_VALUE = 4;
     public static final float PORRIDGE_DECAY_MODIFIER = 3.5F;
+    private final ResourceLocation texture;
 
-    public PorridgePotRecipe(ResourceLocation id, List<Ingredient> itemIngredients, FluidStackIngredient fluidIngredient, int duration, float minTemp)
+    public PorridgePotRecipe(ResourceLocation id, List<Ingredient> itemIngredients, FluidStackIngredient fluidIngredient, int duration, float minTemp, ResourceLocation texture)
     {
         super(id, itemIngredients, fluidIngredient, duration, minTemp);
+        this.texture = texture;
     }
 
     @Override
-    public Output getOutput(PotBlockEntity.PotInventory inventory)
+    public PorridgeOutput getOutput(PotBlockEntity.PotInventory inventory)
     {
         int ingredientCount = 0;
         float water = 20, saturation = 2;
@@ -105,15 +110,9 @@ public class PorridgePotRecipe extends PotRecipe
                 handler.setFood(data);
             }
         }
+        
 
-        System.out.println(porridgeStack);
-        System.out.println(porridgeStack == null);
-        System.out.println(new PorridgeOutput(porridgeStack));
-        System.out.println(new PorridgeOutput(porridgeStack) == null);
-
-        System.out.println("Is it empty: " + porridgeStack.isEmpty());
-
-        return new PorridgeOutput(porridgeStack);
+        return new PorridgeOutput(porridgeStack, this.texture);
     }
 
     @Override
@@ -122,8 +121,12 @@ public class PorridgePotRecipe extends PotRecipe
         return BetterStoneAgeRecipeSerializers.POT_PORRIDGE.get();
     }
 
-    public record PorridgeOutput(ItemStack stack) implements Output
+    public record PorridgeOutput(ItemStack stack, ResourceLocation texture) implements Output
     {
+        public PorridgeOutput(ItemStack stack, ResourceLocation texture) {
+            this.stack = stack;
+            this.texture = texture;
+        }
         @Override
         public boolean isEmpty()
         {
@@ -154,6 +157,8 @@ public class PorridgePotRecipe extends PotRecipe
         {
             return TFCFluids.ALPHA_MASK | 0xEAC97F;
         }
+        
+        
 
         @Override
         public void write(CompoundTag nbt)
@@ -177,6 +182,11 @@ public class PorridgePotRecipe extends PotRecipe
                 text.forEach(tooltip);
             });
         }
+        
+        @Override
+        public ResourceLocation getRenderTexture() {
+            return this.texture;
+        }
     }
 
     public static class Serializer extends PotRecipe.Serializer<PorridgePotRecipe>
@@ -184,13 +194,14 @@ public class PorridgePotRecipe extends PotRecipe
         @Override
         protected PorridgePotRecipe fromJson(ResourceLocation recipeId, JsonObject json, List<Ingredient> ingredients, FluidStackIngredient fluidIngredient, int duration, float minTemp)
         {
-            return new PorridgePotRecipe(recipeId, ingredients, fluidIngredient, duration, minTemp);
+            return new PorridgePotRecipe(recipeId, ingredients, fluidIngredient, duration, minTemp, new ResourceLocation(JsonHelpers.getAsString(json, "texture")));
         }
 
         @Override
         protected PorridgePotRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer, List<Ingredient> ingredients, FluidStackIngredient fluidIngredient, int duration, float minTemp)
         {
-            return new PorridgePotRecipe(recipeId, ingredients, fluidIngredient, duration, minTemp);
+            ResourceLocation texture = buffer.readResourceLocation();
+            return new PorridgePotRecipe(recipeId, ingredients, fluidIngredient, duration, minTemp, texture);
         }
     }
 }

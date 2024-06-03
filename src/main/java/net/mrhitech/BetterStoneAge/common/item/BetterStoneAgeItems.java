@@ -49,8 +49,9 @@ public class BetterStoneAgeItems {
     public static final RegistryObject<Item> DRIED_SINEW = ITEMS.register("dried_sinew", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> POUNDED_SINEW = ITEMS.register("pounded_sinew", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SINEW_STRING = ITEMS.register("sinew_string", () -> new Item(new Item.Properties()));
-
-
+    
+    
+    
     public static void register(IEventBus bus) {
         ITEMS.register(bus);
     }
