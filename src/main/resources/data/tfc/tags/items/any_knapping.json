@@ -1,8 +1,7 @@
 {
   "__comment__": "This file was automatically created by mcresources",
   "replace": false,
-  "entries": [
-    "better_stone_age:animals_drop_sinew",
-    "better_stone_age:sabertooth_fangs"
+  "values": [
+    "#better_stone_age:bone_knapping"
   ]
 }

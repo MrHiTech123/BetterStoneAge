@@ -1,0 +1,15 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "minecraft:item/handheld_rod",
+  "textures": {
+    "layer0": "better_stone_age:item/bone/fishing_rod"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "tfc:cast": 1
+      },
+      "model": "better_stone_age:item/bone/fishing_rod_cast"
+    }
+  ]
+}

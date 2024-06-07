@@ -1,10 +1,14 @@
 package net.mrhitech.BetterStoneAge.common.item;
 
 import net.dries007.tfc.common.TFCTags;
+import net.dries007.tfc.common.TFCTiers;
 import net.dries007.tfc.common.items.Food;
+import net.dries007.tfc.common.items.TFCFishingRodItem;
 import net.dries007.tfc.config.TFCConfig;
 import net.dries007.tfc.util.Helpers;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Tier;
+import net.dries007.tfc.util.Metal;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -50,7 +54,9 @@ public class BetterStoneAgeItems {
     public static final RegistryObject<Item> POUNDED_SINEW = ITEMS.register("pounded_sinew", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SINEW_STRING = ITEMS.register("sinew_string", () -> new Item(new Item.Properties()));
     
-    
+    public static final RegistryObject<Item> BONE_FISHING_ROD = ITEMS.register("bone/fishing_rod", () -> new TFCFishingRodItem(new Item.Properties().rarity(Rarity.COMMON).defaultDurability(20), TFCTiers.SEDIMENTARY));
+    public static final RegistryObject<Item> BONE_FISH_HOOK = ITEMS.register("bone/fish_hook", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SABERTOOTH_FANG = ITEMS.register("sabertooth_fang", () -> new Item(new Item.Properties()));
     
     public static void register(IEventBus bus) {
         ITEMS.register(bus);

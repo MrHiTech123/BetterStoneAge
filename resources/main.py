@@ -20,6 +20,9 @@ with open('templates/flat_block_model.json', 'r') as f:
     flat_block_template = f.read()
 
 
+def bone_knapping(rm: ResourceManager, name_parts: ResourceIdentifier, pattern: List[str], result: ResourceIdentifier, ingredient: str = None, outside_slot_required: bool = False):
+    knapping_recipe(rm, name_parts, 'better_stone_age:bone', pattern, result, ingredient, outside_slot_required)
+
 def loot_modifier_add_itemstack(rm: ResourceManager, loot_modifiers: list, name_parts, entity_tag, item, count):
     
     
@@ -117,22 +120,28 @@ def create_item_heats():
 def create_item_models():
     print('Creating item models...')
     for color in COLORS:
-        rm.item_model(('ceramic', 'jug', 'unfired', f'{color}')).with_lang(lang(f'{color} Unfired Jug'))
-        contained_fluid(rm, ('ceramic', 'jug', 'glazed', f'{color}'), f'better_stone_age:item/ceramic/jug/glazed/{color}_empty', 'tfc:item/ceramic/jug_overlay').with_lang(lang(f'{color} Glazed Ceramic Jug'))
-        rm.item_model(('ceramic', 'pot', 'glazed', color), f'better_stone_age:item/ceramic/pot/glazed/{color}')
+        rm.item_model(('ceramic', 'jug', 'unfired', f'{color}')).with_lang(lang(f'{color} Unfired Jug')).with_lang(lang(f'{color} Glazed Jug'))
+        contained_fluid(rm, ('ceramic', 'jug', 'glazed', f'{color}'), f'better_stone_age:item/ceramic/jug/glazed/{color}_empty', 'tfc:item/ceramic/jug_overlay')
+        rm.item_model(('ceramic', 'pot', 'glazed', color), f'better_stone_age:item/ceramic/pot/glazed/{color}').with_lang(lang(f'{color} Glazed Jug'))
     for rock_category in ROCK_CATEGORIES:
-        rm.item_model(('stone', 'multitool_head', rock_category), 'better_stone_age:item/stone/multitool_head')
+        rm.item_model(('stone', 'multitool_head', rock_category), 'better_stone_age:item/stone/multitool_head').with_lang('Stone Multitool Head')
     
     rm.item_model(('clay_tablet'), 'better_stone_age:item/clay_tablet')
     rm.item_model(('writeable_clay_tablet'), 'better_stone_age:item/writeable_clay_tablet')
     rm.item_model(('written_clay_tablet'), 'better_stone_age:item/written_clay_tablet')
     
-    rm.item_model(('sinew'), 'better_stone_age:item/sinew')
-    rm.item_model(('dried_sinew'), 'better_stone_age:item/dried_sinew')
-    rm.item_model(('pounded_sinew'), 'better_stone_age:item/pounded_sinew')
-    rm.item_model(('sinew_string'), 'better_stone_age:item/sinew_string')
+    rm.item_model(('sinew'), 'better_stone_age:item/sinew').with_lang(lang('sinew'))
+    rm.item_model(('dried_sinew'), 'better_stone_age:item/dried_sinew').with_lang(lang('dried_sinew'))
+    rm.item_model(('pounded_sinew'), 'better_stone_age:item/pounded_sinew').with_lang(lang('pounded_sinew'))
+    rm.item_model(('sinew_string'), 'better_stone_age:item/sinew_string').with_lang(lang('sinew_string'))
+    
+    rm.item_model(('bone', 'fishing_rod_cast'), 'better_stone_age:item/bone/fishing_rod_cast', parent='minecraft:item/fishing_rod')
+    item_model_property(rm, ('bone', 'fishing_rod'), [{'predicate': {'tfc:cast': 1}, 'model': 'better_stone_age:item/bone/fishing_rod_cast'}], {'parent': 'minecraft:item/handheld_rod', 'textures': {'layer0': 'better_stone_age:item/bone/fishing_rod'}}).with_lang('Bone Fishing Rod')
+    rm.item_model(('bone', 'fish_hook'), 'better_stone_age:item/bone/fish_hook').with_lang(lang('bone_fish_hook'))
+    rm.item_model(('sabertooth_fang'), 'better_stone_age:item/sabertooth_fang').with_lang(lang('sabertooth_fang'))
     
     
+        
     for grain in GRAINS:
         rm.item_model(('food', f'coarse_{grain}_flour'), f'better_stone_age:item/food/coarse_{grain}_flour')
     
@@ -154,7 +163,7 @@ def create_loot_modifiers():
     
     loot_modifiers = []
     loot_modifier_add_itemstack_min_max(rm, loot_modifiers, 'animals_drop_sinew', '#better_stone_age:drops_sinew', 'better_stone_age:sinew', 1, 3)
-    
+    loot_modifier_add_itemstack_min_max(rm, loot_modifiers, 'sabertooth_fangs', 'tfc:sabertooth', 'better_stone_age:sabertooth_fang', 1, 2)
     
     forge_rm.data(('loot_modifiers', 'global_loot_modifiers'), {'replace': False, 'entries': loot_modifiers})
 
@@ -174,11 +183,6 @@ def create_misc_lang():
     for rock_category in ROCK_CATEGORIES:
         rm.lang(f'item.better_stone_age.stone.multitool_head.{rock_category}', lang(f'Stone Multitool Head'))
     
-    rm.lang('block.better_stone_age.sinew', 'Sinew')
-    rm.lang('item.better_stone_age.dried_sinew', 'Dried Sinew')
-    rm.lang('item.better_stone_age.pounded_sinew', 'Pounded Sinew')
-    rm.lang('item.better_stone_age.sinew_string', 'Sinew String')
-    
     for grain in NON_BROKEN_GRAINS:
         rm.lang(f'item.better_stone_age.food.crushed_{grain}_grain', lang(f'Crushed {grain} Grain'))
     
@@ -187,6 +191,7 @@ def create_misc_lang():
     
     rm.lang('item.better_stone_age.food.porridge', 'Porridge')
     rm.lang('tfc.jei.porridge_pot', 'Porridge Pot')
+    rm.lang('tfc.jei.bone_knapping', 'Bone Knapping')
     
     
     
@@ -255,17 +260,38 @@ def create_crafting_recipes():
         for i in range(1, 1 + 8):
             advanced_shapeless(rm, f'crafting/dough/{grain}/{i}_from_coarse_flour', (fluid_item_ingredient('100 minecraft:water'), *repeat(not_rotten(f'better_stone_age:food/coarse_{grain}_flour'), i)), item_stack_provider(f'{i} tfc:food/{grain}_dough', copy_oldest_food=True))
     
+    disable_recipe(rm, f'tfc:crafting/bone_needle')
+    damage_shapeless(rm, ('crafting', 'bone_needle'), ('better_stone_age:sabertooth_fang', '#tfc:knives'), 'tfc:bone_needle')
+    rm.crafting_shaped(('crafting', 'bone', 'fishing_rod'), ('RS', 'RH'), {'R': '#forge:rods/wooden', 'S': '#forge:string', 'H': 'better_stone_age:bone/fish_hook'}, 'better_stone_age:bone/fishing_rod')
 
 def create_heating_recipes():
     print('\tCreating heating recipes...')
     for color in COLORS:
         heat_recipe(rm, ('ceramic', 'jug', f'{color}'), f'better_stone_age:ceramic/jug/unfired/{color}', POTTERY_MELT, f'better_stone_age:ceramic/jug/glazed/{color}')    
     
-def create_knapping_recipes():
-    print('\tCreating knapping recipes...')
+
+def create_bone_knapping_recipes():
+    print('\t\tCreating bone knapping recipes...')
+    
+    knapping_type(rm, 'bone', '#better_stone_age:bone_knapping', 1, 'tfc:item.knapping.stone', False, False, True, 'minecraft:bone')
+    
+    bone_knapping(rm, 'fish_hook', ['  X', '  X', '  X', 'X X', ' XX'], 'better_stone_age:bone/fish_hook', '#better_stone_age:bone_knapping')
+    bone_knapping(rm, 'needle', ['   XX', '   XX', '  X  ', ' X   ', 'X    '], 'tfc:bone_needle', '#better_stone_age:bone_knapping')
+    
+    
+    
+def create_rock_knapping_recipes():
+    print('\t\tCreating rock knapping recipes...')
     for rock_category in ROCK_CATEGORIES:
         predicate = f'#tfc:{rock_category}_rock'
         rock_knapping(rm, ('stone', 'multitool_head', rock_category), ['  X  ', ' XXX ', ' XXX ', 'XXXXX', ' XXX '], f'better_stone_age:stone/multitool_head/{rock_category}', predicate)
+
+
+def create_knapping_recipes():
+    print('\tCreating knapping recipes...')
+    create_bone_knapping_recipes()
+    create_rock_knapping_recipes()
+    
 
 def create_pot_recipes():
     print('\tCreating pot recipes...')
@@ -291,6 +317,8 @@ def create_quern_recipes():
     
     for grain in GRAINS:
         quern_recipe(rm, f'coarse_{grain}_flour', f'better_stone_age:food/coarse_{grain}_flour', item_stack_provider(f'tfc:food/{grain}_flour', copy_oldest_food=True))
+    
+    quern_recipe(rm, ('sabertooth_fang'), 'better_stone_age:sabertooth_fang', 'minecraft:bone_meal', 2)
     
 def create_recipes():
     print('Creating recipes...')
@@ -326,6 +354,13 @@ def create_item_tags():
     
     rm.item_tag('usable_in_porridge', *[f'better_stone_age:food/crushed_{grain}_grain' for grain in NON_BROKEN_GRAINS])
     tfc_rm.item_tag('dynamic_bowl_items', 'better_stone_age:food/porridge')
+    
+    tfc_rm.item_tag('holds_small_fishing_bait', 'better_stone_age:bone/fishing_rod')
+    tfc_rm.item_tag('any_knapping', '#better_stone_age:bone_knapping')
+    tfc_rm.tag('usable_on_tool_rack', 'better_stone_age:bone/fishing_rod')
+    forge_rm.tag('fishing_rods', 'better_stone_age:bone/fishing_rod')
+    rm.item_tag('bone_knapping', 'minecraft:bone')
+    
     
 def create_tags():
     print('Creating tags...')

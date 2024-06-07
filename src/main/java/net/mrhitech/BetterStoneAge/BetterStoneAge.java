@@ -8,6 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -86,10 +87,9 @@ public class BetterStoneAge
                 event.accept(BetterStoneAgeItems.GLAZED_CERAMIC_JUGS.get(color));
                 event.accept(BetterStoneAgeItems.GLAZED_POTS.get(color));
             }
-
-            for (RockCategory rock_category : RockCategory.values()) {
-                event.accept(BetterStoneAgeItems.MULTITOOL_HEADS.get(rock_category));
-            }
+            event.accept(BetterStoneAgeItems.BONE_FISH_HOOK);
+            event.accept(BetterStoneAgeItems.BONE_FISHING_ROD);
+            event.accept(BetterStoneAgeItems.SABERTOOTH_FANG);
         }
         if (event.getTabKey() == TFCCreativeTabs.MISC.tab().getKey()) {
             event.accept(BetterStoneAgeItems.SINEW);
@@ -112,6 +112,11 @@ public class BetterStoneAge
 
             event.accept(BetterStoneAgeItems.PORRIDGE);
 
+        }
+        if (event.getTabKey() == TFCCreativeTabs.ROCKS.tab().getKey()) {
+            for (RockCategory rock_category : RockCategory.values()) {
+                event.accept(BetterStoneAgeItems.MULTITOOL_HEADS.get(rock_category));
+            }
         }
     }
 

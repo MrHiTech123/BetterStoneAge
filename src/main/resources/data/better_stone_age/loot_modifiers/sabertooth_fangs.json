@@ -1,0 +1,16 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "better_stone_age:add_itemstack_min_max",
+  "conditions": [
+    {
+      "condition": "minecraft:entity_properties",
+      "predicate": {
+        "type": "tfc:sabertooth"
+      },
+      "entity": "this"
+    }
+  ],
+  "item": "better_stone_age:sabertooth_fang",
+  "min": 1,
+  "max": 2
+}
