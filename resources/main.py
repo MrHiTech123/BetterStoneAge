@@ -192,6 +192,7 @@ def create_misc_lang():
     rm.lang('item.better_stone_age.food.porridge', 'Porridge')
     rm.lang('tfc.jei.porridge_pot', 'Porridge Pot')
     rm.lang('tfc.jei.bone_knapping', 'Bone Knapping')
+    rm.lang('subtitle.item.better_stone_age.knapping.bone', 'Bone Scrapes')
     
     
     
@@ -273,7 +274,7 @@ def create_heating_recipes():
 def create_bone_knapping_recipes():
     print('\t\tCreating bone knapping recipes...')
     
-    knapping_type(rm, 'bone', '#better_stone_age:bone_knapping', 1, 'tfc:item.knapping.stone', False, False, True, 'minecraft:bone')
+    knapping_type(rm, 'bone', '#better_stone_age:bone_knapping', 1, 'better_stone_age:item.knapping.bone', False, False, True, 'minecraft:bone')
     
     bone_knapping(rm, 'fish_hook', ['  X', '  X', '  X', 'X X', ' XX'], 'better_stone_age:bone/fish_hook', '#better_stone_age:bone_knapping')
     bone_knapping(rm, 'needle', ['   XX', '   XX', '  X  ', ' X   ', 'X    '], 'tfc:bone_needle', '#better_stone_age:bone_knapping')

@@ -22,6 +22,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.mrhitech.BetterStoneAge.client.BetterStoneAgeSounds;
 import net.mrhitech.BetterStoneAge.client.ClientEventHandler;
 import net.mrhitech.BetterStoneAge.client.screen.ClayTabletEditScreen;
 import net.mrhitech.BetterStoneAge.common.blockentities.BetterStoneAgeBlockEntities;
@@ -54,6 +55,7 @@ public class BetterStoneAge
         BetterStoneAgeBlockEntities.register(modEventBus);
         BetterStoneAgeLootModifiers.register(modEventBus);
         BetterStoneAgeRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
+        BetterStoneAgeSounds.register(modEventBus);
 
 
         // Register the commonSetup method for modloading
