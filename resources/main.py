@@ -203,11 +203,11 @@ def create_anvil_recipes():
     anvil_recipe(rm, ('pounded_sinew'), 'better_stone_age:dried_sinew', 'better_stone_age:pounded_sinew', 0, Rules.hit_third_last, Rules.hit_second_last, Rules.hit_last)
     
     for grain in NON_BROKEN_GRAINS:
-        anvil_recipe(rm, (f'crushed_{grain}_grain'), not_rotten(f'tfc:food/{grain}_grain'), item_stack_provider(f'better_stone_age:food/crushed_{grain}_grain', copy_oldest_food=True), 0, Rules.hit_third_last, Rules.hit_second_last, Rules.hit_last)
-        anvil_recipe(rm, (f'coarse_{grain}_flour'), not_rotten(f'better_stone_age:food/crushed_{grain}_grain'), item_stack_provider(f'better_stone_age:food/coarse_{grain}_flour', copy_oldest_food=True), 0, Rules.draw_third_last, Rules.draw_second_last, Rules.draw_last)
+        anvil_recipe(rm, ('food', f'crushed_{grain}_grain'), not_rotten(f'tfc:food/{grain}_grain'), item_stack_provider(f'better_stone_age:food/crushed_{grain}_grain', copy_oldest_food=True), 0, Rules.hit_third_last, Rules.hit_second_last, Rules.hit_last)
+        anvil_recipe(rm, ('food', f'coarse_{grain}_flour'), not_rotten(f'better_stone_age:food/crushed_{grain}_grain'), item_stack_provider(f'better_stone_age:food/coarse_{grain}_flour', copy_oldest_food=True), 0, Rules.draw_third_last, Rules.draw_second_last, Rules.draw_last)
     
     for grain in BROKEN_GRAINS:
-        anvil_recipe(rm, f'coarse_{grain}_flour', not_rotten(f'tfc:food/{grain}_grain'), item_stack_provider(f'better_stone_age:food/coarse_{grain}_flour', copy_oldest_food=True), 0, Rules.draw_third_last, Rules.draw_second_last, Rules.draw_last)    
+        anvil_recipe(rm, ('food', f'coarse_{grain}_flour'), not_rotten(f'tfc:food/{grain}_grain'), item_stack_provider(f'better_stone_age:food/coarse_{grain}_flour', copy_oldest_food=True), 0, Rules.draw_third_last, Rules.draw_second_last, Rules.draw_last)    
     
     
     
@@ -314,10 +314,10 @@ def create_pot_recipes():
 def create_quern_recipes():
     print('\tCreating quern recipes...')
     for grain in NON_BROKEN_GRAINS:
-        quern_recipe(rm, f'crushed_{grain}_grain', f'better_stone_age:food/crushed_{grain}_grain', item_stack_provider(f'tfc:food/{grain}_flour', copy_oldest_food=True))
+        quern_recipe(rm, ('food', f'crushed_{grain}_grain'), f'better_stone_age:food/crushed_{grain}_grain', item_stack_provider(f'tfc:food/{grain}_flour', copy_oldest_food=True))
     
     for grain in GRAINS:
-        quern_recipe(rm, f'coarse_{grain}_flour', f'better_stone_age:food/coarse_{grain}_flour', item_stack_provider(f'tfc:food/{grain}_flour', copy_oldest_food=True))
+        quern_recipe(rm, ('food', f'coarse_{grain}_flour'), f'better_stone_age:food/coarse_{grain}_flour', item_stack_provider(f'tfc:food/{grain}_flour', copy_oldest_food=True))
     
     quern_recipe(rm, ('sabertooth_fang'), 'better_stone_age:sabertooth_fang', 'minecraft:bone_meal', 2)
     
