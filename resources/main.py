@@ -120,9 +120,9 @@ def create_item_heats():
 def create_item_models():
     print('Creating item models...')
     for color in COLORS:
-        rm.item_model(('ceramic', 'jug', 'unfired', f'{color}')).with_lang(lang(f'{color} Unfired Jug')).with_lang(lang(f'{color} Glazed Jug'))
-        contained_fluid(rm, ('ceramic', 'jug', 'glazed', f'{color}'), f'better_stone_age:item/ceramic/jug/glazed/{color}_empty', 'tfc:item/ceramic/jug_overlay')
-        rm.item_model(('ceramic', 'pot', 'glazed', color), f'better_stone_age:item/ceramic/pot/glazed/{color}').with_lang(lang(f'{color} Glazed Jug'))
+        rm.item_model(('ceramic', 'jug', 'unfired', f'{color}')).with_lang(lang(f'{color} Unfired Jug')).with_lang(lang(f'{color} Unfired Jug'))
+        contained_fluid(rm, ('ceramic', 'jug', 'glazed', f'{color}'), f'better_stone_age:item/ceramic/jug/glazed/{color}_empty', 'tfc:item/ceramic/jug_overlay').with_lang(lang(f'{color} Glazed Jug'))
+        rm.item_model(('ceramic', 'pot', 'glazed', color), f'better_stone_age:item/ceramic/pot/glazed/{color}')
     for rock_category in ROCK_CATEGORIES:
         rm.item_model(('stone', 'multitool_head', rock_category), 'better_stone_age:item/stone/multitool_head').with_lang('Stone Multitool Head')
     
