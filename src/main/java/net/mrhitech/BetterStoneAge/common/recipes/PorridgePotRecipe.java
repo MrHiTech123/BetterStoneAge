@@ -42,18 +42,15 @@ public class PorridgePotRecipe extends PotRecipe
 {
     public static final OutputType OUTPUT_TYPE = nbt -> {
         ItemStack stack = ItemStack.of(nbt.getCompound("item"));
-        ResourceLocation texture = new ResourceLocation(nbt.getString("texture"));
-        return new PorridgeOutput(stack, texture);
+        return new PorridgeOutput(stack);
     };
 
     public static final int PORRIDGE_HUNGER_VALUE = 4;
     public static final float PORRIDGE_DECAY_MODIFIER = 3.5F;
-    private final ResourceLocation texture;
 
-    public PorridgePotRecipe(ResourceLocation id, List<Ingredient> itemIngredients, FluidStackIngredient fluidIngredient, int duration, float minTemp, ResourceLocation texture)
+    public PorridgePotRecipe(ResourceLocation id, List<Ingredient> itemIngredients, FluidStackIngredient fluidIngredient, int duration, float minTemp)
     {
         super(id, itemIngredients, fluidIngredient, duration, minTemp);
-        this.texture = texture;
     }
 
     @Override
@@ -112,7 +109,7 @@ public class PorridgePotRecipe extends PotRecipe
         }
         
 
-        return new PorridgeOutput(porridgeStack, this.texture);
+        return new PorridgeOutput(porridgeStack);
     }
 
     @Override
@@ -121,11 +118,10 @@ public class PorridgePotRecipe extends PotRecipe
         return BetterStoneAgeRecipeSerializers.POT_PORRIDGE.get();
     }
 
-    public record PorridgeOutput(ItemStack stack, ResourceLocation texture) implements Output
+    public record PorridgeOutput(ItemStack stack) implements Output
     {
-        public PorridgeOutput(ItemStack stack, ResourceLocation texture) {
+        public PorridgeOutput(ItemStack stack) {
             this.stack = stack;
-            this.texture = texture;
         }
         @Override
         public boolean isEmpty()
@@ -155,7 +151,7 @@ public class PorridgePotRecipe extends PotRecipe
         @Override
         public int getFluidColor()
         {
-            return TFCFluids.ALPHA_MASK | 0xEAC97F;
+            return TFCFluids.ALPHA_MASK | 0xFBD891;
         }
         
         
@@ -183,10 +179,7 @@ public class PorridgePotRecipe extends PotRecipe
             });
         }
         
-        @Override
-        public ResourceLocation getRenderTexture() {
-            return this.texture;
-        }
+        
     }
 
     public static class Serializer extends PotRecipe.Serializer<PorridgePotRecipe>
@@ -194,14 +187,13 @@ public class PorridgePotRecipe extends PotRecipe
         @Override
         protected PorridgePotRecipe fromJson(ResourceLocation recipeId, JsonObject json, List<Ingredient> ingredients, FluidStackIngredient fluidIngredient, int duration, float minTemp)
         {
-            return new PorridgePotRecipe(recipeId, ingredients, fluidIngredient, duration, minTemp, new ResourceLocation(JsonHelpers.getAsString(json, "texture")));
+            return new PorridgePotRecipe(recipeId, ingredients, fluidIngredient, duration, minTemp);
         }
 
         @Override
         protected PorridgePotRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer, List<Ingredient> ingredients, FluidStackIngredient fluidIngredient, int duration, float minTemp)
         {
-            ResourceLocation texture = buffer.readResourceLocation();
-            return new PorridgePotRecipe(recipeId, ingredients, fluidIngredient, duration, minTemp, texture);
+            return new PorridgePotRecipe(recipeId, ingredients, fluidIngredient, duration, minTemp);
         }
     }
 }

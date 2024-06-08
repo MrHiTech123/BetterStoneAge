@@ -306,8 +306,7 @@ def create_pot_recipes():
             'ingredients': [porridge_food] * count,
             'fluid_ingredient': fluid_stack_ingredient('100 minecraft:water'),
             'duration': duration,
-            'temperature': 300,
-            'texture': 'minecraft:block/orange_glazed_terracotta'
+            'temperature': 300
         })
 
 

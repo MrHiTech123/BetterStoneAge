@@ -32,6 +32,5 @@
     "amount": 100
   },
   "duration": 1150,
-  "temperature": 300,
-  "texture": "minecraft:block/orange_glazed_terracotta"
+  "temperature": 300
 }

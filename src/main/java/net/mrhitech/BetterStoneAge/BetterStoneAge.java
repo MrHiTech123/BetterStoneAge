@@ -31,6 +31,7 @@ import net.mrhitech.BetterStoneAge.common.food.BetterStoneAgeFoods;
 import net.mrhitech.BetterStoneAge.common.item.BetterStoneAgeItems;
 import net.mrhitech.BetterStoneAge.common.blockentities.BetterStoneAgeBlockEntities;
 import net.mrhitech.BetterStoneAge.common.recipes.BetterStoneAgeRecipeSerializers;
+import net.mrhitech.BetterStoneAge.common.recipes.BetterStoneAgeRecipeTypes;
 import net.mrhitech.BetterStoneAge.loot.BetterStoneAgeLootModifiers;
 import org.slf4j.Logger;
 
@@ -56,6 +57,7 @@ public class BetterStoneAge
         BetterStoneAgeLootModifiers.register(modEventBus);
         BetterStoneAgeRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
         BetterStoneAgeSounds.register(modEventBus);
+        BetterStoneAgeRecipeTypes.registerPotRecipeOutputTypes();
 
 
         // Register the commonSetup method for modloading
