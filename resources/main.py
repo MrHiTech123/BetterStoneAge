@@ -156,6 +156,8 @@ def create_loot_tables():
     tfc_rm.block_loot('tfc:charcoal_pile', {'type': 'minecraft:alternatives', 'children': [{'type': 'minecraft:item', 'name': 'tfc:powder/charcoal', 'conditions': [{'condition': 'minecraft:match_tool', 'predicate': {'tag': 'tfc:hammers'}}], 'functions': [{'function': 'minecraft:set_count', 'count': 2}]}, {'type': 'minecraft:item', 'name': 'minecraft:charcoal'}]})
     rm.block_loot('better_stone_age:sinew', {'name': 'better_stone_age:sinew', 'conditions': [loot_tables.block_state_property('better_stone_age:sinew[dried=false]')]}, {'name': 'better_stone_age:dried_sinew', 'conditions': [loot_tables.block_state_property('better_stone_age:sinew[dried=true]')]})
     
+    for rock_category in ROCKS:
+        tfc_rm.block_loot(f'tfc:rock/gravel/{rock_category}', {'name': f'tfc:rock/gravel/{rock_category}'})
     
     
 def create_loot_modifiers():
@@ -280,6 +282,8 @@ def create_bone_knapping_recipes():
     bone_knapping(rm, 'fish_hook', ['  X', '  X', '  X', 'X X', ' XX'], 'better_stone_age:bone/fish_hook', '#better_stone_age:bone_knapping')
     bone_knapping(rm, 'needle', ['   XX', '   XX', '  X  ', ' X   ', 'X    '], 'tfc:bone_needle', '#better_stone_age:bone_knapping')
     
+
+    
     
     
 def create_rock_knapping_recipes():
@@ -287,11 +291,13 @@ def create_rock_knapping_recipes():
     for rock_category in ROCK_CATEGORIES:
         predicate = f'#tfc:{rock_category}_rock'
         rock_knapping(rm, ('stone', 'multitool_head', rock_category), ['  X  ', ' XXX ', ' XXX ', 'XXXXX', ' XXX '], f'better_stone_age:stone/multitool_head/{rock_category}', predicate)
-
+    
+    
 
 def create_knapping_recipes():
     print('\tCreating knapping recipes...')
     create_bone_knapping_recipes()
+    
     create_rock_knapping_recipes()
     
 
