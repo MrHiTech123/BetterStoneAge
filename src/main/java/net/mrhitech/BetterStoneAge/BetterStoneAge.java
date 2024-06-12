@@ -1,15 +1,19 @@
 package net.mrhitech.BetterStoneAge;
 
 import com.mojang.logging.LogUtils;
+import net.dries007.tfc.common.blocks.RiverWaterBlock;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.plant.TFCBushBlock;
 import net.dries007.tfc.common.blocks.rock.RockCategory;
+import net.dries007.tfc.common.fluids.RiverWaterFluid;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.material.WaterFluid;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -58,6 +62,8 @@ public class BetterStoneAge
         BetterStoneAgeRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
         BetterStoneAgeSounds.register(modEventBus);
         BetterStoneAgeRecipeTypes.registerPotRecipeOutputTypes();
+        
+        
 
 
         // Register the commonSetup method for modloading

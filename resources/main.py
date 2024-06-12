@@ -193,6 +193,7 @@ def create_misc_lang():
     rm.lang('tfc.jei.porridge_pot', 'Porridge Pot')
     rm.lang('tfc.jei.bone_knapping', 'Bone Knapping')
     rm.lang('subtitle.item.better_stone_age.knapping.bone', 'Bone Scrapes')
+    rm.lang('block.better_stone_age.sinew', 'Sinew')
     
     
     
@@ -361,14 +362,23 @@ def create_item_tags():
     forge_rm.tag('fishing_rods', 'better_stone_age:bone/fishing_rod')
     rm.item_tag('bone_knapping', 'minecraft:bone')
     
+def create_worldgen_tags():
+    print('Creating worldgen tags...')
+    for biome in TFC_BIOMES:
+        tfc_rm.placed_feature_tag((f'in_biome/surface_decoration/{biome}'), 'better_stone_age:flint_patch')    
+    
     
 def create_tags():
     print('Creating tags...')
     create_entity_tags()
     create_item_tags()
-
+    create_worldgen_tags()
     
 
+def create_worldgen():
+    print('Creating worldgen...')
+    configured_patch_feature(rm, 'flint', patch_config('tfc:groundcover/flint[fluid=minecraft:water]', 1, 15, 5, 'fresh'), decorate_chance(6), decorate_square(), decorate_climate(-1000, 1000, 0, 1000))
+    
 
 def main():
     create_block_models()
@@ -379,6 +389,7 @@ def main():
     create_misc_lang()
     create_recipes()
     create_tags()
+    create_worldgen()
     
     
     forge_rm.flush()
