@@ -10,9 +10,10 @@ forge_rm = ResourceManager('forge', 'src/main/resources', 2, False, 'en_us')
 STONE_TOOL_HEADS = ('hammer', 'hoe', 'javelin', 'knife', 'shovel', 'axe')
 STONE_TOOL_BINDINGS = ('weak', 'medium', 'strong')
 BINDING_BONUSES = {'weak': 0, 'medium': 2, 'strong': 4}
-ROCK_CATEGORY_DURABILITIES = {'igneous_extrusive': 70, 'igneous_intrusive': 60, 'metamorphic': 55, 'sedimentary': 50}
+ROCK_CATEGORY_DURABILITIES = {'igneous_extrusive': 70, 'igneous_intrusive': 60, 'metamorphic': 55, 'sedimentary': 50, 'flint': 120}
 NON_BROKEN_GRAINS = ('barley', 'oat', 'rye', 'wheat')
 BROKEN_GRAINS = ('maize', 'rice')
+
 
 with open('templates/pot_model.json', 'r') as f:
     pot_template = f.read()
@@ -44,8 +45,6 @@ def loot_modifier_add_itemstack(rm: ResourceManager, loot_modifiers: list, name_
     loot_modifier(rm, loot_modifiers, name_parts, data)
 
 def loot_modifier_add_itemstack_min_max(rm: ResourceManager, loot_modifiers: list, name_parts, entity_tag, item, little, big):
-    
-    
     data = {
       "type": "better_stone_age:add_itemstack_min_max",
       "conditions": [
@@ -140,7 +139,14 @@ def create_item_models():
     rm.item_model(('bone', 'fish_hook'), 'better_stone_age:item/bone/fish_hook').with_lang(lang('bone_fish_hook'))
     rm.item_model(('sabertooth_fang'), 'better_stone_age:item/sabertooth_fang').with_lang(lang('sabertooth_fang'))
     
+    for tool in STONE_TOOL_HEADS:
+        if tool != 'javelin':
+            rm.item_model(('stone', tool, 'flint'), f'better_stone_age:item/stone/flint/{tool}').with_lang(lang(f'Flint {tool}'))
+        rm.item_model(('stone', f'{tool}_head', 'flint'), f'better_stone_age:item/stone/flint/{tool}_head').with_lang(lang(f'Flint {tool} Head'))
+     
+    make_javelin(rm, 'stone/javelin/flint', 'better_stone_age:item/stone/flint/javelin').with_lang('Flint Javelin')
     
+    rm.item_model(('stone', 'multitool_head', 'flint'), 'better_stone_age:item/stone/flint/multitool_head').with_lang('Flint Multitool Head')
         
     for grain in GRAINS:
         rm.item_model(('food', f'coarse_{grain}_flour'), f'better_stone_age:item/food/coarse_{grain}_flour')
@@ -256,6 +262,23 @@ def create_crafting_recipes():
         
         rm.crafting_shapeless(('crafting', 'stone', 'knife', rock_category, 'multitool'), (f'better_stone_age:stone/multitool_head/{rock_category}',), utils.item_stack({'item': f'tfc:stone/knife_head/{rock_category}',   'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES[rock_category] // 2}}))
     
+    print('\t\tCreating flint recipes...')
+    
+    for tool_type in STONE_TOOL_HEADS:
+        rm.crafting_shaped(('crafting', 'stone', tool_type, 'flint', 'no_binding'), ['H', 'R'], {'H': f'better_stone_age:stone/{tool_type}_head/flint', 'R': '#forge:rods/wooden'}, utils.item_stack({'item': f'better_stone_age:stone/{tool_type}/flint', 'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES['flint'] // 2}}))
+        for binding in STONE_TOOL_BINDINGS:
+            rm.crafting_shaped(('crafting', 'stone', tool_type, 'flint', f'{binding}_binding'), ['BH', 'R '], {'B': f'#better_stone_age:bindings/{binding}', 'H': f'better_stone_age:stone/{tool_type}_head/flint', 'R': '#forge:rods/wooden'}, utils.item_stack(
+                {'item': f'better_stone_age:stone/{tool_type}/flint', 'nbt': {'tfc:forging_bonus': BINDING_BONUSES[binding]}}))
+    
+    rm.crafting_shaped(('crafting', 'stone', 'axe',     'flint', 'multitool'), ['RM'],       {'M': f'better_stone_age:stone/multitool_head/flint', 'R': f'#forge:rods/wooden'}, utils.item_stack({'item': f'better_stone_age:stone/axe/flint',     'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES['flint'] // 2}}))
+    rm.crafting_shaped(('crafting', 'stone', 'hammer',  'flint', 'multitool'), [' R', 'M '], {'M': f'better_stone_age:stone/multitool_head/flint', 'R': f'#forge:rods/wooden'}, utils.item_stack({'item': f'better_stone_age:stone/hammer/flint',  'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES['flint'] // 2}}))
+    rm.crafting_shaped(('crafting', 'stone', 'hoe',     'flint', 'multitool'), ['M', 'R'],   {'M': f'better_stone_age:stone/multitool_head/flint', 'R': f'#forge:rods/wooden'}, utils.item_stack({'item': f'better_stone_age:stone/hoe/flint',     'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES['flint'] // 2}}))
+    rm.crafting_shaped(('crafting', 'stone', 'shovel',  'flint', 'multitool'), ['R', 'M'],   {'M': f'better_stone_age:stone/multitool_head/flint', 'R': f'#forge:rods/wooden'}, utils.item_stack({'item': f'better_stone_age:stone/shovel/flint',  'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES['flint'] // 2}}))
+    rm.crafting_shaped(('crafting', 'stone', 'javelin', 'flint', 'multitool'), [' M', 'R '], {'M': f'better_stone_age:stone/multitool_head/flint', 'R': f'#forge:rods/wooden'}, utils.item_stack({'item': f'better_stone_age:stone/javelin/flint', 'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES['flint'] // 2}}))
+    
+    rm.crafting_shapeless(('crafting', 'stone', 'knife', 'flint', 'multitool'), (f'better_stone_age:stone/multitool_head/flint',), utils.item_stack({'item': f'tfc:stone/knife_head/flint',   'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES['flint'] // 2}}))    
+    
+    
     damage_shapeless(rm, ('crafting', 'hide_sewing', '1_plus_1'), ('tfc:small_raw_hide', 'tfc:small_raw_hide', '#forge:string', 'tfc:bone_needle'), "tfc:medium_raw_hide")
     damage_shapeless(rm, ('crafting', 'hide_sewing', '1_plus_2'), ('tfc:small_raw_hide', 'tfc:medium_raw_hide', '#forge:string', 'tfc:bone_needle'), "tfc:large_raw_hide")
     damage_shapeless(rm, ('crafting', 'hide_sewing', '2_plus_2'), ('tfc:medium_raw_hide', 'tfc:medium_raw_hide', '#forge:string', 'tfc:bone_needle'), "tfc:large_raw_hide")
@@ -292,12 +315,28 @@ def create_rock_knapping_recipes():
         predicate = f'#tfc:{rock_category}_rock'
         rock_knapping(rm, ('stone', 'multitool_head', rock_category), ['  X  ', ' XXX ', ' XXX ', 'XXXXX', ' XXX '], f'better_stone_age:stone/multitool_head/{rock_category}', predicate)
     
+    rock_knapping(rm, ('stone', 'axe_head', 'flint'), [' X   ', 'XXXX ', 'XXXXX', 'XXXX ', ' X   '], 'better_stone_age:stone/axe_head/flint', 'minecraft:flint')
+    rock_knapping(rm, ('stone', 'hammer_head', 'flint'), ['XXXXX', 'XXXXX', '  X  '], 'better_stone_age:stone/hammer_head/flint', 'minecraft:flint')
+    
+    rock_knapping(rm, ('stone', 'hoe_head', 'flint'), ['XXXXX', '   XX'], 'better_stone_age:stone/hoe_head/flint', 'minecraft:flint')
+    rock_knapping(rm, ('stone', 'hoe_head_1', 'flint'), ['XXXXX', '   XX', '     ', 'XXXXX', '   XX'], 'better_stone_age:stone/hoe_head/flint', 'minecraft:flint')
+    rock_knapping(rm, ('stone', 'hoe_head_2', 'flint'), ['XXXXX', '   XX', '     ', 'XXXXX', 'XX   '], 'better_stone_age:stone/hoe_head/flint', 'minecraft:flint')
+    
+    rock_knapping(rm, ('stone', 'javelin_head', 'flint'), ['XXX  ', 'XXXX ', 'XXXXX', ' XXX ', '  X  '], 'better_stone_age:stone/javelin_head/flint', 'minecraft:flint')
+    
+    rock_knapping(rm, ('stone', 'knife_head', 'flint'), [' X', 'XX', 'XX', 'XX', 'XX'], 'better_stone_age:stone/knife_head/flint', 'minecraft:flint')
+    rock_knapping(rm, ('stone', 'knife_head_1', 'flint'), ['X  X ', 'XX XX', 'XX XX', 'XX XX', 'XX XX'], (2, 'better_stone_age:stone/knife_head/flint'), 'minecraft:flint')
+    rock_knapping(rm, ('stone', 'knife_head_2', 'flint'), ['X   X', 'XX XX', 'XX XX', 'XX XX', 'XX XX'], (2, 'better_stone_age:stone/knife_head/flint'), 'minecraft:flint')
+    rock_knapping(rm, ('stone', 'knife_head_3', 'flint'), [' X X ', 'XX XX', 'XX XX', 'XX XX', 'XX XX'], (2, 'better_stone_age:stone/knife_head/flint'), 'minecraft:flint')
+    
+    rock_knapping(rm, ('stone', 'shovel_head', 'flint'), [' XXX ', ' XXX ', ' XXX ', ' XXX ', '  X  '], 'better_stone_age:stone/shovel_head/flint', 'minecraft:flint')
+    rock_knapping(rm, ('stone', 'multitool_head', 'flint'), ['  X  ', ' XXX ', ' XXX ', 'XXXXX', ' XXX '], 'better_stone_age:stone/multitool_head/flint', 'minecraft:flint')
+    
     
 
 def create_knapping_recipes():
     print('\tCreating knapping recipes...')
     create_bone_knapping_recipes()
-    
     create_rock_knapping_recipes()
     
 
@@ -366,7 +405,20 @@ def create_item_tags():
     tfc_rm.item_tag('any_knapping', '#better_stone_age:bone_knapping')
     tfc_rm.tag('usable_on_tool_rack', 'better_stone_age:bone/fishing_rod')
     forge_rm.tag('fishing_rods', 'better_stone_age:bone/fishing_rod')
+    
     rm.item_tag('bone_knapping', 'minecraft:bone')
+    tfc_rm.item_tag('rock_knapping', 'minecraft:flint')
+    
+    tfc_rm.item_tag('axes', 'better_stone_age:stone/axe/flint')
+    tfc_rm.item_tag('hammers', 'better_stone_age:stone/hammer/flint')
+    tfc_rm.item_tag('hoes', 'better_stone_age:stone/hoe/flint')
+    tfc_rm.item_tag('javelins', 'better_stone_age:stone/javelin/flint')
+    tfc_rm.item_tag('knives', 'better_stone_age:stone/knife/flint')
+    tfc_rm.item_tag('shovels', 'better_stone_age:stone/shovel/flint')
+    tfc_rm.item_tag('stone_tools', *[f'better_stone_age:stone/{tool}_head/flint' for tool in STONE_TOOL_HEADS])
+    tfc_rm.item_tag('inefficient_logging_axes', 'better_stone_age:stone/axe/flint')
+    
+    
     
 def create_worldgen_tags():
     print('Creating worldgen tags...')

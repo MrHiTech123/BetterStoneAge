@@ -1,0 +1,30 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "loader": "forge:separate_transforms",
+  "gui_light": "front",
+  "overrides": [
+    {
+      "predicate": {
+        "tfc:throwing": 1
+      },
+      "model": "better_stone_age:item/stone/javelin/flint_throwing"
+    }
+  ],
+  "base": {
+    "parent": "better_stone_age:item/stone/javelin/flint_in_hand"
+  },
+  "perspectives": {
+    "none": {
+      "parent": "better_stone_age:item/stone/javelin/flint_gui"
+    },
+    "fixed": {
+      "parent": "better_stone_age:item/stone/javelin/flint_gui"
+    },
+    "ground": {
+      "parent": "better_stone_age:item/stone/javelin/flint_gui"
+    },
+    "gui": {
+      "parent": "better_stone_age:item/stone/javelin/flint_gui"
+    }
+  }
+}

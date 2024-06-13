@@ -29,6 +29,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.mrhitech.BetterStoneAge.client.BetterStoneAgeSounds;
 import net.mrhitech.BetterStoneAge.client.ClientEventHandler;
 import net.mrhitech.BetterStoneAge.client.screen.ClayTabletEditScreen;
+import net.mrhitech.BetterStoneAge.common.BetterStoneAgeTiers;
 import net.mrhitech.BetterStoneAge.common.blockentities.BetterStoneAgeBlockEntities;
 import net.mrhitech.BetterStoneAge.common.blocks.BetterStoneAgeBlocks;
 import net.mrhitech.BetterStoneAge.common.food.BetterStoneAgeFoods;
@@ -127,7 +128,22 @@ public class BetterStoneAge
             for (RockCategory rock_category : RockCategory.values()) {
                 event.accept(BetterStoneAgeItems.MULTITOOL_HEADS.get(rock_category));
             }
+            event.accept(BetterStoneAgeItems.FLINT_AXE_HEAD);
+            event.accept(BetterStoneAgeItems.FLINT_HAMMER_HEAD);
+            event.accept(BetterStoneAgeItems.FLINT_HOE_HEAD);
+            event.accept(BetterStoneAgeItems.FLINT_JAVELIN_HEAD);
+            event.accept(BetterStoneAgeItems.FLINT_KNIFE_HEAD);
+            event.accept(BetterStoneAgeItems.FLINT_SHOVEL_HEAD);
+            event.accept(BetterStoneAgeItems.FLINT_MULTITOOL_HEAD);
+            
+            event.accept(BetterStoneAgeItems.FLINT_AXE);
+            event.accept(BetterStoneAgeItems.FLINT_HAMMER);
+            event.accept(BetterStoneAgeItems.FLINT_HOE);
+            event.accept(BetterStoneAgeItems.FLINT_JAVELIN);
+            event.accept(BetterStoneAgeItems.FLINT_KNIFE);
+            event.accept(BetterStoneAgeItems.FLINT_SHOVEL);
         }
+        
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

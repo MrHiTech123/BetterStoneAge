@@ -2,8 +2,8 @@ package net.mrhitech.BetterStoneAge.common.item;
 
 import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.TFCTiers;
-import net.dries007.tfc.common.items.Food;
-import net.dries007.tfc.common.items.TFCFishingRodItem;
+import net.dries007.tfc.common.blocks.TFCBlocks;
+import net.dries007.tfc.common.items.*;
 import net.dries007.tfc.config.TFCConfig;
 import net.dries007.tfc.util.Helpers;
 import net.minecraft.world.food.FoodProperties;
@@ -18,7 +18,8 @@ import net.mrhitech.BetterStoneAge.BetterStoneAge;
 import net.dries007.tfc.common.blocks.rock.RockCategory;
 
 import java.util.Map;
-import net.dries007.tfc.common.items.JugItem;
+
+import net.mrhitech.BetterStoneAge.common.BetterStoneAgeTiers;
 import net.mrhitech.BetterStoneAge.common.blocks.BetterStoneAgeBlocks;
 import net.mrhitech.BetterStoneAge.common.food.BetterStoneAgeFoods;
 
@@ -57,6 +58,23 @@ public class BetterStoneAgeItems {
     public static final RegistryObject<Item> BONE_FISHING_ROD = ITEMS.register("bone/fishing_rod", () -> new TFCFishingRodItem(new Item.Properties().rarity(Rarity.COMMON).defaultDurability(20), TFCTiers.SEDIMENTARY));
     public static final RegistryObject<Item> BONE_FISH_HOOK = ITEMS.register("bone/fish_hook", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SABERTOOTH_FANG = ITEMS.register("sabertooth_fang", () -> new Item(new Item.Properties()));
+    
+    public static final RegistryObject<Item> FLINT_AXE_HEAD = ITEMS.register("stone/axe_head/flint", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FLINT_HAMMER_HEAD = ITEMS.register("stone/hammer_head/flint", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FLINT_HOE_HEAD = ITEMS.register("stone/hoe_head/flint", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FLINT_JAVELIN_HEAD = ITEMS.register("stone/javelin_head/flint", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FLINT_KNIFE_HEAD = ITEMS.register("stone/knife_head/flint", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FLINT_SHOVEL_HEAD = ITEMS.register("stone/shovel_head/flint", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FLINT_MULTITOOL_HEAD = ITEMS.register("stone/multitool_head/flint", () -> new Item(new Item.Properties()));
+    
+    public static final RegistryObject<Item> FLINT_AXE = ITEMS.register("stone/axe/flint", () -> new AxeItem(BetterStoneAgeTiers.FLINT, ToolItem.calculateVanillaAttackDamage(1.5F, BetterStoneAgeTiers.FLINT), -3.2F, new Item.Properties()));
+    public static final RegistryObject<Item> FLINT_HAMMER = ITEMS.register("stone/hammer/flint", () -> new HammerItem(BetterStoneAgeTiers.FLINT, ToolItem.calculateVanillaAttackDamage(1F, BetterStoneAgeTiers.FLINT), -3.0F, new Item.Properties()));
+    public static final RegistryObject<Item> FLINT_HOE = ITEMS.register("stone/hoe/flint", () -> new HoeItem(BetterStoneAgeTiers.FLINT, -1, -3.0F, new Item.Properties()));
+    public static final RegistryObject<Item> FLINT_JAVELIN = ITEMS.register("stone/javelin/flint", () -> new JavelinItem(BetterStoneAgeTiers.FLINT, ToolItem.calculateVanillaAttackDamage(0.7F, BetterStoneAgeTiers.FLINT), 1.5F * BetterStoneAgeTiers.FLINT.getAttackDamageBonus(), -2.2F, new Item.Properties(), "flint"));
+    public static final RegistryObject<Item> FLINT_KNIFE = ITEMS.register("stone/knife/flint", () -> new ToolItem(BetterStoneAgeTiers.FLINT, ToolItem.calculateVanillaAttackDamage(0.6F, BetterStoneAgeTiers.FLINT), -2.0F, TFCTags.Blocks.MINEABLE_WITH_KNIFE, new Item.Properties()));
+    public static final RegistryObject<Item> FLINT_SHOVEL = ITEMS.register("stone/shovel/flint", () -> new ShovelItem(BetterStoneAgeTiers.FLINT, ToolItem.calculateVanillaAttackDamage(0.0875F, BetterStoneAgeTiers.FLINT), -3.0F, new Item.Properties()));
+    
+    
     
     public static void register(IEventBus bus) {
         ITEMS.register(bus);
