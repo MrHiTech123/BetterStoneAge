@@ -140,11 +140,13 @@ def create_item_models():
     rm.item_model(('sabertooth_fang'), 'better_stone_age:item/sabertooth_fang').with_lang(lang('sabertooth_fang'))
     
     for tool in STONE_TOOL_HEADS:
-        if tool != 'javelin':
-            rm.item_model(('stone', tool, 'flint'), f'better_stone_age:item/stone/flint/{tool}').with_lang(lang(f'Flint {tool}'))
+        if tool not in ('javelin', 'knife'):
+            rm.item_model(('stone', tool, 'flint'), f'better_stone_age:item/stone/flint/{tool}', parent='item/handheld').with_lang(lang(f'Flint {tool}'))
         rm.item_model(('stone', f'{tool}_head', 'flint'), f'better_stone_age:item/stone/flint/{tool}_head').with_lang(lang(f'Flint {tool} Head'))
      
     make_javelin(rm, 'stone/javelin/flint', 'better_stone_age:item/stone/flint/javelin').with_lang('Flint Javelin')
+    rm.item_model(('stone', 'knife', 'flint'), f'better_stone_age:item/stone/flint/knife', parent='tfc:item/handheld_flipped').with_lang('Flint Knife')
+    
     
     rm.item_model(('stone', 'multitool_head', 'flint'), 'better_stone_age:item/stone/flint/multitool_head').with_lang('Flint Multitool Head')
         

@@ -1,6 +1,6 @@
 {
   "__comment__": "This file was automatically created by mcresources",
-  "parent": "item/generated",
+  "parent": "tfc:item/handheld_flipped",
   "textures": {
     "layer0": "better_stone_age:item/stone/flint/knife"
   }

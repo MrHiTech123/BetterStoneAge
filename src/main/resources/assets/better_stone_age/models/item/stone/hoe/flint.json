@@ -1,6 +1,6 @@
 {
   "__comment__": "This file was automatically created by mcresources",
-  "parent": "item/generated",
+  "parent": "item/handheld",
   "textures": {
     "layer0": "better_stone_age:item/stone/flint/hoe"
   }
