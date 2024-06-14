@@ -1,0 +1,42 @@
+{
+  "name": "Arrowheads",
+  "category": "tfc:better_stone_age",
+  "icon": "better_stone_age:stone/arrowhead",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "tag": "better_stone_age:arrowheads"
+      },
+      "text": "Since $(l:tfc:better_stone_age/flint)Flint$() is much rarer, arrows are now crafted with actual knapped arrowheads. These arrowheads can be made from flint or stone."
+    },
+    {
+      "type": "tfc:knapping_recipe",
+      "recipe": "better_stone_age:rock_knapping/stone/arrowhead/1_1_0_0",
+      "text": "Arrowheads being knapped from stone"
+    },
+    {
+      "type": "tfc:knapping_recipe",
+      "recipe": "better_stone_age:rock_knapping/stone/arrowhead/flint/5_3_0_0",
+      "text": "Arrowheads being knapped from flint."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "better_stone_age:crafting/stone/arrow",
+      "text": "An arrow, crafted using a stone arrowhead."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "better_stone_age:crafting/stone/arrow/flint",
+      "text": "Using a flint arrowhead results in two arrows. Try puzzling that one out. It doesn't really make sense, to be honest."
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 10000000,
+  "extra_recipe_mappings": {
+    "minecraft:arrow": 0,
+    "better_stone_age:stone/arrowhead": 0,
+    "better_stone_age:stone/arrowhead/flint": 0
+  }
+
+}

@@ -10,12 +10,12 @@
     {
       "type": "tfc:anvil_recipe",
       "recipe": "better_stone_age:anvil/food/crushed_oat_grain",
-      "text": "Some grains can be hammered on a $(l:tfc:getting_started/primitive_anvils)Primitive Anvil$() into $(bold)Crushed Grains$(). These yield some grain nutrients themselves, but are best processed further before eaten."
+      "text": "Some grains can be hammered on a $(l:tfc:getting_started/primitive_anvils)Primitive Anvil$() into $(thing)Crushed Grains$(). These yield some grain nutrients themselves, but are best processed further before eaten."
     },
     {
       "type": "tfc:anvil_recipe",
       "recipe": "better_stone_age:anvil/food/coarse_rye_flour",
-      "text": "One way to further process crushed grains is to pound them, also on an Anvil, into $(bold)Coarse Flour$()."
+      "text": "One way to further process crushed grains is to pound them, also on an Anvil, into $(thing)Coarse Flour$()."
     },
     {
       "type": "tfc:anvil_recipe",
@@ -32,7 +32,7 @@
       "item": {
         "item": "better_stone_age:food/porridge"
       },
-      "text": "A more food-efficient option is porridge, which is made by boiling 3-5 crushed grains in a water pot.$(br)$(br)Note that the porridge doesn't render in the pot when finished for some reason, but you can still take porridge by $(item)$(k:key.use)$()-ing the pot."
+      "text": "A more labor-efficient option is porridge, which is made by boiling 3-5 crushed grains in a water pot."
     },
     {
       "type": "patchouli:image",
@@ -48,7 +48,7 @@
     }
   ],
   "read_by_default": true,
-  "sortnum": 40,
+  "sortnum": 50,
   "extra_recipe_mappings": {
     "better_stone_age:food/crushed_barley_grain": 1,
     "better_stone_age:food/crushed_oat_grain": 1,

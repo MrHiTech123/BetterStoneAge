@@ -33,7 +33,7 @@
     }
   ],
   "read_by_default": true,
-  "sortnum": 50,
+  "sortnum": 60,
   "extra_recipe_mappings": {
     "better_stone_age:stone/multitool_head/igneous_extrusive": 0,
     "better_stone_age:stone/multitool_head/igneous_intrusive": 0,

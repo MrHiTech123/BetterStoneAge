@@ -298,8 +298,8 @@ def create_crafting_recipes():
     rm.crafting_shaped(('crafting', 'bone', 'fishing_rod'), ('RS', 'RH'), {'R': '#forge:rods/wooden', 'S': '#forge:string', 'H': 'better_stone_age:bone/fish_hook'}, 'better_stone_age:bone/fishing_rod')
     
     disable_recipe(rm, 'minecraft:arrow')
-    rm.crafting_shaped(('crafting', 'stone', 'arrowhead'), ('A', 'R', 'F'), {'A': 'better_stone_age:stone/arrowhead', 'R': '#forge:rods/wooden', 'F': 'minecraft:feather'}, 'minecraft:arrow')
-    rm.crafting_shaped(('crafting', 'stone', 'arrowhead', 'flint'), ('A', 'R', 'F'), {'A': 'better_stone_age:stone/arrowhead/flint', 'R': '#forge:rods/wooden', 'F': 'minecraft:feather'}, (2, 'minecraft:arrow'))
+    rm.crafting_shaped(('crafting', 'stone', 'arrow'), ('A', 'R', 'F'), {'A': 'better_stone_age:stone/arrowhead', 'R': '#forge:rods/wooden', 'F': 'minecraft:feather'}, 'minecraft:arrow')
+    rm.crafting_shaped(('crafting', 'stone', 'arrow', 'flint'), ('A', 'R', 'F'), {'A': 'better_stone_age:stone/arrowhead/flint', 'R': '#forge:rods/wooden', 'F': 'minecraft:feather'}, (2, 'minecraft:arrow'))
     
     
 def create_heating_recipes():
@@ -344,7 +344,7 @@ def create_rock_knapping_recipes():
     rock_knapping(rm, ('stone', 'multitool_head', 'flint'), ['  X  ', ' XXX ', ' XXX ', 'XXXXX', ' XXX '], 'better_stone_age:stone/multitool_head/flint', 'minecraft:flint')
     
     
-    print('\t\tGenerating arrowhead textures...')
+    print('\t\t\tGenerating arrowhead textures...')
     placements = {
         ('XX XX', 'X   X'): 2,
         ('XX XX', 'X  X '): 2,
@@ -359,6 +359,8 @@ def create_rock_knapping_recipes():
         ('     ', '     '): 0
     }
     for top_part, name_part_1 in zip(placements, range(len(placements))):
+        if name_part_1 == 5:
+            print('\t\t\t\tHalfway done...')
         for bottom_part, name_part_2 in zip(placements, range(len(placements))):
             for top_mod, name_part_3 in zip((1, -1), range(2)):
                 for bottom_mod, name_part_4 in zip((1, -1), range(2)):
@@ -465,6 +467,7 @@ def create_item_tags():
     tfc_rm.item_tag('inefficient_logging_axes', 'better_stone_age:stone/axe/flint')
     
     rm.item_tag('rock/loose', *[f'tfc:rock/loose/{rock_type}' for rock_type in ROCKS])
+    rm.item_tag('arrowheads', 'better_stone_age:stone/arrowhead', 'better_stone_age:stone/arrowhead/flint')
     
     
 def create_worldgen_tags():

@@ -5,11 +5,11 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "In Better Stone Age, tool heads can be bound to their handles. If there is no binding, the tool's durability is penalized. However, stronger bindings also grant higher forging bonuses to the tool they are used to craft."
+      "text": ""
     },
     {
       "type": "patchouli:text",
-      "text": ""
+      "text": "In Better Stone Age, tool heads can be bound to their handles. If there is no binding, the tool's durability is penalized. However, stronger bindings also grant higher forging bonuses to the tool they are used to craft."
     },
     {
       "type": "patchouli:text",
