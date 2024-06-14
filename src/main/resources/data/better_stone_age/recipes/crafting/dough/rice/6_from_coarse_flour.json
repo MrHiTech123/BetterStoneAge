@@ -49,7 +49,7 @@
   "result": {
     "stack": {
       "item": "tfc:food/rice_dough",
-      "count": 6
+      "count": 3
     },
     "modifiers": [
       "tfc:copy_oldest_food"

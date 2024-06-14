@@ -24,8 +24,8 @@
     },
     {
       "type": "patchouli:crafting",
-      "recipe": "better_stone_age:crafting/dough/wheat/5_from_coarse_flour",
-      "text": "Coarse Flour can be crafted into $(l:tfc:mechanics/bread)dough$(), just as regular flour can, but this only yields one dough per flour, rather than two."
+      "recipe": "better_stone_age:crafting/dough/wheat/6_from_coarse_flour",
+      "text": "Coarse Flour can be crafted into $(l:tfc:mechanics/bread)dough$(), just as regular flour can, but this only yields one dough for every two flour, rather than two for every one flour."
     },
     {
       "type": "patchouli:spotlight",

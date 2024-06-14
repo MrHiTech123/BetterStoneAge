@@ -291,8 +291,8 @@ def create_crafting_recipes():
     damage_shapeless(rm, ('crafting', 'hide_sewing', '2_plus_2'), ('tfc:medium_raw_hide', 'tfc:medium_raw_hide', '#forge:string', 'tfc:bone_needle'), "tfc:large_raw_hide")
     
     for grain in GRAINS:
-        for i in range(1, 1 + 8):
-            advanced_shapeless(rm, f'crafting/dough/{grain}/{i}_from_coarse_flour', (fluid_item_ingredient('100 minecraft:water'), *repeat(not_rotten(f'better_stone_age:food/coarse_{grain}_flour'), i)), item_stack_provider(f'{i} tfc:food/{grain}_dough', copy_oldest_food=True))
+        for i in range(2, 1 + 8, 2):
+            advanced_shapeless(rm, f'crafting/dough/{grain}/{i}_from_coarse_flour', (fluid_item_ingredient('100 minecraft:water'), *repeat(not_rotten(f'better_stone_age:food/coarse_{grain}_flour'), i)), item_stack_provider(f'{int(i / 2)} tfc:food/{grain}_dough', copy_oldest_food=True))
     
     disable_recipe(rm, f'tfc:crafting/bone_needle')
     damage_shapeless(rm, ('crafting', 'bone_needle'), ('better_stone_age:sabertooth_fang', '#tfc:knives'), 'tfc:bone_needle')

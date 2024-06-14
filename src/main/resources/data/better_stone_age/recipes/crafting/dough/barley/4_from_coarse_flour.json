@@ -37,7 +37,7 @@
   "result": {
     "stack": {
       "item": "tfc:food/barley_dough",
-      "count": 4
+      "count": 2
     },
     "modifiers": [
       "tfc:copy_oldest_food"
