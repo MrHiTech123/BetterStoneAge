@@ -149,7 +149,11 @@ def create_item_models():
     
     
     rm.item_model(('stone', 'multitool_head', 'flint'), 'better_stone_age:item/stone/flint/multitool_head').with_lang('Flint Multitool Head')
-        
+    rm.item_model(('stone', 'arrowhead'), 'better_stone_age:item/stone/arrowhead').with_lang('Stone Arrowhead')
+    rm.item_model(('stone', 'arrowhead', 'flint'), 'better_stone_age:item/stone/flint/arrowhead').with_lang('Flint Arrowhead')
+    
+    
+    
     for grain in GRAINS:
         rm.item_model(('food', f'coarse_{grain}_flour'), f'better_stone_age:item/food/coarse_{grain}_flour')
     
@@ -292,7 +296,12 @@ def create_crafting_recipes():
     disable_recipe(rm, f'tfc:crafting/bone_needle')
     damage_shapeless(rm, ('crafting', 'bone_needle'), ('better_stone_age:sabertooth_fang', '#tfc:knives'), 'tfc:bone_needle')
     rm.crafting_shaped(('crafting', 'bone', 'fishing_rod'), ('RS', 'RH'), {'R': '#forge:rods/wooden', 'S': '#forge:string', 'H': 'better_stone_age:bone/fish_hook'}, 'better_stone_age:bone/fishing_rod')
-
+    
+    disable_recipe(rm, 'minecraft:arrow')
+    rm.crafting_shaped(('crafting', 'stone', 'arrowhead'), ('A', 'R', 'F'), {'A': 'better_stone_age:stone/arrowhead', 'R': '#forge:rods/wooden', 'F': 'minecraft:feather'}, 'minecraft:arrow')
+    rm.crafting_shaped(('crafting', 'stone', 'arrowhead', 'flint'), ('A', 'R', 'F'), {'A': 'better_stone_age:stone/arrowhead/flint', 'R': '#forge:rods/wooden', 'F': 'minecraft:feather'}, (2, 'minecraft:arrow'))
+    
+    
 def create_heating_recipes():
     print('\tCreating heating recipes...')
     for color in COLORS:
@@ -333,6 +342,41 @@ def create_rock_knapping_recipes():
     
     rock_knapping(rm, ('stone', 'shovel_head', 'flint'), [' XXX ', ' XXX ', ' XXX ', ' XXX ', '  X  '], 'better_stone_age:stone/shovel_head/flint', 'minecraft:flint')
     rock_knapping(rm, ('stone', 'multitool_head', 'flint'), ['  X  ', ' XXX ', ' XXX ', 'XXXXX', ' XXX '], 'better_stone_age:stone/multitool_head/flint', 'minecraft:flint')
+    
+    
+    print('\t\tGenerating arrowhead textures...')
+    placements = {
+        ('XX XX', 'X   X'): 2,
+        ('XX XX', 'X  X '): 2,
+        ('XX XX', ' X  X'): 2,
+        ('XX XX', ' X X '): 2,
+        ('XX  X', 'X  XX'): 2,
+        ('XX X ', 'X  XX'): 2,
+        ('XX  X', ' X XX'): 2,
+        ('XX X ', ' X XX'): 2,
+        ('XX   ', 'X    '): 1,
+        ('XX   ', ' X   '): 1,
+        ('     ', '     '): 0
+    }
+    for top_part, name_part_1 in zip(placements, range(len(placements))):
+        for bottom_part, name_part_2 in zip(placements, range(len(placements))):
+            for top_mod, name_part_3 in zip((1, -1), range(2)):
+                for bottom_mod, name_part_4 in zip((1, -1), range(2)):
+                    rock_knapping(
+                        rm,
+                        ('stone', 'arrowhead', f'{name_part_1}_{name_part_2}_{name_part_3}_{name_part_4}'),
+                        (*(top_part[::top_mod]), '     ', *(bottom_part[::bottom_mod])),
+                        (placements[top_part] + placements[bottom_part], 'better_stone_age:stone/arrowhead'),
+                        '#better_stone_age:rock/loose'
+                    )
+                    rock_knapping(
+                        rm, 
+                        ('stone', 'arrowhead', 'flint', f'{name_part_1}_{name_part_2}_{name_part_3}_{name_part_4}'),
+                        (*(top_part[::top_mod]), '     ', *(bottom_part[::bottom_mod])),
+                        (placements[top_part] + placements[bottom_part], 'better_stone_age:stone/arrowhead/flint'),
+                        'minecraft:flint'
+                    )
+    
     
     
 
@@ -420,6 +464,7 @@ def create_item_tags():
     tfc_rm.item_tag('stone_tools', *[f'better_stone_age:stone/{tool}_head/flint' for tool in STONE_TOOL_HEADS])
     tfc_rm.item_tag('inefficient_logging_axes', 'better_stone_age:stone/axe/flint')
     
+    rm.item_tag('rock/loose', *[f'tfc:rock/loose/{rock_type}' for rock_type in ROCKS])
     
     
 def create_worldgen_tags():

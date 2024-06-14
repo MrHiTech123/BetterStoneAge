@@ -2,13 +2,9 @@ package net.mrhitech.BetterStoneAge.common.item;
 
 import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.TFCTiers;
-import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.items.*;
 import net.dries007.tfc.config.TFCConfig;
 import net.dries007.tfc.util.Helpers;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.Tier;
-import net.dries007.tfc.util.Metal;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -74,6 +70,8 @@ public class BetterStoneAgeItems {
     public static final RegistryObject<Item> FLINT_KNIFE = ITEMS.register("stone/knife/flint", () -> new ToolItem(BetterStoneAgeTiers.FLINT, ToolItem.calculateVanillaAttackDamage(0.6F, BetterStoneAgeTiers.FLINT), -2.0F, TFCTags.Blocks.MINEABLE_WITH_KNIFE, new Item.Properties()));
     public static final RegistryObject<Item> FLINT_SHOVEL = ITEMS.register("stone/shovel/flint", () -> new ShovelItem(BetterStoneAgeTiers.FLINT, ToolItem.calculateVanillaAttackDamage(0.0875F, BetterStoneAgeTiers.FLINT), -3.0F, new Item.Properties()));
     
+    public static final RegistryObject<Item> STONE_ARROWHEAD = ITEMS.register("stone/arrowhead", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FLINT_ARROWHEAD = ITEMS.register("stone/arrowhead/flint", () -> new Item(new Item.Properties()));
     
     
     public static void register(IEventBus bus) {

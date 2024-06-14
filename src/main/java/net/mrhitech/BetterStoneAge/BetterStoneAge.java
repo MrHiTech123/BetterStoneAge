@@ -1,19 +1,12 @@
 package net.mrhitech.BetterStoneAge;
 
 import com.mojang.logging.LogUtils;
-import net.dries007.tfc.common.blocks.RiverWaterBlock;
-import net.dries007.tfc.common.blocks.TFCBlocks;
-import net.dries007.tfc.common.blocks.plant.TFCBushBlock;
 import net.dries007.tfc.common.blocks.rock.RockCategory;
-import net.dries007.tfc.common.fluids.RiverWaterFluid;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SimpleWaterloggedBlock;
-import net.minecraft.world.level.material.WaterFluid;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -28,13 +21,9 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.mrhitech.BetterStoneAge.client.BetterStoneAgeSounds;
 import net.mrhitech.BetterStoneAge.client.ClientEventHandler;
-import net.mrhitech.BetterStoneAge.client.screen.ClayTabletEditScreen;
-import net.mrhitech.BetterStoneAge.common.BetterStoneAgeTiers;
 import net.mrhitech.BetterStoneAge.common.blockentities.BetterStoneAgeBlockEntities;
 import net.mrhitech.BetterStoneAge.common.blocks.BetterStoneAgeBlocks;
-import net.mrhitech.BetterStoneAge.common.food.BetterStoneAgeFoods;
 import net.mrhitech.BetterStoneAge.common.item.BetterStoneAgeItems;
-import net.mrhitech.BetterStoneAge.common.blockentities.BetterStoneAgeBlockEntities;
 import net.mrhitech.BetterStoneAge.common.recipes.BetterStoneAgeRecipeSerializers;
 import net.mrhitech.BetterStoneAge.common.recipes.BetterStoneAgeRecipeTypes;
 import net.mrhitech.BetterStoneAge.loot.BetterStoneAgeLootModifiers;
@@ -142,6 +131,10 @@ public class BetterStoneAge
             event.accept(BetterStoneAgeItems.FLINT_JAVELIN);
             event.accept(BetterStoneAgeItems.FLINT_KNIFE);
             event.accept(BetterStoneAgeItems.FLINT_SHOVEL);
+            
+            event.accept(BetterStoneAgeItems.STONE_ARROWHEAD);
+            event.accept(BetterStoneAgeItems.FLINT_ARROWHEAD);
+            
         }
         
     }

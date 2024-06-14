@@ -1,0 +1,20 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:knapping",
+  "knapping_type": "tfc:rock",
+  "outside_slot_required": false,
+  "pattern": [
+    "XX XX",
+    "X   X",
+    "     ",
+    "X  XX",
+    "XX  X"
+  ],
+  "ingredient": {
+    "tag": "better_stone_age:rock/loose"
+  },
+  "result": {
+    "item": "better_stone_age:stone/arrowhead",
+    "count": 4
+  }
+}
