@@ -208,6 +208,7 @@ def create_misc_lang():
     rm.lang('tfc.jei.bone_knapping', 'Bone Knapping')
     rm.lang('subtitle.item.better_stone_age.knapping.bone', 'Bone Scrapes')
     rm.lang('block.better_stone_age.sinew', 'Sinew')
+    rm.lang('config.jade.plugin_tfc.drying_sinew', 'Drying Sinew')
     
     
     

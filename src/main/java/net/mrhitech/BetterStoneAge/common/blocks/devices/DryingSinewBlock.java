@@ -43,8 +43,9 @@ import java.util.logging.Logger;
 
 public class DryingSinewBlock extends BottomSupportedDeviceBlock {
 
-    public BooleanProperty DRIED = BetterStoneAgeBlockStateProperties.DRIED;
+    public static BooleanProperty DRIED = BetterStoneAgeBlockStateProperties.DRIED;
     public static final VoxelShape SHAPE = box(0D, 0D, 0D, 16.0D, 1.0D, 16.0D);
+    public static final int ticks = 48000;
     private final Supplier<? extends Item> dryItem;
 
     public DryingSinewBlock(ExtendedProperties properties, Supplier<? extends Item> f_dryItem) {
@@ -100,7 +101,6 @@ public class DryingSinewBlock extends BottomSupportedDeviceBlock {
                 counter.resetCounter();
             }
             else {
-                final int ticks = 48000;
                 if (ticks > -1 && counter.getTicksSinceUpdate() > ticks) {
                     level.setBlockAndUpdate(pos, state.setValue(DRIED, true));
                     final BlockPos.MutableBlockPos cursor = new BlockPos.MutableBlockPos();

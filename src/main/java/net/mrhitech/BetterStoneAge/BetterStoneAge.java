@@ -13,6 +13,7 @@ import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -26,6 +27,7 @@ import net.mrhitech.BetterStoneAge.common.blocks.BetterStoneAgeBlocks;
 import net.mrhitech.BetterStoneAge.common.item.BetterStoneAgeItems;
 import net.mrhitech.BetterStoneAge.common.recipes.BetterStoneAgeRecipeSerializers;
 import net.mrhitech.BetterStoneAge.common.recipes.BetterStoneAgeRecipeTypes;
+import net.mrhitech.BetterStoneAge.compat.jade.JadeIntegration;
 import net.mrhitech.BetterStoneAge.loot.BetterStoneAgeLootModifiers;
 import org.slf4j.Logger;
 
@@ -58,7 +60,7 @@ public class BetterStoneAge
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-
+        
 
         if (FMLEnvironment.dist == Dist.CLIENT) {
             ClientEventHandler.init();
@@ -76,6 +78,7 @@ public class BetterStoneAge
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
         LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
+        
     }
 
     // Add the example block item to the building blocks tab
