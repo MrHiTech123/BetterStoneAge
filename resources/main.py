@@ -151,7 +151,7 @@ def create_item_models():
     rm.item_model(('stone', 'multitool_head', 'flint'), 'better_stone_age:item/stone/flint/multitool_head').with_lang('Flint Multitool Head')
     rm.item_model(('stone', 'arrowhead'), 'better_stone_age:item/stone/arrowhead').with_lang('Stone Arrowhead')
     rm.item_model(('stone', 'arrowhead', 'flint'), 'better_stone_age:item/stone/flint/arrowhead').with_lang('Flint Arrowhead')
-    
+    rm.item_model(('bone', 'arrowhead'), 'better_stone_age:item/bone/arrowhead').with_lang('Bone Arrowhead')
     
     
     for grain in GRAINS:
@@ -299,53 +299,13 @@ def create_crafting_recipes():
     rm.crafting_shaped(('crafting', 'bone', 'fishing_rod'), ('RS', 'RH'), {'R': '#forge:rods/wooden', 'S': '#forge:string', 'H': 'better_stone_age:bone/fish_hook'}, 'better_stone_age:bone/fishing_rod')
     
     disable_recipe(rm, 'minecraft:arrow')
-    rm.crafting_shaped(('crafting', 'stone', 'arrow'), ('A', 'R', 'F'), {'A': 'better_stone_age:stone/arrowhead', 'R': '#forge:rods/wooden', 'F': 'minecraft:feather'}, 'minecraft:arrow')
-    rm.crafting_shaped(('crafting', 'stone', 'arrow', 'flint'), ('A', 'R', 'F'), {'A': 'better_stone_age:stone/arrowhead/flint', 'R': '#forge:rods/wooden', 'F': 'minecraft:feather'}, (2, 'minecraft:arrow'))
-    
-    
-def create_heating_recipes():
-    print('\tCreating heating recipes...')
-    for color in COLORS:
-        heat_recipe(rm, ('ceramic', 'jug', f'{color}'), f'better_stone_age:ceramic/jug/unfired/{color}', POTTERY_MELT, f'better_stone_age:ceramic/jug/glazed/{color}')    
+    rm.crafting_shaped(('crafting', 'arrow', 'stone'), ('A', 'R', 'F'), {'A': 'better_stone_age:stone/arrowhead', 'R': '#forge:rods/wooden', 'F': 'minecraft:feather'}, 'minecraft:arrow')
+    rm.crafting_shaped(('crafting', 'arrow', 'flint'), ('A', 'R', 'F'), {'A': 'better_stone_age:stone/arrowhead/flint', 'R': '#forge:rods/wooden', 'F': 'minecraft:feather'}, (2, 'minecraft:arrow'))
+    rm.crafting_shaped(('crafting', 'arrow', 'bone'), ('A', 'R', 'F'), {'A': 'better_stone_age:bone/arrowhead', 'R': '#forge:rods/wooden', 'F': 'minecraft:feather'}, 'minecraft:arrow')
     
 
-def create_bone_knapping_recipes():
-    print('\t\tCreating bone knapping recipes...')
-    
-    knapping_type(rm, 'bone', '#better_stone_age:bone_knapping', 1, 'better_stone_age:item.knapping.bone', False, False, True, 'minecraft:bone')
-    
-    bone_knapping(rm, 'fish_hook', ['  X', '  X', '  X', 'X X', ' XX'], 'better_stone_age:bone/fish_hook', '#better_stone_age:bone_knapping')
-    bone_knapping(rm, 'needle', ['   XX', '   XX', '  X  ', ' X   ', 'X    '], 'tfc:bone_needle', '#better_stone_age:bone_knapping')
-    
-
-    
-    
-    
-def create_rock_knapping_recipes():
-    print('\t\tCreating rock knapping recipes...')
-    for rock_category in ROCK_CATEGORIES:
-        predicate = f'#tfc:{rock_category}_rock'
-        rock_knapping(rm, ('stone', 'multitool_head', rock_category), ['  X  ', ' XXX ', ' XXX ', 'XXXXX', ' XXX '], f'better_stone_age:stone/multitool_head/{rock_category}', predicate)
-    
-    rock_knapping(rm, ('stone', 'axe_head', 'flint'), [' X   ', 'XXXX ', 'XXXXX', 'XXXX ', ' X   '], 'better_stone_age:stone/axe_head/flint', 'minecraft:flint')
-    rock_knapping(rm, ('stone', 'hammer_head', 'flint'), ['XXXXX', 'XXXXX', '  X  '], 'better_stone_age:stone/hammer_head/flint', 'minecraft:flint')
-    
-    rock_knapping(rm, ('stone', 'hoe_head', 'flint'), ['XXXXX', '   XX'], 'better_stone_age:stone/hoe_head/flint', 'minecraft:flint')
-    rock_knapping(rm, ('stone', 'hoe_head_1', 'flint'), ['XXXXX', '   XX', '     ', 'XXXXX', '   XX'], 'better_stone_age:stone/hoe_head/flint', 'minecraft:flint')
-    rock_knapping(rm, ('stone', 'hoe_head_2', 'flint'), ['XXXXX', '   XX', '     ', 'XXXXX', 'XX   '], 'better_stone_age:stone/hoe_head/flint', 'minecraft:flint')
-    
-    rock_knapping(rm, ('stone', 'javelin_head', 'flint'), ['XXX  ', 'XXXX ', 'XXXXX', ' XXX ', '  X  '], 'better_stone_age:stone/javelin_head/flint', 'minecraft:flint')
-    
-    rock_knapping(rm, ('stone', 'knife_head', 'flint'), [' X', 'XX', 'XX', 'XX', 'XX'], 'better_stone_age:stone/knife_head/flint', 'minecraft:flint')
-    rock_knapping(rm, ('stone', 'knife_head_1', 'flint'), ['X  X ', 'XX XX', 'XX XX', 'XX XX', 'XX XX'], (2, 'better_stone_age:stone/knife_head/flint'), 'minecraft:flint')
-    rock_knapping(rm, ('stone', 'knife_head_2', 'flint'), ['X   X', 'XX XX', 'XX XX', 'XX XX', 'XX XX'], (2, 'better_stone_age:stone/knife_head/flint'), 'minecraft:flint')
-    rock_knapping(rm, ('stone', 'knife_head_3', 'flint'), [' X X ', 'XX XX', 'XX XX', 'XX XX', 'XX XX'], (2, 'better_stone_age:stone/knife_head/flint'), 'minecraft:flint')
-    
-    rock_knapping(rm, ('stone', 'shovel_head', 'flint'), [' XXX ', ' XXX ', ' XXX ', ' XXX ', '  X  '], 'better_stone_age:stone/shovel_head/flint', 'minecraft:flint')
-    rock_knapping(rm, ('stone', 'multitool_head', 'flint'), ['  X  ', ' XXX ', ' XXX ', 'XXXXX', ' XXX '], 'better_stone_age:stone/multitool_head/flint', 'minecraft:flint')
-    
-    
-    print('\t\t\tGenerating arrowhead textures...')
+def create_arrowhead_knapping_recipes():
+    print('\t\tGenerating arrowhead textures...')
     placements = {
         ('XX XX', 'X   X'): 2,
         ('XX XX', 'X  X '): 2,
@@ -373,18 +333,66 @@ def create_rock_knapping_recipes():
                         '#better_stone_age:rock/loose'
                     )
                     rock_knapping(
-                        rm, 
+                        rm,
                         ('stone', 'arrowhead', 'flint', f'{name_part_1}_{name_part_2}_{name_part_3}_{name_part_4}'),
                         (*(top_part[::top_mod]), '     ', *(bottom_part[::bottom_mod])),
                         (placements[top_part] + placements[bottom_part], 'better_stone_age:stone/arrowhead/flint'),
                         'minecraft:flint'
                     )
+                    bone_knapping(
+                        rm,
+                        ('bone', 'arrowhead', f'{name_part_1}_{name_part_2}_{name_part_3}_{name_part_4}'),
+                        (*(top_part[::top_mod]), '     ', *(bottom_part[::bottom_mod])),
+                        (placements[top_part] + placements[bottom_part], 'better_stone_age:bone/arrowhead'),
+                        '#better_stone_age:bone_knapping'
+                    )
+
+def create_heating_recipes():
+    print('\tCreating heating recipes...')
+    for color in COLORS:
+        heat_recipe(rm, ('ceramic', 'jug', f'{color}'), f'better_stone_age:ceramic/jug/unfired/{color}', POTTERY_MELT, f'better_stone_age:ceramic/jug/glazed/{color}')    
+    
+
+def create_bone_knapping_recipes():
+    print('\t\tCreating bone knapping recipes...')
+    
+    knapping_type(rm, 'bone', '#better_stone_age:bone_knapping', 1, 'better_stone_age:item.knapping.bone', False, False, True, 'minecraft:bone')
+    
+    bone_knapping(rm, 'fish_hook', ['  X', '  X', '  X', 'X X', ' XX'], 'better_stone_age:bone/fish_hook', '#better_stone_age:bone_knapping')
+    bone_knapping(rm, 'needle', ['   XX', '   XX', '  X  ', ' X   ', 'X    '], 'tfc:bone_needle', '#better_stone_age:bone_knapping')
+    
+def create_rock_knapping_recipes():
+    print('\t\tCreating rock knapping recipes...')
+    for rock_category in ROCK_CATEGORIES:
+        predicate = f'#tfc:{rock_category}_rock'
+        rock_knapping(rm, ('stone', 'multitool_head', rock_category), ['  X  ', ' XXX ', ' XXX ', 'XXXXX', ' XXX '], f'better_stone_age:stone/multitool_head/{rock_category}', predicate)
+    
+    rock_knapping(rm, ('stone', 'axe_head', 'flint'), [' X   ', 'XXXX ', 'XXXXX', 'XXXX ', ' X   '], 'better_stone_age:stone/axe_head/flint', 'minecraft:flint')
+    rock_knapping(rm, ('stone', 'hammer_head', 'flint'), ['XXXXX', 'XXXXX', '  X  '], 'better_stone_age:stone/hammer_head/flint', 'minecraft:flint')
+    
+    rock_knapping(rm, ('stone', 'hoe_head', 'flint'), ['XXXXX', '   XX'], 'better_stone_age:stone/hoe_head/flint', 'minecraft:flint')
+    rock_knapping(rm, ('stone', 'hoe_head_1', 'flint'), ['XXXXX', '   XX', '     ', 'XXXXX', '   XX'], 'better_stone_age:stone/hoe_head/flint', 'minecraft:flint')
+    rock_knapping(rm, ('stone', 'hoe_head_2', 'flint'), ['XXXXX', '   XX', '     ', 'XXXXX', 'XX   '], 'better_stone_age:stone/hoe_head/flint', 'minecraft:flint')
+    
+    rock_knapping(rm, ('stone', 'javelin_head', 'flint'), ['XXX  ', 'XXXX ', 'XXXXX', ' XXX ', '  X  '], 'better_stone_age:stone/javelin_head/flint', 'minecraft:flint')
+    
+    rock_knapping(rm, ('stone', 'knife_head', 'flint'), [' X', 'XX', 'XX', 'XX', 'XX'], 'better_stone_age:stone/knife_head/flint', 'minecraft:flint')
+    rock_knapping(rm, ('stone', 'knife_head_1', 'flint'), ['X  X ', 'XX XX', 'XX XX', 'XX XX', 'XX XX'], (2, 'better_stone_age:stone/knife_head/flint'), 'minecraft:flint')
+    rock_knapping(rm, ('stone', 'knife_head_2', 'flint'), ['X   X', 'XX XX', 'XX XX', 'XX XX', 'XX XX'], (2, 'better_stone_age:stone/knife_head/flint'), 'minecraft:flint')
+    rock_knapping(rm, ('stone', 'knife_head_3', 'flint'), [' X X ', 'XX XX', 'XX XX', 'XX XX', 'XX XX'], (2, 'better_stone_age:stone/knife_head/flint'), 'minecraft:flint')
+    
+    rock_knapping(rm, ('stone', 'shovel_head', 'flint'), [' XXX ', ' XXX ', ' XXX ', ' XXX ', '  X  '], 'better_stone_age:stone/shovel_head/flint', 'minecraft:flint')
+    rock_knapping(rm, ('stone', 'multitool_head', 'flint'), ['  X  ', ' XXX ', ' XXX ', 'XXXXX', ' XXX '], 'better_stone_age:stone/multitool_head/flint', 'minecraft:flint')
+    
+    
+
     
     
     
 
 def create_knapping_recipes():
     print('\tCreating knapping recipes...')
+    create_arrowhead_knapping_recipes()
     create_bone_knapping_recipes()
     create_rock_knapping_recipes()
     

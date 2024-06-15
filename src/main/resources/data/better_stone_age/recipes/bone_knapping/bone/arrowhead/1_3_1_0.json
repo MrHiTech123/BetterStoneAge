@@ -1,0 +1,20 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:knapping",
+  "knapping_type": "better_stone_age:bone",
+  "outside_slot_required": false,
+  "pattern": [
+    "X  X ",
+    "XX XX",
+    "     ",
+    "XX XX",
+    " X X "
+  ],
+  "ingredient": {
+    "tag": "better_stone_age:bone_knapping"
+  },
+  "result": {
+    "item": "better_stone_age:bone/arrowhead",
+    "count": 4
+  }
+}

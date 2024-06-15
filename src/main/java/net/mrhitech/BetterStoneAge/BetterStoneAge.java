@@ -92,7 +92,9 @@ public class BetterStoneAge
             }
             event.accept(BetterStoneAgeItems.BONE_FISH_HOOK);
             event.accept(BetterStoneAgeItems.BONE_FISHING_ROD);
+            event.accept(BetterStoneAgeItems.BONE_ARROWHEAD);
             event.accept(BetterStoneAgeItems.SABERTOOTH_FANG);
+            
         }
         if (event.getTabKey() == TFCCreativeTabs.MISC.tab().getKey()) {
             event.accept(BetterStoneAgeItems.SINEW);
