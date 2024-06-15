@@ -9,7 +9,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "In Better Stone Age, tool heads can be bound to their handles. If there is no binding, the tool's durability is penalized. However, stronger bindings also grant higher forging bonuses to the tool they are used to craft."
+      "text": "In Better Stone Age, Stone and $(l:tfc:better_stone_age/flint)Flint$() tool heads can be bound to their handles. If there is no binding, the tool's durability is penalized. However, stronger bindings also grant higher forging bonuses to the tool they are used to craft."
     },
     {
       "type": "patchouli:text",
@@ -34,7 +34,7 @@
     },
     {
       "type": "patchouli:crafting",
-      "recipe": "better_stone_age:crafting/stone/shovel/igneous_extrusive/medium_binding"
+      "recipe": "better_stone_age:crafting/stone/shovel/flint/medium_binding"
     },
     {
       "type": "patchouli:text",
