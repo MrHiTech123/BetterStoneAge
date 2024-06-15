@@ -30,7 +30,12 @@
     {
       "type": "patchouli:crafting",
       "recipe": "better_stone_age:crafting/bone_needle",
-      "text": "Bone Needles can also be crafted from $(thing)Sabertooth Fangs$(), which are dropped by $(l:tfc:the_world/wild_animals#predators)$(thing)Sabertooths$()"
+      "text": "Bone Needles can also be crafted from $(thing)Sabertooth Fangs$(), which are dropped by $(l:tfc:the_world/wild_animals#predators)$(thing)Sabertooths$()."
+    },
+    {
+      "type": "tfc:knapping_recipe",
+      "recipe": "better_stone_age:bone_knapping/bone/arrowhead/4_7_0_0",
+      "text": "Bones can also be knapped into $(l:tfc:better_stone_age/arrowheads)Arrowheads$()."
     }
   ],
   "read_by_default": true,
