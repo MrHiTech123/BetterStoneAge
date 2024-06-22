@@ -1,3 +1,6 @@
+# Credit to AlcatrazEscapee and EERussianGuy, the devs of TerraFirmaCraft!
+# Licensed under EUPL v1.2
+
 from enum import Enum, auto
 from typing import Dict, List, Set, NamedTuple, Sequence, Optional, Tuple, Any, Union, Literal, get_args
 from mcresources import ResourceManager, utils, loot_tables, RecipeContext, ItemContext, BlockContext
