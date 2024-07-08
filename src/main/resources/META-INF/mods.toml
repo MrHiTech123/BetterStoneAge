@@ -55,24 +55,24 @@ ordering="NONE"
 # Side this dependency is applied on - BOTH, CLIENT, or SERVER
 side="BOTH"
 # Here's another dependency
-[[dependencies.minecraft]]
+[[dependencies.better_stone_age]]
 modId="minecraft"
 mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
 versionRange="${minecraft_version_range}"
 ordering="NONE"
 side="BOTH"
-[[dependencies.tfc]]
+[[dependencies.better_stone_age]]
 modId="tfc"
 mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
-versionRange="1.20.1"
+versionRange="[0,)"
 ordering="AFTER"
 side="BOTH"
-[[dependencies.jade]]
+[[dependencies.better_stone_age]]
 modId="jade"
 mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
-versionRange="1.20.1"
+versionRange="[0,)"
 ordering="AFTER"
 side="BOTH"
