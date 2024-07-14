@@ -25,7 +25,7 @@ public class BetterStoneAgeItems {
     public static final Map<DyeColor, RegistryObject<Item>> UNFIRED_CERAMIC_JUGS = Helpers.mapOfKeys(DyeColor.class, color ->
             ITEMS.register("ceramic/jug/unfired/" + color, () -> new Item(new Item.Properties())));
     public static final Map<DyeColor, RegistryObject<Item>> GLAZED_CERAMIC_JUGS = Helpers.mapOfKeys(DyeColor.class, color ->
-            ITEMS.register("ceramic/jug/glazed/" + color, () -> new JugItem(new Item.Properties(), TFCConfig.SERVER.jugCapacity, TFCTags.Fluids.USABLE_IN_JUG)));
+            ITEMS.register("ceramic/jug/glazed/" + color, () -> new JugItem(new Item.Properties().stacksTo(1), TFCConfig.SERVER.jugCapacity, TFCTags.Fluids.USABLE_IN_JUG)));
     public static final Map<DyeColor, RegistryObject<Item>> GLAZED_POTS = Helpers.mapOfKeys(DyeColor.class, color ->
             ITEMS.register("ceramic/pot/glazed/" + color, () -> new PotItem(new Item.Properties(), BetterStoneAgeBlocks.GLAZED_POTS.get(color).get())));
     public static final Map<RockCategory, RegistryObject<Item>> MULTITOOL_HEADS = Helpers.mapOfKeys(RockCategory.class, rock_category ->
