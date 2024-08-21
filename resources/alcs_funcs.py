@@ -1992,7 +1992,6 @@ def fauna(chance: int = None, distance_below_sea_level: int = None, climate: Dic
 
 
 def food_item(rm: ResourceManager, name_parts: utils.ResourceIdentifier, ingredient: utils.Json, category: Category, hunger: int, saturation: float, water: int, decay: float, fruit: Optional[float] = None, veg: Optional[float] = None, protein: Optional[float] = None, grain: Optional[float] = None, dairy: Optional[float] = None):
-    rm.item_tag('tfc:foods', ingredient)
     rm.data(('tfc', 'food_items', name_parts), {
         'ingredient': utils.ingredient(ingredient),
         'hunger': hunger,
@@ -2005,20 +2004,20 @@ def food_item(rm: ResourceManager, name_parts: utils.ResourceIdentifier, ingredi
         'grain': grain,
         'dairy': dairy
     })
-    rm.item_tag('foods', ingredient)
+    rm.item_tag('tfc:foods', (ingredient))
     if category in (Category.fruit, Category.vegetable):
-        rm.item_tag('foods/%ss' % category.name.lower(), ingredient)
+        rm.item_tag('tfc:foods/%ss' % category.name.lower(), ingredient)
     if category in (Category.meat, Category.cooked_meat):
-        rm.item_tag('foods/meats', ingredient)
+        rm.item_tag('tfc:foods/meats', ingredient)
         if category == Category.cooked_meat:
-            rm.item_tag('foods/cooked_meats', ingredient)
+            rm.item_tag('tfc:foods/cooked_meats', ingredient)
         else:
-            rm.item_tag('foods/raw_meats', ingredient)
+            rm.item_tag('tfc:foods/raw_meats', ingredient)
     if category == Category.dairy:
-        rm.item_tag('foods/dairy', ingredient)
+        rm.item_tag('tfc:foods/dairy', ingredient)
 
 def dynamic_food_item(rm: ResourceManager, name_parts: utils.ResourceIdentifier, ingredient: utils.Json, handler_type: str):
-    rm.item_tag('foods', ingredient)
+    rm.item_tag('tfc:foods', ingredient)
     rm.data(('tfc', 'food_items', name_parts), {
         'ingredient': utils.ingredient(ingredient),
         'type': handler_type

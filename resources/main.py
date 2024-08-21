@@ -107,7 +107,7 @@ def create_item_foods():
     print('Creating item foods...')
     for grain in GRAINS:
         food_item(rm, f'coarse_{grain}_flour', f'better_stone_age:food/coarse_{grain}_flour', Category.grain, 4, 0, 0, 0.5, grain=0.3)
-        food_item(tfc_rm, f'{grain}_flour', f'tfc:food/{grain}_flour', Category.grain, 4, 0, 0, 0.5, grain=0.4)
+        food_item(rm, f'{grain}_flour', f'tfc:food/{grain}_flour', Category.grain, 4, 0, 0, 0.5, grain=0.4)
     for grain in NON_BROKEN_GRAINS:
         food_item(rm, f'crushed_{grain}_grain', f'better_stone_age:food/crushed_{grain}_grain', Category.grain, 4, 0.25, 0, 0.375, grain=0.2)
     dynamic_food_item(rm, 'porridge', 'better_stone_age:food/porridge', 'dynamic_bowl')
@@ -305,7 +305,7 @@ def create_crafting_recipes():
     
 
 def create_arrowhead_knapping_recipes():
-    print('\t\tGenerating arrowhead textures...')
+    print('\t\tGenerating arrowhead knapping recipes...')
     placements = {
         ('XX XX', 'X   X'): 2,
         ('XX XX', 'X  X '): 2,
@@ -403,14 +403,17 @@ def create_pot_recipes():
         for count in range(1, 1 + 5):
             simple_pot_recipe(rm, f'{color}_dye_from_flower_{count}', [utils.ingredient(f'#tfc:makes_{color}_dye')] * count, str(100 * count) + ' minecraft:water', str(100 * count) + f' tfc:{color}_dye', None, 2000, 730)
     
-    porridge_food = not_rotten(utils.ingredient('#better_stone_age:usable_in_porridge'))
-    for duration, count in ((1000, 3), (1150, 4), (1300, 5)):
-        rm.recipe(('pot', f'porridge_{count}'), 'better_stone_age:pot_porridge', {
-            'ingredients': [porridge_food] * count,
-            'fluid_ingredient': fluid_stack_ingredient('100 minecraft:water'),
-            'duration': duration,
-            'temperature': 300
-        })
+    grain_food = not_rotten(utils.ingredient('#better_stone_age:foods/crushed_grains'))
+    fruit_food = not_rotten(utils.ingredient('#tfc:foods/fruits'))
+    for duration, ingredient_count in ((1000, 3), (1150, 4), (1300, 5)):
+        for fruit_count in range(3):
+            if (ingredient_count - fruit_count) >= 3:
+                rm.recipe(('pot', f'porridge_{ingredient_count}_grains_{fruit_count}_fruits'), 'better_stone_age:pot_porridge', {
+                    'ingredients': ([grain_food] * (ingredient_count - fruit_count)) + ([fruit_food] * fruit_count),
+                    'fluid_ingredient': fluid_stack_ingredient('100 minecraft:water'),
+                    'duration': duration,
+                    'temperature': 300
+                })
 
 
 def create_quern_recipes():
@@ -455,7 +458,7 @@ def create_item_tags():
     
     forge_rm.item_tag('string', 'better_stone_age:sinew_string')
     
-    rm.item_tag('usable_in_porridge', *[f'better_stone_age:food/crushed_{grain}_grain' for grain in NON_BROKEN_GRAINS])
+    rm.item_tag('foods/crushed_grains', *[f'better_stone_age:food/crushed_{grain}_grain' for grain in NON_BROKEN_GRAINS])
     tfc_rm.item_tag('dynamic_bowl_items', 'better_stone_age:food/porridge')
     
     tfc_rm.item_tag('holds_small_fishing_bait', 'better_stone_age:bone/fishing_rod')

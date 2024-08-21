@@ -5,25 +5,25 @@
     {
       "type": "tfc:not_rotten",
       "ingredient": {
-        "tag": "better_stone_age:usable_in_porridge"
+        "tag": "better_stone_age:foods/crushed_grains"
       }
     },
     {
       "type": "tfc:not_rotten",
       "ingredient": {
-        "tag": "better_stone_age:usable_in_porridge"
+        "tag": "better_stone_age:foods/crushed_grains"
       }
     },
     {
       "type": "tfc:not_rotten",
       "ingredient": {
-        "tag": "better_stone_age:usable_in_porridge"
+        "tag": "better_stone_age:foods/crushed_grains"
       }
     },
     {
       "type": "tfc:not_rotten",
       "ingredient": {
-        "tag": "better_stone_age:usable_in_porridge"
+        "tag": "tfc:foods/fruits"
       }
     }
   ],
