@@ -23,6 +23,12 @@
     {
       "type": "tfc:not_rotten",
       "ingredient": {
+        "tag": "better_stone_age:foods/crushed_grains"
+      }
+    },
+    {
+      "type": "tfc:not_rotten",
+      "ingredient": {
         "tag": "tfc:foods/fruits"
       }
     }
@@ -31,6 +37,6 @@
     "ingredient": "minecraft:water",
     "amount": 100
   },
-  "duration": 1150,
+  "duration": 1300,
   "temperature": 300
 }

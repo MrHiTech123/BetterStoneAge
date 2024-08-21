@@ -408,7 +408,7 @@ def create_pot_recipes():
     for duration, ingredient_count in ((1000, 3), (1150, 4), (1300, 5)):
         for fruit_count in range(3):
             if (ingredient_count - fruit_count) >= 3:
-                rm.recipe(('pot', f'porridge_{ingredient_count}_grains_{fruit_count}_fruits'), 'better_stone_age:pot_porridge', {
+                rm.recipe(('pot', f'porridge_{(ingredient_count - fruit_count)}_grains_{fruit_count}_fruits'), 'better_stone_age:pot_porridge', {
                     'ingredients': ([grain_food] * (ingredient_count - fruit_count)) + ([fruit_food] * fruit_count),
                     'fluid_ingredient': fluid_stack_ingredient('100 minecraft:water'),
                     'duration': duration,
