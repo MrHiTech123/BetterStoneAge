@@ -1,0 +1,19 @@
+{
+  "item.knapping.bone": {
+    "subtitle": "subtitle.item.better_stone_age.knapping.bone",
+    "sounds": [
+      {
+        "name": "bsa:item/knapping/bone",
+        "pitch": 0.9
+      },
+      {
+        "name": "bsa:item/knapping/bone",
+        "pitch": 1.0
+      },
+      {
+        "name": "bsa:item/knapping/bone",
+        "pitch": 1.1
+      }
+    ]
+  }
+}

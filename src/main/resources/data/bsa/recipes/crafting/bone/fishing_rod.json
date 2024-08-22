@@ -1,0 +1,22 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RS",
+    "RH"
+  ],
+  "key": {
+    "R": {
+      "tag": "forge:rods/wooden"
+    },
+    "S": {
+      "tag": "forge:string"
+    },
+    "H": {
+      "item": "bsa:bone/fish_hook"
+    }
+  },
+  "result": {
+    "item": "bsa:bone/fishing_rod"
+  }
+}

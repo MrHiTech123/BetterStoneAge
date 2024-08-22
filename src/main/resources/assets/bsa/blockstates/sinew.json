@@ -1,0 +1,21 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "multipart": [
+    {
+      "when": {
+        "dried": false
+      },
+      "apply": {
+        "model": "bsa:block/drying_sinew"
+      }
+    },
+    {
+      "when": {
+        "dried": true
+      },
+      "apply": {
+        "model": "bsa:block/dried_sinew"
+      }
+    }
+  ]
+}

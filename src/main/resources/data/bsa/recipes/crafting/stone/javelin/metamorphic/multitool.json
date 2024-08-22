@@ -1,0 +1,22 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " M",
+    "R "
+  ],
+  "key": {
+    "M": {
+      "item": "bsa:stone/multitool_head/metamorphic"
+    },
+    "R": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "tfc:stone/javelin/metamorphic",
+    "nbt": {
+      "Damage": 27
+    }
+  }
+}

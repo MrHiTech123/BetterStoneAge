@@ -1,0 +1,16 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "input": {
+    "ingredient": {
+      "tag": "bsa:bone_knapping"
+    }
+  },
+  "amount_to_consume": 1,
+  "click_sound": "bsa:item.knapping.bone",
+  "consume_after_complete": false,
+  "use_disabled_texture": false,
+  "spawns_particles": true,
+  "jei_icon_item": {
+    "item": "minecraft:bone"
+  }
+}

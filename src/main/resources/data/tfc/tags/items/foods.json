@@ -2,22 +2,22 @@
   "__comment__": "This file was automatically created by mcresources",
   "replace": false,
   "values": [
-    "better_stone_age:food/coarse_barley_flour",
+    "bsa:food/coarse_barley_flour",
     "tfc:food/barley_flour",
-    "better_stone_age:food/coarse_maize_flour",
+    "bsa:food/coarse_maize_flour",
     "tfc:food/maize_flour",
-    "better_stone_age:food/coarse_oat_flour",
+    "bsa:food/coarse_oat_flour",
     "tfc:food/oat_flour",
-    "better_stone_age:food/coarse_rice_flour",
+    "bsa:food/coarse_rice_flour",
     "tfc:food/rice_flour",
-    "better_stone_age:food/coarse_rye_flour",
+    "bsa:food/coarse_rye_flour",
     "tfc:food/rye_flour",
-    "better_stone_age:food/coarse_wheat_flour",
+    "bsa:food/coarse_wheat_flour",
     "tfc:food/wheat_flour",
-    "better_stone_age:food/crushed_barley_grain",
-    "better_stone_age:food/crushed_oat_grain",
-    "better_stone_age:food/crushed_rye_grain",
-    "better_stone_age:food/crushed_wheat_grain",
-    "better_stone_age:food/porridge"
+    "bsa:food/crushed_barley_grain",
+    "bsa:food/crushed_oat_grain",
+    "bsa:food/crushed_rye_grain",
+    "bsa:food/crushed_wheat_grain",
+    "bsa:food/porridge"
   ]
 }

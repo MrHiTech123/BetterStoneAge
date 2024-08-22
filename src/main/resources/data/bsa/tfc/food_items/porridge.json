@@ -1,0 +1,7 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "ingredient": {
+    "item": "bsa:food/porridge"
+  },
+  "type": "dynamic_bowl"
+}

@@ -41,7 +41,7 @@ import net.dries007.tfc.common.TFCCreativeTabs;
 public class BetterStoneAge
 {
     // Define mod id in a common place for everything to reference
-    public static final String MOD_ID = "better_stone_age";
+    public static final String MOD_ID = "bsa";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
     public BetterStoneAge()

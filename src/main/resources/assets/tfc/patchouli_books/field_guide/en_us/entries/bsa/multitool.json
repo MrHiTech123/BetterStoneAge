@@ -1,0 +1,43 @@
+{
+  "name": "Multitools",
+  "category": "tfc:bsa",
+  "icon": "bsa:stone/multitool_head/igneous_extrusive",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Want to pre-knap a tool head before knowing what it'll be? Try a multitool! This stone tool head can be crafted into any tool, depending on the orientation of the stick and the multitool head in the crafting grid."
+    },
+    {
+      "type": "tfc:knapping_recipe",
+      "recipe": "bsa:rock_knapping/stone/multitool_head/igneous_extrusive"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "bsa:crafting/stone/axe/igneous_extrusive/multitool",
+      "text": "Tools crafted using a multitool head cannot also have a $(l:tfc:bsa/tool_bindings)tool binding$(). A tool crafted with a multitool head is usually built to fulfill a specific need, and rarely lasts much longer once that need is met."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "bsa:crafting/stone/hammer/igneous_extrusive/multitool",
+      "recipe2": "bsa:crafting/stone/hoe/igneous_extrusive/multitool"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "bsa:crafting/stone/javelin/igneous_extrusive/multitool",
+      "recipe2": "bsa:crafting/stone/shovel/igneous_extrusive/multitool"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "bsa:crafting/stone/knife/igneous_extrusive/multitool",
+      "text": "A multitool head can also be crafted into a knife head. Unlike other tools crafted with multitool heads, knives can have bindings like normal."
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 60,
+  "extra_recipe_mappings": {
+    "bsa:stone/multitool_head/igneous_extrusive": 0,
+    "bsa:stone/multitool_head/igneous_intrusive": 0,
+    "bsa:stone/multitool_head/metamorphic": 0,
+    "bsa:stone/multitool_head/sedimentary": 0
+  }
+}

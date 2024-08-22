@@ -1,7 +1,0 @@
-{
-  "__comment__": "This file was automatically created by mcresources",
-  "parent": "item/fishing_rod",
-  "textures": {
-    "layer0": "better_stone_age:item/bone/fishing_rod_cast"
-  }
-}

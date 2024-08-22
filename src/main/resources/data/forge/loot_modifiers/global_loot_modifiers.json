@@ -2,7 +2,7 @@
   "__comment__": "This file was automatically created by mcresources",
   "replace": false,
   "entries": [
-    "better_stone_age:animals_drop_sinew",
-    "better_stone_age:sabertooth_fangs"
+    "bsa:animals_drop_sinew",
+    "bsa:sabertooth_fangs"
   ]
 }

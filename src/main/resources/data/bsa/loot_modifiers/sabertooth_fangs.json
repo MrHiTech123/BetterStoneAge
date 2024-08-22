@@ -1,0 +1,16 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "bsa:add_itemstack_min_max",
+  "conditions": [
+    {
+      "condition": "minecraft:entity_properties",
+      "predicate": {
+        "type": "tfc:sabertooth"
+      },
+      "entity": "this"
+    }
+  ],
+  "item": "bsa:sabertooth_fang",
+  "min": 1,
+  "max": 2
+}

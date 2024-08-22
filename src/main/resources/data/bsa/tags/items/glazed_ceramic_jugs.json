@@ -1,0 +1,23 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "replace": false,
+  "values": [
+    "tfc:ceramic/jug",
+    "bsa:ceramic/jug/glazed/white",
+    "bsa:ceramic/jug/glazed/orange",
+    "bsa:ceramic/jug/glazed/magenta",
+    "bsa:ceramic/jug/glazed/light_blue",
+    "bsa:ceramic/jug/glazed/yellow",
+    "bsa:ceramic/jug/glazed/lime",
+    "bsa:ceramic/jug/glazed/pink",
+    "bsa:ceramic/jug/glazed/gray",
+    "bsa:ceramic/jug/glazed/light_gray",
+    "bsa:ceramic/jug/glazed/cyan",
+    "bsa:ceramic/jug/glazed/purple",
+    "bsa:ceramic/jug/glazed/blue",
+    "bsa:ceramic/jug/glazed/brown",
+    "bsa:ceramic/jug/glazed/green",
+    "bsa:ceramic/jug/glazed/red",
+    "bsa:ceramic/jug/glazed/black"
+  ]
+}

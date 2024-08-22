@@ -1,0 +1,49 @@
+{
+  "name": "Bone Tools",
+  "category": "tfc:bsa",
+  "icon": "bsa:bone/fish_hook",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Bone can now be knapped into tools, just as rocks can."
+    },
+    {
+      "type": "tfc:knapping_recipe",
+      "recipe": "bsa:bone_knapping/fish_hook",
+      "text": "$(thing)Bone Fish Hooks$() can be knapped from bones, and can then be crafted into $(thing)Bone Fishing Rods$()."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "bsa:crafting/bone/fishing_rod",
+      "recipe2": "bsa:crafting/hide_sewing/2_plus_2"
+    },
+    {
+      "type": "tfc:knapping_recipe",
+      "recipe": "bsa:bone_knapping/needle",
+      "text": "$(l:tfc:mechanics/sewing_tables)Bone Needles$() are also knapped from bone and can be used to sew hides together."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "bsa:crafting/hide_sewing/1_plus_2",
+      "recipe2": "bsa:crafting/hide_sewing/1_plus_1"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "bsa:crafting/bone_needle",
+      "text": "Bone Needles can also be crafted from $(thing)Sabertooth Fangs$(), which are dropped by $(l:tfc:the_world/wild_animals#predators)$(thing)Sabertooths$()."
+    },
+    {
+      "type": "tfc:knapping_recipe",
+      "recipe": "bsa:bone_knapping/bone/arrowhead/4_7_0_0",
+      "text": "Bones can also be knapped into $(l:tfc:bsa/arrowheads)Arrowheads$()."
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 10,
+  "extra_recipe_mappings": {
+    "minecraft:bone": 0,
+    "bsa:bone/fish_hook": 0,
+    "bsa:bone/fishing_rod": 0,
+    "bsa:sabertooth_fang": 5
+  }
+}

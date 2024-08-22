@@ -1,0 +1,15 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:quern",
+  "ingredient": {
+    "item": "bsa:food/coarse_rice_flour"
+  },
+  "result": {
+    "stack": {
+      "item": "tfc:food/rice_flour"
+    },
+    "modifiers": [
+      "tfc:copy_oldest_food"
+    ]
+  }
+}

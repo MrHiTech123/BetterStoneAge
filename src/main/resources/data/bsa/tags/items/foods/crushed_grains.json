@@ -1,0 +1,10 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "replace": false,
+  "values": [
+    "bsa:food/crushed_barley_grain",
+    "bsa:food/crushed_oat_grain",
+    "bsa:food/crushed_rye_grain",
+    "bsa:food/crushed_wheat_grain"
+  ]
+}

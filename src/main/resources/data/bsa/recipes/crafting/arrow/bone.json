@@ -1,0 +1,23 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A",
+    "R",
+    "F"
+  ],
+  "key": {
+    "A": {
+      "item": "bsa:bone/arrowhead"
+    },
+    "R": {
+      "tag": "forge:rods/wooden"
+    },
+    "F": {
+      "item": "minecraft:feather"
+    }
+  },
+  "result": {
+    "item": "minecraft:arrow"
+  }
+}

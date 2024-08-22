@@ -1,0 +1,20 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:knapping",
+  "knapping_type": "tfc:rock",
+  "outside_slot_required": false,
+  "pattern": [
+    " X   ",
+    "XX   ",
+    "     ",
+    "X  X ",
+    "XX XX"
+  ],
+  "ingredient": {
+    "tag": "bsa:rock/loose"
+  },
+  "result": {
+    "item": "bsa:stone/arrowhead",
+    "count": 3
+  }
+}

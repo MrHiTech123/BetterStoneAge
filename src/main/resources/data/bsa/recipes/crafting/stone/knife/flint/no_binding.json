@@ -1,0 +1,22 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "H",
+    "R"
+  ],
+  "key": {
+    "H": {
+      "item": "bsa:stone/knife_head/flint"
+    },
+    "R": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "bsa:stone/knife/flint",
+    "nbt": {
+      "Damage": 60
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "bsa:ceramic/jug/unfired/orange"
+  },
+  "result_item": {
+    "item": "bsa:ceramic/jug/glazed/orange"
+  },
+  "temperature": 1399
+}

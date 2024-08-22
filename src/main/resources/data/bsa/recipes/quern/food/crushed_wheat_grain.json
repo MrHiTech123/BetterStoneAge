@@ -1,0 +1,15 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:quern",
+  "ingredient": {
+    "item": "bsa:food/crushed_wheat_grain"
+  },
+  "result": {
+    "stack": {
+      "item": "tfc:food/wheat_flour"
+    },
+    "modifiers": [
+      "tfc:copy_oldest_food"
+    ]
+  }
+}

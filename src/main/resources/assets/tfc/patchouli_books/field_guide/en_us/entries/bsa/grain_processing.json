@@ -1,0 +1,65 @@
+{
+  "name": "Grain Processing",
+  "category": "tfc:bsa",
+  "icon": "bsa:food/crushed_barley_grain",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "You might not yet have a quern, but that doesn't mean you can't enjoy some lovely grain products!"
+    },
+    {
+      "type": "tfc:anvil_recipe",
+      "recipe": "bsa:anvil/food/crushed_oat_grain",
+      "text": "Some grains can be hammered on a $(l:tfc:getting_started/primitive_anvils)Primitive Anvil$() into $(thing)Crushed Grains$(). These yield some grain nutrients themselves, but are best processed further before eaten."
+    },
+    {
+      "type": "tfc:anvil_recipe",
+      "recipe": "bsa:anvil/food/coarse_rye_flour",
+      "text": "One way to further process crushed grains is to pound them, also on an Anvil, into $(thing)Coarse Flour$()."
+    },
+    {
+      "type": "tfc:anvil_recipe",
+      "recipe": "bsa:anvil/food/coarse_maize_flour",
+      "text": "Maize and Rice Grains are already in small pieces, so they can be pounded directly into Coarse Flour."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "bsa:crafting/dough/wheat/6_from_coarse_flour",
+      "text": "Coarse Flour can be crafted into $(l:tfc:mechanics/bread)dough$(), just as regular flour can, but this only yields one dough for every two flour, rather than two for every one flour."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "bsa:food/porridge"
+      },
+      "text": "A more efficient option is porridge, which is made by boiling 3-5 crushed grains and 0-2 fruit in a water pot."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "bsa:textures/gui/book/porridge_recipe.png"
+      ],
+      "text": ""
+    },
+    {
+      "type": "tfc:quern_recipe",
+      "recipe": "bsa:quern/food/coarse_rice_flour",
+      "text": "All Crushed Grain and Coarse Flour items can also be ground in the quern to produce regular flour."
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 50,
+  "extra_recipe_mappings": {
+    "bsa:food/crushed_barley_grain": 1,
+    "bsa:food/crushed_oat_grain": 1,
+    "bsa:food/crushed_rye_grain": 1,
+    "bsa:food/crushed_wheat_grain": 1,
+    "bsa:food/coarse_barley_flour": 2,
+    "bsa:food/coarse_maize_flour": 2,
+    "bsa:food/coarse_oat_flour": 2,
+    "bsa:food/coarse_rice_flour": 2,
+    "bsa:food/coarse_rye_flour": 2,
+    "bsa:food/coarse_wheat_flour": 2,
+    "bsa:food/porridge": 5
+  }
+}

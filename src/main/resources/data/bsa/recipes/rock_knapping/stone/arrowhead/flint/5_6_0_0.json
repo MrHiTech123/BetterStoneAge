@@ -1,0 +1,20 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:knapping",
+  "knapping_type": "tfc:rock",
+  "outside_slot_required": false,
+  "pattern": [
+    "XX X ",
+    "X  XX",
+    "     ",
+    "XX  X",
+    " X XX"
+  ],
+  "ingredient": {
+    "item": "minecraft:flint"
+  },
+  "result": {
+    "item": "bsa:stone/arrowhead/flint",
+    "count": 4
+  }
+}

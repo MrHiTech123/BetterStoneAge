@@ -1,0 +1,10 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "replace": false,
+  "values": [
+    "bsa:sinew",
+    "bsa:dried_sinew",
+    "bsa:pounded_sinew",
+    "bsa:sinew_string"
+  ]
+}

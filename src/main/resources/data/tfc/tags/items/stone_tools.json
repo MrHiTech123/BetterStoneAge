@@ -2,11 +2,11 @@
   "__comment__": "This file was automatically created by mcresources",
   "replace": false,
   "values": [
-    "better_stone_age:stone/hammer_head/flint",
-    "better_stone_age:stone/hoe_head/flint",
-    "better_stone_age:stone/javelin_head/flint",
-    "better_stone_age:stone/knife_head/flint",
-    "better_stone_age:stone/shovel_head/flint",
-    "better_stone_age:stone/axe_head/flint"
+    "bsa:stone/hammer_head/flint",
+    "bsa:stone/hoe_head/flint",
+    "bsa:stone/javelin_head/flint",
+    "bsa:stone/knife_head/flint",
+    "bsa:stone/shovel_head/flint",
+    "bsa:stone/axe_head/flint"
   ]
 }

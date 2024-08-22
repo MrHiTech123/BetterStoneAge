@@ -1,0 +1,20 @@
+{
+  "name": "Dyemaking",
+  "category": "tfc:bsa",
+  "icon": "tfc:wooden_bucket{fluid:{Amount:1000, FluidName:\"tfc:purple_dye\"}}",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "In addition to boiling solid dye in water to make liquid dye, you can now boil the flowers from which solid dye is made, directly.<br><br>This results in less liquid dye than boiling solid dye would—only 100 mb per flower inserted.<br><br>The pot must also be at least <br>$(c)$(bold)Bright Red$() during the boiling process."
+    },
+    {
+      "type": "patchouli:image",
+      "images": [
+        "bsa:textures/gui/book/yellow_dye_recipe.png"
+      ],
+      "text": ""
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 30
+}

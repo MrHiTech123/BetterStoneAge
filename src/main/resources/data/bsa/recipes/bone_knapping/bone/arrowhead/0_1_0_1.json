@@ -1,0 +1,20 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:knapping",
+  "knapping_type": "bsa:bone",
+  "outside_slot_required": false,
+  "pattern": [
+    "XX XX",
+    "X   X",
+    "     ",
+    "X  X ",
+    "XX XX"
+  ],
+  "ingredient": {
+    "tag": "bsa:bone_knapping"
+  },
+  "result": {
+    "item": "bsa:bone/arrowhead",
+    "count": 4
+  }
+}

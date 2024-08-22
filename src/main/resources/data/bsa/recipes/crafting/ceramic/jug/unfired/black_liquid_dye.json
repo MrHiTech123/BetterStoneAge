@@ -1,0 +1,19 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "tfc:ceramic/unfired_jug"
+    },
+    {
+      "type": "tfc:fluid_item",
+      "fluid_ingredient": {
+        "ingredient": "tfc:black_dye",
+        "amount": 100
+      }
+    }
+  ],
+  "result": {
+    "item": "bsa:ceramic/jug/unfired/black"
+  }
+}

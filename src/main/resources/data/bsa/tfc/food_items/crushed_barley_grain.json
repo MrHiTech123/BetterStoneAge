@@ -1,0 +1,10 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "ingredient": {
+    "item": "bsa:food/crushed_barley_grain"
+  },
+  "hunger": 4,
+  "saturation": 0.25,
+  "decay_modifier": 0.375,
+  "grain": 0.2
+}

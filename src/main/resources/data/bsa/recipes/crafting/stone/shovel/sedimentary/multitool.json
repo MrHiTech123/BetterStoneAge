@@ -1,0 +1,22 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "R",
+    "M"
+  ],
+  "key": {
+    "M": {
+      "item": "bsa:stone/multitool_head/sedimentary"
+    },
+    "R": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "tfc:stone/shovel/sedimentary",
+    "nbt": {
+      "Damage": 25
+    }
+  }
+}

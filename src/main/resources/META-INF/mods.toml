@@ -15,7 +15,7 @@ license="GNU GPL v3"
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 # The modid of the mod
-modId="better_stone_age" #mandatory
+modId="bsa" #mandatory
 # The version number of the mod
 version="1.0" #mandatory
 # A display name for the mod
@@ -55,21 +55,21 @@ ordering="NONE"
 # Side this dependency is applied on - BOTH, CLIENT, or SERVER
 side="BOTH"
 # Here's another dependency
-[[dependencies.better_stone_age]]
+[[dependencies.bsa]]
 modId="minecraft"
 mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
 versionRange="${minecraft_version_range}"
 ordering="NONE"
 side="BOTH"
-[[dependencies.better_stone_age]]
+[[dependencies.bsa]]
 modId="tfc"
 mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
 versionRange="[0,)"
 ordering="AFTER"
 side="BOTH"
-[[dependencies.better_stone_age]]
+[[dependencies.bsa]]
 modId="jade"
 mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version

@@ -1,0 +1,52 @@
+{
+  "name": "Sinew Processing",
+  "category": "tfc:bsa",
+  "icon": "bsa:sinew_string",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "tag": "bsa:sinew_display"
+      },
+      "text": "Sinew is dropped by most large animals, and can be processed into $(thing)Sinew String$().$(br)$(br)The first step in processing sinew is placing it on the ground to dry. This takes 48 hours (two in-game days) and yields $(thing)Dried Sinew$()."
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Drying Sinew",
+      "multiblock": {
+        "mapping": {
+          "0": "bsa:sinew[dried=false]",
+          "D": "tfc:grass/loam"
+        },
+        "pattern": [
+          [
+            "0"
+          ],
+          [
+            "D"
+          ]
+        ]
+      },
+      "enable_visualize": false
+    },
+    {
+      "type": "tfc:anvil_recipe",
+      "recipe": "bsa:anvil/pounded_sinew",
+      "text": "Once sinew has dried, it can be pounded on an anvil to make $(thing)Pounded Sinew$(). $(br)$(br)If you do not yet have a metal anvil, you can also perform this operation on a $(l:tfc:getting_started/primitive_anvils)Primitive Anvil$()."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "bsa:crafting/sinew_string",
+      "text": "Finally, the Pounded Sinew can be crafted into $(thing)Sinew String$().$(br)$(br)Among other things, Sinew String can be used as a $(l:tfc:bsa/tool_bindings)tool binding$() to give your stone tools the $(thing)Perfectly Forged!$() trait."
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 70,
+  "extra_recipe_mappings": {
+    "bsa:sinew": 0,
+    "bsa:dried_sinew": 0,
+    "bsa:pounded_sinew": 0,
+    "bsa:sinew_string": 0
+  }
+
+}
