@@ -5,12 +5,18 @@ import net.dries007.tfc.common.blockentities.AbstractFirepitBlockEntity;
 import net.dries007.tfc.common.blockentities.TFCBlockEntities;
 import net.dries007.tfc.common.blocks.ExtendedProperties;
 import net.dries007.tfc.common.blocks.TFCBlocks;
+import net.dries007.tfc.common.blocks.wood.TFCDoorBlock;
 import net.dries007.tfc.common.items.TFCItems;
 import net.dries007.tfc.common.recipes.outputs.ItemStackProvider;
 import net.dries007.tfc.util.registry.RegistrationHelpers;
+import net.dries007.tfc.util.registry.RegistryWood;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.PushReaction;
 import net.mrhitech.BetterStoneAge.common.blockentities.BetterStoneAgeBlockEntities;
 import net.dries007.tfc.util.Helpers;
 import net.minecraft.core.registries.Registries;
@@ -34,6 +40,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+import static net.dries007.tfc.common.blocks.TFCBlocks.WOODS;
 import static net.dries007.tfc.common.blocks.TFCBlocks.litBlockEmission;
 
 
@@ -43,10 +50,17 @@ public class BetterStoneAgeBlocks {
     public static final Map<DyeColor, RegistryObject<Block>> GLAZED_POTS = Helpers.mapOfKeys(DyeColor.class, color ->
             BLOCKS.register("ceramic/pot/" + color, () -> new CustomPotBlock(ExtendedProperties.of(MapColor.DIRT).strength(0.4F, 0.4F).sound(SoundType.NETHER_WART).randomTicks().noOcclusion().lightLevel(litBlockEmission(15)).blockEntity(TFCBlockEntities.POT).pathType(BlockPathTypes.DAMAGE_FIRE).<AbstractFirepitBlockEntity<?>>ticks(AbstractFirepitBlockEntity::serverTick, AbstractFirepitBlockEntity::clientTick), () -> BetterStoneAgeItems.GLAZED_POTS.get(color).get(), () -> BetterStoneAgeBlockEntities.GLAZED_POTS.get(color).get(), color)));
     public static final RegistryObject<Block> SINEW = BLOCKS.register("sinew", () -> new DryingSinewBlock(ExtendedProperties.of(MapColor.COLOR_PINK).noCollission().noOcclusion().instabreak().blockEntity(BetterStoneAgeBlockEntities.TICK_COUNTER), () -> BetterStoneAgeItems.DRIED_SINEW.get()));
-
-
-
-
+    
+    public static final RegistryObject<Block> HIDE_DOOR = BLOCKS.register("hide_door", () -> new TFCDoorBlock(ExtendedProperties.of(DyeColor.BLUE).sound(SoundType.WOOD).instrument(NoteBlockInstrument.BASS).strength(0.3F).noOcclusion(), BlockSetType.DARK_OAK));
+    
+    private static ExtendedProperties properties(RegistryWood wood)
+    {
+        return ExtendedProperties.of(wood.woodColor()).sound(SoundType.WOOD).instrument(NoteBlockInstrument.BASS);
+    }
+    
+    
+    
+    
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockSupplier) {
         return register(name, blockSupplier, (block) -> {
             return new BlockItem(block, new Item.Properties());

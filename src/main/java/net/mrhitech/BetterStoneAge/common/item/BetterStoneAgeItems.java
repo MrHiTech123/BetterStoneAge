@@ -74,6 +74,8 @@ public class BetterStoneAgeItems {
     public static final RegistryObject<Item> FLINT_ARROWHEAD = ITEMS.register("stone/arrowhead/flint", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BONE_ARROWHEAD = ITEMS.register("bone/arrowhead", () -> new Item(new Item.Properties()));
     
+    public static final RegistryObject<Item> HIDE_DOOR = ITEMS.register("hide_door", () -> new DoubleHighBlockItem(BetterStoneAgeBlocks.HIDE_DOOR.get(), new Item.Properties()));
+    
     public static void register(IEventBus bus) {
         ITEMS.register(bus);
     }

@@ -161,6 +161,7 @@ public class BetterStoneAge
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             ItemBlockRenderTypes.setRenderLayer(BetterStoneAgeBlocks.SINEW.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(BetterStoneAgeBlocks.HIDE_DOOR.get(), RenderType.translucent());
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());

@@ -1,0 +1,19 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WH",
+    "W "
+  ],
+  "key": {
+    "W": {
+      "item": "tfc:wattle"
+    },
+    "H": {
+      "item": "tfc:large_raw_hide"
+    }
+  },
+  "result": {
+    "item": "better_stone_age:hide_door"
+  }
+}

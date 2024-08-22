@@ -101,6 +101,9 @@ def create_block_models():
         ({'dried': True}, {'model': 'better_stone_age:block/dried_sinew'})
     )
     
+    block = rm.block(('hide'))
+    make_door(block)
+    
     
 
 def create_item_foods():
@@ -152,7 +155,7 @@ def create_item_models():
     rm.item_model(('stone', 'arrowhead'), 'better_stone_age:item/stone/arrowhead').with_lang('Stone Arrowhead')
     rm.item_model(('stone', 'arrowhead', 'flint'), 'better_stone_age:item/stone/flint/arrowhead').with_lang('Flint Arrowhead')
     rm.item_model(('bone', 'arrowhead'), 'better_stone_age:item/bone/arrowhead').with_lang('Bone Arrowhead')
-    
+    rm.item_model(('hide_door'), 'better_stone_age:item/hide_door')
     
     for grain in GRAINS:
         rm.item_model(('food', f'coarse_{grain}_flour'), f'better_stone_age:item/food/coarse_{grain}_flour')
@@ -161,12 +164,14 @@ def create_item_models():
         rm.item_model(('food', f'crushed_{grain}_grain'), f'better_stone_age:item/food/crushed_{grain}_grain')
         
     rm.item_model(('food/porridge'), 'better_stone_age:item/food/porridge')
+    rm.item_model(('hide_door'), 'better_stone_age:item/hide_door')
 
 def create_loot_tables():
     print('\tCreating loot tables...')
     tfc_rm.block_loot('tfc:calcite', {'name': 'tfc:powder/flux', 'functions': [utils.loot_functions({'function': 'minecraft:set_count', 'count': {'min': 1, 'max': 2, 'type': 'minecraft:uniform'}})]})
     tfc_rm.block_loot('tfc:charcoal_pile', {'type': 'minecraft:alternatives', 'children': [{'type': 'minecraft:item', 'name': 'tfc:powder/charcoal', 'conditions': [{'condition': 'minecraft:match_tool', 'predicate': {'tag': 'tfc:hammers'}}], 'functions': [{'function': 'minecraft:set_count', 'count': 2}]}, {'type': 'minecraft:item', 'name': 'minecraft:charcoal'}]})
     rm.block_loot('better_stone_age:sinew', {'name': 'better_stone_age:sinew', 'conditions': [loot_tables.block_state_property('better_stone_age:sinew[dried=false]')]}, {'name': 'better_stone_age:dried_sinew', 'conditions': [loot_tables.block_state_property('better_stone_age:sinew[dried=true]')]})
+    rm.block_loot('better_stone_age:hide_door', {'name': 'better_stone_age:hide_door', 'conditions': loot_tables.block_state_property('better_stone_age:hide_door[half=lower]')})
     
     for rock_category in ROCKS:
         tfc_rm.block_loot(f'tfc:rock/gravel/{rock_category}', {'name': f'tfc:rock/gravel/{rock_category}'})
@@ -209,6 +214,7 @@ def create_misc_lang():
     rm.lang('subtitle.item.better_stone_age.knapping.bone', 'Bone Scrapes')
     rm.lang('block.better_stone_age.sinew', 'Sinew')
     rm.lang('config.jade.plugin_tfc.drying_sinew', 'Drying Sinew')
+    rm.lang('block.better_stone_age.hide_door', 'Hide Door')
     
     
     
@@ -302,7 +308,8 @@ def create_crafting_recipes():
     rm.crafting_shaped(('crafting', 'arrow', 'stone'), ('A', 'R', 'F'), {'A': 'better_stone_age:stone/arrowhead', 'R': '#forge:rods/wooden', 'F': 'minecraft:feather'}, 'minecraft:arrow')
     rm.crafting_shaped(('crafting', 'arrow', 'flint'), ('A', 'R', 'F'), {'A': 'better_stone_age:stone/arrowhead/flint', 'R': '#forge:rods/wooden', 'F': 'minecraft:feather'}, (2, 'minecraft:arrow'))
     rm.crafting_shaped(('crafting', 'arrow', 'bone'), ('A', 'R', 'F'), {'A': 'better_stone_age:bone/arrowhead', 'R': '#forge:rods/wooden', 'F': 'minecraft:feather'}, 'minecraft:arrow')
-    
+    rm.crafting_shaped(('crafting', 'hide_door'), ('WH', 'W '), {'W': 'tfc:wattle', 'H': 'tfc:large_raw_hide'}, 'better_stone_age:hide_door')
+    extra_products_shapeless(rm, ('crafting', 'hide_door_uncraft'), ('better_stone_age:hide_door'), 'tfc:large_raw_hide', ('tfc:wattle', 'tfc:wattle'))
 
 def create_arrowhead_knapping_recipes():
     print('\t\tGenerating arrowhead knapping recipes...')

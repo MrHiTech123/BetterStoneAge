@@ -1,0 +1,23 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:extra_products_shapeless_crafting",
+  "extra_products": [
+    {
+      "item": "tfc:wattle"
+    },
+    {
+      "item": "tfc:wattle"
+    }
+  ],
+  "recipe": {
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+      {
+        "item": "better_stone_age:hide_door"
+      }
+    ],
+    "result": {
+      "item": "tfc:large_raw_hide"
+    }
+  }
+}
