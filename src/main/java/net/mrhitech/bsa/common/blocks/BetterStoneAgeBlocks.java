@@ -53,12 +53,7 @@ public class BetterStoneAgeBlocks {
     
     public static PotBlock makePotBlock(DyeColor color) {
         PotBlock toReturn = new PotBlock(ExtendedProperties.of(MapColor.DIRT).strength(0.4F, 0.4F).sound(SoundType.NETHER_WART).randomTicks().noOcclusion().lightLevel(litBlockEmission(15)).blockEntity(TFCBlockEntities.POT).pathType(BlockPathTypes.DAMAGE_FIRE).<AbstractFirepitBlockEntity<?>>ticks(AbstractFirepitBlockEntity::serverTick, AbstractFirepitBlockEntity::clientTick));
-        System.out.println("nananana");
-        System.out.println(color);
-        System.out.println(1);
-        ((IPotBlockEntitySaver)toReturn).setEntity(BetterStoneAgeBlockEntities.GLAZED_POTS.get(color));
-        System.out.println(color);
-        System.out.println(2);
+        ((IPotBlockEntitySaver)toReturn).setColor(color);
         return toReturn;
     }
     
