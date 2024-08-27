@@ -22,10 +22,7 @@ import java.util.stream.Stream;
 
 public class BetterStoneAgeBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, BetterStoneAge.MOD_ID);
-
-    public static final Map<DyeColor, RegistryObject<BlockEntityType<PotBlockEntity>>> GLAZED_POTS = Helpers.mapOfKeys(DyeColor.class, color ->
-            register("ceramic/pot/" + color, PotBlockEntity::new, BetterStoneAgeBlocks.GLAZED_POTS.get(color)));
-
+    
     public static final RegistryObject<BlockEntityType<TickCounterBlockEntity>> TICK_COUNTER = register("tick_counter", TickCounterBlockEntity::new, Stream.of(
         BetterStoneAgeBlocks.SINEW
     ));

@@ -3,10 +3,13 @@ package net.mrhitech.bsa;
 import com.mojang.logging.LogUtils;
 import net.dries007.tfc.common.blocks.rock.RockCategory;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ChestBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -21,13 +24,14 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.mrhitech.bsa.client.BetterStoneAgeSounds;
 import net.mrhitech.bsa.client.ClientEventHandler;
+import net.mrhitech.bsa.common.BetterStoneAgeResourceEvents;
 import net.mrhitech.bsa.common.blockentities.BetterStoneAgeBlockEntities;
 import net.mrhitech.bsa.common.blocks.BetterStoneAgeBlocks;
 import net.mrhitech.bsa.common.item.BetterStoneAgeItems;
 import net.mrhitech.bsa.common.recipes.BetterStoneAgeRecipeSerializers;
 import net.mrhitech.bsa.common.recipes.BetterStoneAgeRecipeTypes;
-import net.mrhitech.bsa.event.ForgeEventHandler;
 import net.mrhitech.bsa.loot.BetterStoneAgeLootModifiers;
+import org.apache.logging.log4j.core.jmx.Server;
 import org.slf4j.Logger;
 
 import net.dries007.tfc.common.TFCCreativeTabs;
@@ -54,7 +58,7 @@ public class BetterStoneAge
         BetterStoneAgeRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
         BetterStoneAgeSounds.register(modEventBus);
         BetterStoneAgeRecipeTypes.registerPotRecipeOutputTypes();
-        ForgeEventHandler.init();
+        BetterStoneAgeResourceEvents.init();
         
         
 
