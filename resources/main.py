@@ -89,7 +89,7 @@ def create_block_models():
                 ({'lit': True, 'axis': 'z'}, {'model': 'tfc:block/firepit_lit_low', 'y': 90}),
                 ({'lit': False, 'axis': 'x'}, {'model': 'tfc:block/firepit_unlit'}),
                 ({'lit': False, 'axis': 'z'}, {'model': 'tfc:block/firepit_unlit', 'y': 90})
-            ).with_lang(lang(f'{color} Pot')).with_block_loot('tfc:powder/wood_ash', f'bsa:ceramic/pot/glazed/{color}')
+            ).with_lang(lang(f'{color} Glazed Pot')).with_block_loot('tfc:powder/wood_ash', f'bsa:ceramic/pot/glazed/{color}')
         rm.item_model('pot', 'tfc:item/firepit_pot')
         
     read_data_from_template(rm, ('src', 'main', 'resources', 'assets', 'bsa', 'models', 'block', 'drying_sinew'), flat_block_template % ('bsa:block/drying_sinew', 'bsa:block/dried_sinew'))
