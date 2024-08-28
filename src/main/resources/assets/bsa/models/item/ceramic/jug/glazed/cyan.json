@@ -3,7 +3,7 @@
   "loader": "tfc:contained_fluid",
   "parent": "forge:item/default",
   "textures": {
-    "base": "bsa:item/ceramic/jug/glazed/cyan_empty",
+    "base": "bsa:item/ceramic/jug/glazed/cyan",
     "fluid": "tfc:item/ceramic/jug_overlay"
   }
 }
