@@ -1,11 +1,14 @@
 package net.mrhitech.bsa.common.blocks.devices;
 
+import net.dries007.tfc.client.TFCSounds;
+import net.dries007.tfc.common.TFCDamageSources;
 import net.dries007.tfc.common.blockentities.AbstractFirepitBlockEntity;
 import net.dries007.tfc.common.blockentities.TFCBlockEntities;
 import net.dries007.tfc.common.blocks.ExtendedProperties;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.devices.PotBlock;
 import net.dries007.tfc.common.items.TFCItems;
+import net.dries007.tfc.util.Helpers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -36,11 +39,13 @@ public class CustomPotBlock extends PotBlock {
         
         InteractionResult interactResult = level.getBlockEntity(pos, TFCBlockEntities.POT.get()).map((pot) -> {
             if (
-                    (!pot.isBoiling() && stack.isEmpty() && player.isShiftKeyDown()) && 
-                    !((Boolean)state.getValue(LIT)) &&
+                    (!pot.isBoiling() && stack.isEmpty() && player.isShiftKeyDown()) &&
                     !(!(Boolean)state.getValue(LIT) && !pot.isBoiling() && !(Boolean)state.getValue(LIT) && pot.getAsh() > 0)
-                    
             ) {
+                if (state.getValue(LIT)) {
+                    TFCDamageSources.pot(player, 1f);
+                    Helpers.playSound(level, pos, TFCSounds.ITEM_COOL.get());
+                }
                 ItemHandlerHelper.giveItemToPlayer(player, new ItemStack((ItemLike) potReturnItem.get()));
                 AbstractFirepitBlockEntity.convertTo(level, pos, state, pot, (Block) TFCBlocks.FIREPIT.get());
                 return InteractionResult.sidedSuccess(level.isClientSide);
