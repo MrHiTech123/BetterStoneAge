@@ -1,7 +1,7 @@
 {
   "__comment__": "This file was automatically created by mcresources",
   "ingredient": {
-    "tag": "bsa:unfired_ceramic_jugs"
+    "tag": "bsa:ceramic/unfired_jugs"
   },
   "heat_capacity": 0.8
 }

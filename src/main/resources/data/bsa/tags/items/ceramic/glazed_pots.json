@@ -1,0 +1,23 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "replace": false,
+  "values": [
+    "tfc:ceramic/pot",
+    "bsa:ceramic/pot/glazed/white",
+    "bsa:ceramic/pot/glazed/orange",
+    "bsa:ceramic/pot/glazed/magenta",
+    "bsa:ceramic/pot/glazed/light_blue",
+    "bsa:ceramic/pot/glazed/yellow",
+    "bsa:ceramic/pot/glazed/lime",
+    "bsa:ceramic/pot/glazed/pink",
+    "bsa:ceramic/pot/glazed/gray",
+    "bsa:ceramic/pot/glazed/light_gray",
+    "bsa:ceramic/pot/glazed/cyan",
+    "bsa:ceramic/pot/glazed/purple",
+    "bsa:ceramic/pot/glazed/blue",
+    "bsa:ceramic/pot/glazed/brown",
+    "bsa:ceramic/pot/glazed/green",
+    "bsa:ceramic/pot/glazed/red",
+    "bsa:ceramic/pot/glazed/black"
+  ]
+}

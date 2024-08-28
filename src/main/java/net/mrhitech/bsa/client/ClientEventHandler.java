@@ -64,7 +64,7 @@ public class ClientEventHandler {
     
     
     public static void registerColorHandlerItems(RegisterColorHandlersEvent.Item event) {
-        BetterStoneAgeItems.GLAZED_CERAMIC_JUGS.values().forEach(reg -> event.register(new ContainedFluidModel.Colors(), reg.get()));
+        BetterStoneAgeItems.GLAZED_JUGS.values().forEach(reg -> event.register(new ContainedFluidModel.Colors(), reg.get()));
     }
 
 }

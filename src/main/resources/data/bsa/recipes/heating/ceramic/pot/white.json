@@ -1,0 +1,11 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "bsa:ceramic/pot/unfired/white"
+  },
+  "result_item": {
+    "item": "bsa:ceramic/pot/glazed/white"
+  },
+  "temperature": 1399
+}

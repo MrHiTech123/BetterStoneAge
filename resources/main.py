@@ -117,14 +117,17 @@ def create_item_foods():
 
 def create_item_heats():
     print('Creating item heat data...')
-    item_heat(rm, ('ceramic', 'unfired_ceramic_jugs'), '#bsa:unfired_ceramic_jugs', 0.8)    
+    item_heat(rm, ('ceramic', 'unfired_ceramic_jugs'), '#bsa:ceramic/unfired_jugs', 0.8)
+    item_heat(rm, ('ceramic', 'unfired_ceramic_pots'), '#bsa:ceramic/unfired_pots', 0.8)
 
 def create_item_models():
     print('Creating item models...')
     for color in COLORS:
         rm.item_model(('ceramic', 'jug', 'unfired', f'{color}')).with_lang(lang(f'{color} Unfired Jug')).with_lang(lang(f'{color} Unfired Jug'))
         contained_fluid(rm, ('ceramic', 'jug', 'glazed', f'{color}'), f'bsa:item/ceramic/jug/glazed/{color}', 'tfc:item/ceramic/jug_overlay').with_lang(lang(f'{color} Glazed Jug'))
-        rm.item_model(('ceramic', 'pot', 'glazed', color), f'bsa:item/ceramic/pot/glazed/{color}')
+        rm.item_model(('ceramic', 'pot', 'glazed', color), f'bsa:item/ceramic/pot/glazed/{color}').with_lang(lang(f'{color}_glazed_pot'))
+        rm.item_model(('ceramic', 'pot', 'unfired', color), f'bsa:item/ceramic/pot/unfired/{color}').with_lang(lang(f'{color}_unfired_pot'))
+        
     for rock_category in ROCK_CATEGORIES:
         rm.item_model(('stone', 'multitool_head', rock_category), 'bsa:item/stone/multitool_head').with_lang('Stone Multitool Head')
     
@@ -198,7 +201,6 @@ def create_misc_lang():
     rm.lang('item.minecraft.string', 'Spider Silk')
     for color in COLORS:
         rm.lang(f'item.bsa.ceramic.jug.glazed.{color}.filled', '%s ' + lang(f'{color} Glazed Ceramic Jug'))
-        rm.lang(f'item.bsa.ceramic.pot.glazed.{color}', lang(f'{color} Pot'))
     for rock_category in ROCK_CATEGORIES:
         rm.lang(f'item.bsa.stone.multitool_head.{rock_category}', lang(f'Stone Multitool Head'))
     
@@ -238,6 +240,7 @@ def create_barrel_recipes():
     print('\tCreating barrel recipes...')
     for color in COLORS:
         barrel_sealed_recipe(rm, ('ceramic', 'jug', 'unfired', color), f'Dyeing Unfired Jug {color}', 1000, 'tfc:ceramic/unfired_jug', f'25 tfc:{color}_dye', f'bsa:ceramic/jug/unfired/{color}')
+        barrel_sealed_recipe(rm, ('ceramic', 'pot', 'unfired', color), f'Dyeing Unfired Pot {color}', 1000, 'tfc:ceramic/unfired_pot', f'25 tfc:{color}_dye', f'bsa:ceramic/pot/unfired/{color}')
     
 def create_crafting_recipes():
     print('\tCreating crafting recipes...')
@@ -246,9 +249,13 @@ def create_crafting_recipes():
     for color in COLORS:
         rm.crafting_shapeless(('crafting', 'ceramic', 'jug', 'unfired', f'{color}'), ('tfc:ceramic/unfired_jug', f'minecraft:{color.lower()}_dye'), f'bsa:ceramic/jug/unfired/{color}')
         rm.crafting_shapeless(('crafting', 'ceramic', 'jug', 'unfired', f'{color}_liquid_dye'), ('tfc:ceramic/unfired_jug', fluid_item_ingredient(f'100 tfc:{color}_dye')), f'bsa:ceramic/jug/unfired/{color}')
+        rm.crafting_shapeless(('crafting', 'ceramic', 'pot', 'unfired', f'{color}'), ('tfc:ceramic/unfired_pot', f'minecraft:{color.lower()}_dye'), f'bsa:ceramic/pot/unfired/{color}')
+        rm.crafting_shapeless(('crafting', 'ceramic', 'pot', 'unfired', f'{color}_liquid_dye'), ('tfc:ceramic/unfired_pot', fluid_item_ingredient(f'100 tfc:{color}_dye')), f'bsa:ceramic/pot/unfired/{color}')
+        
+        
         rm.crafting_shapeless(('crafting', 'ceramic', f'{color}_unfired_vessel_liquid_dye'), ('tfc:ceramic/unfired_vessel', fluid_item_ingredient(f'100 tfc:{color}_dye')), f'tfc:ceramic/{color}_unfired_vessel')
         rm.crafting_shapeless(('crafting', 'ceramic', f'{color}_unfired_large_vessel_liquid_dye'), ('tfc:ceramic/unfired_large_vessel', fluid_item_ingredient(f'100 tfc:{color}_dye')), f'tfc:ceramic/unfired_large_vessel/{color}')
-    
+        
     rm.crafting_shapeless(('crafting', 'dye', 'darken_blue'), ('minecraft:light_blue_dye', 'minecraft:black_dye'), utils.item_stack({'item': 'minecraft:blue_dye', 'count': 2}))
     rm.crafting_shapeless(('crafting', 'dye', 'darken_gray'), ('minecraft:light_gray_dye', 'minecraft:black_dye'), utils.item_stack({'item': 'minecraft:gray_dye', 'count': 2}))
     rm.crafting_shapeless(('crafting', 'dye', 'darken_green'), ('minecraft:lime_dye', 'minecraft:black_dye'), utils.item_stack({'item': 'minecraft:green_dye', 'count': 2}))
@@ -357,8 +364,8 @@ def create_arrowhead_knapping_recipes():
 def create_heating_recipes():
     print('\tCreating heating recipes...')
     for color in COLORS:
-        heat_recipe(rm, ('ceramic', 'jug', f'{color}'), f'bsa:ceramic/jug/unfired/{color}', POTTERY_MELT, f'bsa:ceramic/jug/glazed/{color}')    
-    
+        heat_recipe(rm, ('ceramic', 'jug', color), f'bsa:ceramic/jug/unfired/{color}', POTTERY_MELT, f'bsa:ceramic/jug/glazed/{color}')    
+        heat_recipe(rm, ('ceramic', 'pot', color), f'bsa:ceramic/pot/unfired/{color}', POTTERY_MELT, f'bsa:ceramic/pot/glazed/{color}')
 
 def create_bone_knapping_recipes():
     print('\t\tCreating bone knapping recipes...')
@@ -449,9 +456,12 @@ def create_entity_tags():
 
 def create_item_tags():
     print('\tCreating item tags...')
-    rm.item_tag('unfired_ceramic_jugs', 'tfc:ceramic/unfired_jug', *[f'bsa:ceramic/jug/unfired/{color}' for color in COLORS])
-    rm.item_tag('glazed_ceramic_jugs', 'tfc:ceramic/jug', *[f'bsa:ceramic/jug/glazed/{color}' for color in COLORS])
-    tfc_rm.item_tag('fluid_item_ingredient_empty_containers', '#bsa:glazed_ceramic_jugs')
+    rm.item_tag('ceramic/unfired_jugs', 'tfc:ceramic/unfired_jug', *[f'bsa:ceramic/jug/unfired/{color}' for color in COLORS])
+    rm.item_tag('ceramic/unfired_pots', 'tfc:ceramic/unfired_pot', *[f'bsa:ceramic/pot/unfired/{color}' for color in COLORS])
+    rm.item_tag('ceramic/glazed_jugs', 'tfc:ceramic/jug', *[f'bsa:ceramic/jug/glazed/{color}' for color in COLORS])
+    rm.item_tag('ceramic/glazed_pots', 'tfc:ceramic/pot', *[f'bsa:ceramic/pot/glazed/{color}' for color in COLORS])
+    
+    tfc_rm.item_tag('fluid_item_ingredient_empty_containers', '#bsa:ceramic/glazed_jugs')
     tfc_rm.fluid_tag('usable_in_jug', '#tfc:dyes')
     
     rm.item_tag('bindings/weak', 'tfc:straw', 'tfc:groundcover/dead_grass', 'tfc:glue')

@@ -1,0 +1,23 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "replace": false,
+  "values": [
+    "tfc:ceramic/unfired_pot",
+    "bsa:ceramic/pot/unfired/white",
+    "bsa:ceramic/pot/unfired/orange",
+    "bsa:ceramic/pot/unfired/magenta",
+    "bsa:ceramic/pot/unfired/light_blue",
+    "bsa:ceramic/pot/unfired/yellow",
+    "bsa:ceramic/pot/unfired/lime",
+    "bsa:ceramic/pot/unfired/pink",
+    "bsa:ceramic/pot/unfired/gray",
+    "bsa:ceramic/pot/unfired/light_gray",
+    "bsa:ceramic/pot/unfired/cyan",
+    "bsa:ceramic/pot/unfired/purple",
+    "bsa:ceramic/pot/unfired/blue",
+    "bsa:ceramic/pot/unfired/brown",
+    "bsa:ceramic/pot/unfired/green",
+    "bsa:ceramic/pot/unfired/red",
+    "bsa:ceramic/pot/unfired/black"
+  ]
+}
