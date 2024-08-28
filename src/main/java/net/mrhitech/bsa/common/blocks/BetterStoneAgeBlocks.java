@@ -12,7 +12,6 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import net.mrhitech.bsa.common.blockentities.BetterStoneAgeBlockEntities;
 import net.dries007.tfc.util.Helpers;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.Block;
@@ -24,10 +23,11 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraft.world.item.DyeColor;
 import net.minecraftforge.registries.RegistryObject;
 import net.mrhitech.bsa.BetterStoneAge;
+import net.mrhitech.bsa.common.blocks.devices.CustomPotBlock;
 import net.mrhitech.bsa.common.blocks.devices.DryingSinewBlock;
 import net.mrhitech.bsa.common.item.BetterStoneAgeItems;
-import net.mrhitech.bsa.util.mixininterface.IPotBlockEntitySaver;
 import org.jetbrains.annotations.Nullable;
+import net.mrhitech.bsa.common.blockentities.BetterStoneAgeBlockEntities;
 
 import java.util.Map;
 import java.util.function.Function;
@@ -40,7 +40,10 @@ public class BetterStoneAgeBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Registries.BLOCK, BetterStoneAge.MOD_ID);
 
     public static final Map<DyeColor, RegistryObject<Block>> GLAZED_POTS = Helpers.mapOfKeys(DyeColor.class, color ->
-            BLOCKS.register("ceramic/pot/" + color, () -> makePotBlock(color)));
+            BLOCKS.register("ceramic/pot/" + color, () -> new CustomPotBlock(
+                    ExtendedProperties.of(MapColor.DIRT).strength(0.4F, 0.4F).sound(SoundType.NETHER_WART).randomTicks().noOcclusion().lightLevel(litBlockEmission(15)).blockEntity(TFCBlockEntities.POT).pathType(BlockPathTypes.DAMAGE_FIRE).<AbstractFirepitBlockEntity<?>>ticks(AbstractFirepitBlockEntity::serverTick, AbstractFirepitBlockEntity::clientTick),
+                    BetterStoneAgeItems.GLAZED_POTS.get(color)
+            )));
     
     public static final RegistryObject<Block> SINEW = BLOCKS.register("sinew", () -> new DryingSinewBlock(ExtendedProperties.of(MapColor.COLOR_PINK).noCollission().noOcclusion().instabreak().blockEntity(BetterStoneAgeBlockEntities.TICK_COUNTER), () -> BetterStoneAgeItems.DRIED_SINEW.get()));
     
@@ -51,16 +54,6 @@ public class BetterStoneAgeBlocks {
         return ExtendedProperties.of(wood.woodColor()).sound(SoundType.WOOD).instrument(NoteBlockInstrument.BASS);
     }
     
-    public static PotBlock makePotBlock(DyeColor color) {
-        PotBlock toReturn = new PotBlock(ExtendedProperties.of(MapColor.DIRT).strength(0.4F, 0.4F).sound(SoundType.NETHER_WART).randomTicks().noOcclusion().lightLevel(litBlockEmission(15)).blockEntity(TFCBlockEntities.POT).pathType(BlockPathTypes.DAMAGE_FIRE).<AbstractFirepitBlockEntity<?>>ticks(AbstractFirepitBlockEntity::serverTick, AbstractFirepitBlockEntity::clientTick));
-        System.out.println("nananana");
-        System.out.println(color);
-        System.out.println(1);
-        ((IPotBlockEntitySaver)toReturn).setEntity(BetterStoneAgeBlockEntities.GLAZED_POTS.get(color));
-        System.out.println(color);
-        System.out.println(2);
-        return toReturn;
-    }
     
     
     

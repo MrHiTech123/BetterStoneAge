@@ -27,6 +27,7 @@ import net.mrhitech.bsa.common.item.BetterStoneAgeItems;
 import net.mrhitech.bsa.common.recipes.BetterStoneAgeRecipeSerializers;
 import net.mrhitech.bsa.common.recipes.BetterStoneAgeRecipeTypes;
 import net.mrhitech.bsa.event.ForgeEventHandler;
+import net.mrhitech.bsa.event.SetupEvents;
 import net.mrhitech.bsa.loot.BetterStoneAgeLootModifiers;
 import org.slf4j.Logger;
 
@@ -55,6 +56,7 @@ public class BetterStoneAge
         BetterStoneAgeSounds.register(modEventBus);
         BetterStoneAgeRecipeTypes.registerPotRecipeOutputTypes();
         ForgeEventHandler.init();
+        SetupEvents.init();
         
         
 
@@ -160,8 +162,7 @@ public class BetterStoneAge
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            ItemBlockRenderTypes.setRenderLayer(BetterStoneAgeBlocks.SINEW.get(), RenderType.translucent());
-            ItemBlockRenderTypes.setRenderLayer(BetterStoneAgeBlocks.HIDE_DOOR.get(), RenderType.translucent());
+            
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
