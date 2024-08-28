@@ -5,16 +5,21 @@
   "pages": [
     {
       "type": "patchouli:text",
-      "text": "Ceramic Vessels, Large Vessels, and Jugs can now be dyed using liquid dye, without a barrel (also, Jugs can be dyed at all).<br><br>In order to do this, fill a Ceramic Jug (or another liquid container) with at least 100 mb of liquid dye, and craft it with the item you want to dye."
+      "text": "Ceramic Vessels and Large Vessels can now be dyed using liquid dye, without a barrel.<br><br>In order to do this, fill a Ceramic Jug (or another liquid container) with at least 100 mb of liquid dye, and craft it with the item you want to dye."
     },
     {
       "type": "patchouli:crafting",
       "recipe": "bsa:crafting/ceramic/magenta_unfired_vessel_liquid_dye",
-      "recipe2": "bsa:crafting/ceramic/jug/unfired/black_liquid_dye"
+      "recipe2": "bsa:crafting/ceramic/red_unfired_large_vessel_liquid_dye"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Also, Jugs and Pots can be dyed, in all the same ways that other ceramics can be."
     },
     {
       "type": "patchouli:crafting",
-      "recipe": "bsa:crafting/ceramic/red_unfired_large_vessel_liquid_dye"
+      "recipe": "bsa:crafting/ceramic/pot/unfired/black_liquid_dye",
+      "recipe2": "bsa:crafting/ceramic/jug/unfired/red"
     }
   ],
   "read_by_default": true,
