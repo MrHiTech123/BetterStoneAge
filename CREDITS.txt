@@ -3,3 +3,10 @@ Programming by MrHiTech
 Bone knapping sound effect (better_stone_age:item.knapping.bone):
 Licensed from J Bravo under CC BY Attribution 3.0
 Acquired from https://soundbible.com/2025-Sharpen-Knife.html
+
+Many parts of this code were licensed from the TerraFirmaCraft mod (https://github.com/TerraFirmaCraft/TerraFirmaCraft)
+and the Beneath mod, (https://github.com/eerussianguy/Beneath). Many thanks to AlcatrazEscapee and EERussianGuy for their
+code and to them and the TFC Discord as a whole for their help during this project!
+
+
+
