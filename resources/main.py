@@ -95,14 +95,14 @@ def create_block_models():
     read_data_from_template(rm, ('src', 'main', 'resources', 'assets', 'bsa', 'models', 'block', 'drying_sinew'), flat_block_template % ('bsa:block/drying_sinew', 'bsa:block/dried_sinew'))
     read_data_from_template(rm, ('src', 'main', 'resources', 'assets', 'bsa', 'models', 'block', 'dried_sinew'), flat_block_template % ('bsa:block/dried_sinew', 'bsa:block/dried_sinew'))
     
-    
     rm.blockstate_multipart('sinew',
-        ({'dried': False}, {'model': 'bsa:block/drying_sinew'}),
-        ({'dried': True}, {'model': 'bsa:block/dried_sinew'})
+        ({'dried': False}, four_ways('bsa:block/drying_sinew')),
+        ({'dried': True}, four_ways('bsa:block/dried_sinew'))
     )
-    
     block = rm.block(('hide'))
     make_door(block)
+    
+    
     
     
 

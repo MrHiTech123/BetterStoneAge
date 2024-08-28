@@ -5,17 +5,45 @@
       "when": {
         "dried": false
       },
-      "apply": {
-        "model": "bsa:block/drying_sinew"
-      }
+      "apply": [
+        {
+          "model": "bsa:block/drying_sinew",
+          "y": 90
+        },
+        {
+          "model": "bsa:block/drying_sinew"
+        },
+        {
+          "model": "bsa:block/drying_sinew",
+          "y": 180
+        },
+        {
+          "model": "bsa:block/drying_sinew",
+          "y": 270
+        }
+      ]
     },
     {
       "when": {
         "dried": true
       },
-      "apply": {
-        "model": "bsa:block/dried_sinew"
-      }
+      "apply": [
+        {
+          "model": "bsa:block/dried_sinew",
+          "y": 90
+        },
+        {
+          "model": "bsa:block/dried_sinew"
+        },
+        {
+          "model": "bsa:block/dried_sinew",
+          "y": 180
+        },
+        {
+          "model": "bsa:block/dried_sinew",
+          "y": 270
+        }
+      ]
     }
   ]
 }
