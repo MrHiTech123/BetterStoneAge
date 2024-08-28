@@ -57,7 +57,7 @@ public class ClientEventHandler {
         ItemBlockRenderTypes.setRenderLayer(BetterStoneAgeBlocks.HIDE_DOOR.get(), RenderType.translucent());
         
         for (DyeColor color : DyeColor.values()) {
-            // ItemBlockRenderTypes.setRenderLayer(BetterStoneAgeBlocks.GLAZED_POTS.get(color).get(), ghostBlock);
+            ItemBlockRenderTypes.setRenderLayer(BetterStoneAgeBlocks.GLAZED_POTS.get(color).get(), ghostBlock);
         }
         
     }

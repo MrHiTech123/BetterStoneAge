@@ -4,9 +4,9 @@
   "parent": "block/block",
   "textures": {
     "2": "tfc:block/devices/firepit/stick",
-    "particle": "tfc:block/ceramic/large_vessel/glazed/gray/side",
-    "pot_side": "tfc:block/ceramic/large_vessel/glazed/gray/side",
-    "pot_bottom": "tfc:block/ceramic/large_vessel/glazed/gray/bottom"
+    "particle": "bsa:block/ceramic/pot/glazed/gray/side",
+    "pot_side": "bsa:block/ceramic/pot/glazed/gray/side",
+    "pot_bottom": "bsa:block/ceramic/pot/glazed/gray/bottom"
   },
   "elements": [
     {
