@@ -101,10 +101,6 @@ def create_block_models():
     )
     block = rm.block(('hide'))
     make_door(block)
-    
-    
-    
-    
 
 def create_item_foods():
     print('Creating item foods...')
@@ -497,6 +493,7 @@ def create_item_tags():
     
     rm.item_tag('rock/loose', *[f'tfc:rock/loose/{rock_type}' for rock_type in ROCKS])
     rm.item_tag('arrowheads', 'bsa:stone/arrowhead', 'bsa:stone/arrowhead/flint')
+    rm.item_tag('tfc:usable_on_tool_rack', 'bsa:stone/shovel/flint', 'bsa:stone/javelin/flint', 'bsa:stone/knife/flint', 'bsa:stone/axe/flint', 'bsa:stone/hammer/flint', 'bsa:stone/hoe/flint', 'bsa:bone/fishing_rod')
     
     
 def create_worldgen_tags():
