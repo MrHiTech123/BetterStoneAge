@@ -8,6 +8,7 @@
     "bsa:stone/axe/flint",
     "bsa:stone/hammer/flint",
     "bsa:stone/hoe/flint",
-    "bsa:bone/fishing_rod"
+    "bsa:bone/fishing_rod",
+    "#tfc:fluid_item_ingredient_empty_containers"
   ]
 }
