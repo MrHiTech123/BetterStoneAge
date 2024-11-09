@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "bsa:stone/shovel/flint",
+    "bsa:stone/javelin/flint",
+    "bsa:stone/knife/flint",
+    "bsa:stone/axe/flint",
+    "bsa:stone/hammer/flint",
+    "bsa:stone/hoe/flint",
+    "bsa:bone/fishing_rod"
+  ]
+}
