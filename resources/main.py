@@ -162,8 +162,9 @@ def create_item_models():
     for grain in NON_BROKEN_GRAINS:
         rm.item_model(('food', f'crushed_{grain}_grain'), f'bsa:item/food/crushed_{grain}_grain')
         
-    rm.item_model(('food/porridge'), 'bsa:item/food/porridge')
+    rm.item_model(('food', 'porridge'), 'bsa:item/food/porridge')
     rm.item_model(('hide_door'), 'bsa:item/hide_door')
+    rm.item_model(('dust', 'clay'), 'bsa:item/dust/clay').with_lang('Clay Dust')
 
 def create_loot_tables():
     print('\tCreating loot tables...')
@@ -228,9 +229,6 @@ def create_anvil_recipes():
     
     for grain in BROKEN_GRAINS:
         anvil_recipe(rm, ('food', f'coarse_{grain}_flour'), not_rotten(f'tfc:food/{grain}_grain'), item_stack_provider(f'bsa:food/coarse_{grain}_flour', copy_oldest_food=True), 0, Rules.draw_third_last, Rules.draw_second_last, Rules.draw_last)    
-    
-    
-    
 
 def create_barrel_recipes():
     print('\tCreating barrel recipes...')
@@ -313,7 +311,12 @@ def create_crafting_recipes():
     rm.crafting_shaped(('crafting', 'arrow', 'bone'), ('A', 'R', 'F'), {'A': 'bsa:bone/arrowhead', 'R': '#forge:rods/wooden', 'F': 'minecraft:feather'}, 'minecraft:arrow')
     rm.crafting_shaped(('crafting', 'hide_door'), ('WH', 'W '), {'W': 'tfc:wattle', 'H': 'tfc:large_raw_hide'}, 'bsa:hide_door')
     extra_products_shapeless(rm, ('crafting', 'hide_door_uncraft'), ('bsa:hide_door'), 'tfc:large_raw_hide', ('tfc:wattle', 'tfc:wattle'))
-
+    for i in range(1, 8 + 1):
+        advanced_shapeless(rm, (f'clay_from_ceramic_dust_{i}'), (fluid_item_ingredient('100 minecraft:water'), *(['bsa:dust/clay'] * i)), utils.item_stack((i, 'minecraft:clay_ball')))
+    
+    damage_shapeless(rm, ('ceramic', 'dust_1'), ('#bsa:ceramic/smashable_1', '#tfc:hammers'), (1, 'bsa:dust/clay'))
+    damage_shapeless(rm, ('ceramic', 'dust_5'), ('#bsa:ceramic/smashable_5', '#tfc:hammers'), (5, 'bsa:dust/clay'))
+    
 def create_arrowhead_knapping_recipes():
     print('\t\tGenerating arrowhead knapping recipes...')
     placements = {
@@ -495,6 +498,8 @@ def create_item_tags():
     rm.item_tag('arrowheads', 'bsa:stone/arrowhead', 'bsa:stone/arrowhead/flint')
     rm.item_tag('tfc:usable_on_tool_rack', 'bsa:stone/shovel/flint', 'bsa:stone/javelin/flint', 'bsa:stone/knife/flint', 'bsa:stone/axe/flint', 'bsa:stone/hammer/flint', 'bsa:stone/hoe/flint', 'bsa:bone/fishing_rod', '#tfc:fluid_item_ingredient_empty_containers')
     
+    rm.item_tag('bsa:ceramic/smashable_1', 'tfc:ceramic/bowl', 'minecraft:brick', 'minecraft:flower_pot', 'tfc:ceramic/ingot_mold')
+    rm.item_tag('bsa:ceramic/smashable_5', 'tfc:ceramic/vessel', 'tfc:ceramic/large_vessel', 'tfc:ceramic/jug', 'tfc:ceramic/pot', 'tfc:ceramic/spindle_head', 'tfc:pan/empty', 'tfc:ceramic_blowpipe', "tfc:ceramic/axe_head_mold", "tfc:ceramic/chisel_head_mold", "tfc:ceramic/hammer_head_mold", "tfc:ceramic/hoe_head_mold", "tfc:ceramic/javelin_head_mold", "tfc:ceramic/knife_blade_mold", "tfc:ceramic/mace_head_mold", "tfc:ceramic/pickaxe_head_mold", "tfc:ceramic/propick_head_mold", "tfc:ceramic/saw_blade_mold", "tfc:ceramic/shovel_head_mold", "tfc:ceramic/sword_blade_mold", "tfc:ceramic/scythe_blade_mold", "tfc:ceramic/bell_mold")
     
 def create_worldgen_tags():
     print('Creating worldgen tags...')

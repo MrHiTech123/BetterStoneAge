@@ -1,0 +1,10 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "replace": false,
+  "values": [
+    "tfc:ceramic/bowl",
+    "minecraft:brick",
+    "minecraft:flower_pot",
+    "tfc:ceramic/ingot_mold"
+  ]
+}

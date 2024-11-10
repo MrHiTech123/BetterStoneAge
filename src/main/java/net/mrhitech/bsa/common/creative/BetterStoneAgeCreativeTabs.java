@@ -20,6 +20,11 @@ public class BetterStoneAgeCreativeTabs {
             event.accept(BetterStoneAgeItems.BONE_ARROWHEAD);
             event.accept(BetterStoneAgeItems.SABERTOOTH_FANG);
             
+            event.accept(BetterStoneAgeItems.CLAY_DUST);
+            
+        }
+        if (event.getTabKey() == TFCCreativeTabs.WOOD.tab().getKey()) {
+            event.accept(BetterStoneAgeItems.HIDE_DOOR);
         }
         if (event.getTabKey() == TFCCreativeTabs.MISC.tab().getKey()) {
             event.accept(BetterStoneAgeItems.SINEW);
@@ -65,6 +70,7 @@ public class BetterStoneAgeCreativeTabs {
             
             event.accept(BetterStoneAgeItems.STONE_ARROWHEAD);
             event.accept(BetterStoneAgeItems.FLINT_ARROWHEAD);
+            
             
         }
     }

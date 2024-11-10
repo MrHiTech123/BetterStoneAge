@@ -1,0 +1,27 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "replace": false,
+  "values": [
+    "tfc:ceramic/vessel",
+    "tfc:ceramic/large_vessel",
+    "tfc:ceramic/jug",
+    "tfc:ceramic/pot",
+    "tfc:ceramic/spindle_head",
+    "tfc:pan/empty",
+    "tfc:ceramic_blowpipe",
+    "tfc:ceramic/axe_head_mold",
+    "tfc:ceramic/chisel_head_mold",
+    "tfc:ceramic/hammer_head_mold",
+    "tfc:ceramic/hoe_head_mold",
+    "tfc:ceramic/javelin_head_mold",
+    "tfc:ceramic/knife_blade_mold",
+    "tfc:ceramic/mace_head_mold",
+    "tfc:ceramic/pickaxe_head_mold",
+    "tfc:ceramic/propick_head_mold",
+    "tfc:ceramic/saw_blade_mold",
+    "tfc:ceramic/shovel_head_mold",
+    "tfc:ceramic/sword_blade_mold",
+    "tfc:ceramic/scythe_blade_mold",
+    "tfc:ceramic/bell_mold"
+  ]
+}
