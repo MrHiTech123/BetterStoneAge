@@ -312,7 +312,7 @@ def create_crafting_recipes():
     rm.crafting_shaped(('crafting', 'hide_door'), ('WH', 'W '), {'W': 'tfc:wattle', 'H': 'tfc:large_raw_hide'}, 'bsa:hide_door')
     extra_products_shapeless(rm, ('crafting', 'hide_door_uncraft'), ('bsa:hide_door'), 'tfc:large_raw_hide', ('tfc:wattle', 'tfc:wattle'))
     for i in range(1, 8 + 1):
-        advanced_shapeless(rm, (f'clay_from_ceramic_dust_{i}'), (fluid_item_ingredient('100 minecraft:water'), *(['bsa:dust/clay'] * i)), utils.item_stack((i, 'minecraft:clay_ball')))
+        advanced_shapeless(rm, ('crafting', f'clay_from_ceramic_dust_{i}'), (fluid_item_ingredient('100 minecraft:water'), *(['bsa:dust/clay'] * i)), utils.item_stack((i, 'minecraft:clay_ball')))
     
     damage_shapeless(rm, ('ceramic', 'dust_1'), ('#bsa:ceramic/smashable_1', '#tfc:hammers'), (1, 'bsa:dust/clay'))
     damage_shapeless(rm, ('ceramic', 'dust_5'), ('#bsa:ceramic/smashable_5', '#tfc:hammers'), (5, 'bsa:dust/clay'))
