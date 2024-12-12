@@ -25,6 +25,7 @@ import net.mrhitech.bsa.common.creative.BetterStoneAgeCreativeTabs;
 import net.mrhitech.bsa.common.item.BetterStoneAgeItems;
 import net.mrhitech.bsa.common.recipes.BetterStoneAgeRecipeSerializers;
 import net.mrhitech.bsa.common.recipes.BetterStoneAgeRecipeTypes;
+import net.mrhitech.bsa.common.recipes.ingredients.BetterStoneAgeIngredients;
 import net.mrhitech.bsa.event.ForgeEventHandler;
 import net.mrhitech.bsa.event.SetupEvents;
 import net.mrhitech.bsa.loot.BetterStoneAgeLootModifiers;
@@ -54,6 +55,7 @@ public class BetterStoneAge
         BetterStoneAgeRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
         BetterStoneAgeSounds.register(modEventBus);
         BetterStoneAgeRecipeTypes.registerPotRecipeOutputTypes();
+        BetterStoneAgeIngredients.registerIngredientTypes();
         ForgeEventHandler.init();
         SetupEvents.init();
         

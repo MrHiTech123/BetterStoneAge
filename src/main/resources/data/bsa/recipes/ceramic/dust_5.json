@@ -5,7 +5,10 @@
     "type": "minecraft:crafting_shapeless",
     "ingredients": [
       {
-        "tag": "bsa:ceramic/smashable_5"
+        "type": "bsa:must_be_empty",
+        "ingredient": {
+          "tag": "bsa:ceramic/smashable_5"
+        }
       },
       {
         "tag": "tfc:hammers"

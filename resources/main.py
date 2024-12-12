@@ -72,8 +72,13 @@ def loot_modifier(rm: ResourceManager, loot_modifiers: list, name_parts, data):
     rm.data(['loot_modifiers'] + name_parts, data)
     
     loot_modifiers.append(f'bsa:{"/".join(name_parts)}')
-    
-    
+
+def must_be_empty(ingredient: Json) -> Json:
+    return {
+        'type': 'bsa:must_be_empty',
+        'ingredient': utils.ingredient(ingredient)
+    }
+
 def read_data_from_template(rm: ResourceManager, name_parts, template: str):
     rm.write(name_parts, json.loads(template))
 
@@ -314,8 +319,8 @@ def create_crafting_recipes():
     for i in range(1, 8 + 1):
         advanced_shapeless(rm, ('crafting', f'clay_from_ceramic_dust_{i}'), (fluid_item_ingredient('100 minecraft:water'), *(['bsa:dust/clay'] * i)), utils.item_stack((i, 'minecraft:clay_ball')))
     
-    damage_shapeless(rm, ('ceramic', 'dust_1'), ('#bsa:ceramic/smashable_1', '#tfc:hammers'), (1, 'bsa:dust/clay'))
-    damage_shapeless(rm, ('ceramic', 'dust_5'), ('#bsa:ceramic/smashable_5', '#tfc:hammers'), (5, 'bsa:dust/clay'))
+    damage_shapeless(rm, ('ceramic', 'dust_1'), (must_be_empty('#bsa:ceramic/smashable_1'), '#tfc:hammers'), (1, 'bsa:dust/clay'))
+    damage_shapeless(rm, ('ceramic', 'dust_5'), (must_be_empty('#bsa:ceramic/smashable_5'), '#tfc:hammers'), (5, 'bsa:dust/clay'))
     
 def create_arrowhead_knapping_recipes():
     print('\t\tGenerating arrowhead knapping recipes...')
