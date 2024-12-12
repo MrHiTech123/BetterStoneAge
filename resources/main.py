@@ -253,6 +253,11 @@ def create_decorated_pot_recipes():
     rm.recipe(('crafting', 'unfired_decorated_pot'), 'bsa:crafting_unfired_decorated_pot', {
         "category": "misc"
     })
+    
+    disable_recipe(rm, 'minecraft:decorated_pot')
+    disable_recipe(rm, 'minecraft:decorated_pot_simple')
+    
+    
 
 def create_crafting_recipes():
     print('\tCreating crafting recipes...')
