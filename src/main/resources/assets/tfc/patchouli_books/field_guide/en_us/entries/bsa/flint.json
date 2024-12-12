@@ -8,7 +8,7 @@
       "item": {
         "item": "minecraft:flint"
       },
-      "text": "$(thing)Flint$() is a rare and valuable rock that can be found submerged in freshwater.$(br)$(br)This is the only way to obtain it, as it is no longer dropped by gravel."
+      "text": "$(thing)Flint$() is a rare and valuable rock that can be found submerged in freshwater lakes.$(br)$(br)This is the only way to obtain it, as it is no longer dropped by gravel."
     },
     {
       "type": "patchouli:multiblock",
