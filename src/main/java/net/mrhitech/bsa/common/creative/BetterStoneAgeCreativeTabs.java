@@ -27,6 +27,7 @@ public class BetterStoneAgeCreativeTabs {
             for (SherdPattern pattern : SherdPattern.values()) {
                 event.accept(BetterStoneAgeItems.UNFIRED_SHERDS.get(pattern));
             }
+            event.accept(BetterStoneAgeItems.FIRED_BLANK_SHERD);
             
         }
         if (event.getTabKey() == TFCCreativeTabs.WOOD.tab().getKey()) {

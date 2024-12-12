@@ -177,8 +177,8 @@ def create_item_models():
     
     for pattern in SHERD_PATTERNS:
         rm.item_model(('ceramic', 'sherd', 'unfired', pattern), f'bsa:item/ceramic/sherd/unfired/{pattern}').with_lang(lang(f'{pattern}_unfired_sherd'))
-    print()
-
+    rm.item_model(('ceramic', 'sherd', 'fired', 'blank'), 'bsa:item/ceramic/sherd/fired/blank').with_lang(lang('blank_fired_sherd'))
+    
 def create_loot_tables():
     print('\tCreating loot tables...')
     tfc_rm.block_loot('tfc:calcite', {'name': 'tfc:powder/flux', 'functions': [utils.loot_functions({'function': 'minecraft:set_count', 'count': {'min': 1, 'max': 2, 'type': 'minecraft:uniform'}})]})
@@ -244,7 +244,13 @@ def create_barrel_recipes():
     for color in COLORS:
         barrel_sealed_recipe(rm, ('ceramic', 'jug', 'unfired', color), f'Dyeing Unfired Jug {color}', 1000, 'tfc:ceramic/unfired_jug', f'25 tfc:{color}_dye', f'bsa:ceramic/jug/unfired/{color}')
         barrel_sealed_recipe(rm, ('ceramic', 'pot', 'unfired', color), f'Dyeing Unfired Pot {color}', 1000, 'tfc:ceramic/unfired_pot', f'25 tfc:{color}_dye', f'bsa:ceramic/pot/unfired/{color}')
-    
+
+def create_decorated_pot_recipes():
+    print('\t\tCreating decorated pot recipes...')
+    rm.recipe(('crafting', 'unfired_decorated_pot'), 'bsa:crafting_unfired_decorated_pot', {
+        "category": "misc"
+    })
+
 def create_crafting_recipes():
     print('\tCreating crafting recipes...')
     
@@ -326,6 +332,9 @@ def create_crafting_recipes():
     damage_shapeless(rm, ('ceramic', 'dust_1'), (must_be_empty('#bsa:ceramic/smashable_1'), '#tfc:hammers'), (1, 'bsa:dust/clay'))
     damage_shapeless(rm, ('ceramic', 'dust_5'), (must_be_empty('#bsa:ceramic/smashable_5'), '#tfc:hammers'), (5, 'bsa:dust/clay'))
     
+    create_decorated_pot_recipes()
+    
+    
 def create_arrowhead_knapping_recipes():
     print('\t\tGenerating arrowhead knapping recipes...')
     placements = {
@@ -404,20 +413,13 @@ def create_rock_knapping_recipes():
     rock_knapping(rm, ('stone', 'knife_head_3', 'flint'), [' X X ', 'XX XX', 'XX XX', 'XX XX', 'XX XX'], (2, 'bsa:stone/knife_head/flint'), 'minecraft:flint')
     
     rock_knapping(rm, ('stone', 'shovel_head', 'flint'), [' XXX ', ' XXX ', ' XXX ', ' XXX ', '  X  '], 'bsa:stone/shovel_head/flint', 'minecraft:flint')
-    rock_knapping(rm, ('stone', 'multitool_head', 'flint'), ['  X  ', ' XXX ', ' XXX ', 'XXXXX', ' XXX '], 'bsa:stone/multitool_head/flint', 'minecraft:flint')
-    
-    
-
-    
-    
-    
+    rock_knapping(rm, ('stone', 'multitool_head', 'flint'), ['  X  ', ' XXX ', ' XXX ', 'XXXXX', ' XXX '], 'bsa:stone/multitool_head/flint', 'minecraft:flint')    
 
 def create_knapping_recipes():
     print('\tCreating knapping recipes...')
     create_arrowhead_knapping_recipes()
     create_bone_knapping_recipes()
     create_rock_knapping_recipes()
-    
 
 def create_pot_recipes():
     print('\tCreating pot recipes...')

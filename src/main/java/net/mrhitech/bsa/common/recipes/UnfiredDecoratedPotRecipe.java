@@ -6,8 +6,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -15,7 +15,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.DecoratedPotBlockEntity;
 import net.mrhitech.bsa.common.BetterStoneAgeTags;
+import net.mrhitech.bsa.common.SherdPattern;
 import net.mrhitech.bsa.common.item.BetterStoneAgeItems;
+import net.mrhitech.bsa.common.item.UnfiredSherdItem;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -28,8 +30,8 @@ public class UnfiredDecoratedPotRecipe extends CustomRecipe {
     
     public static final Map<Integer, int[]> sherdLocationsInContainerOfSize = new HashMap<>() {
         {
-            put(4, new int[]{0, 1, 2, 3});
-            put(9, new int[]{1, 3, 5, 7});
+            put(4, new int[]{0, 1, 2, 3, -1});
+            put(9, new int[]{1, 3, 5, 7, -1});
         }
     };
     
@@ -68,12 +70,19 @@ public class UnfiredDecoratedPotRecipe extends CustomRecipe {
         int[] decorationLocations = sherdLocationsInContainerOfSize.get(size);
         
         DecoratedPotBlockEntity.Decorations decorations = new DecoratedPotBlockEntity.Decorations(
-            pContainer.getItem(decorationLocations[0]).getItem(), 
-            pContainer.getItem(decorationLocations[1]).getItem(), 
-            pContainer.getItem(decorationLocations[2]).getItem(), 
-            pContainer.getItem(decorationLocations[3]).getItem()
+            cookedVersion(pContainer.getItem(decorationLocations[0]).getItem()), 
+            cookedVersion(pContainer.getItem(decorationLocations[1]).getItem()), 
+            cookedVersion(pContainer.getItem(decorationLocations[2]).getItem()), 
+            cookedVersion(pContainer.getItem(decorationLocations[3]).getItem())
         );
         return createDecoratedPotItem(decorations);
+    }
+    
+    public Item cookedVersion(Item item) {
+        if (item instanceof UnfiredSherdItem unfiredSherd) {
+            return unfiredSherd.getPattern().getCookedSherd();
+        }
+        return item;
     }
     
     public static ItemStack createDecoratedPotItem(DecoratedPotBlockEntity.Decorations pDecorations) {
@@ -83,7 +92,7 @@ public class UnfiredDecoratedPotRecipe extends CustomRecipe {
         return toReturn;
     }
     
-    public RecipeSerializer<?> getSerializer() {
-        return RecipeSerializer.DECORATED_POT_RECIPE;
+    public @NotNull RecipeSerializer<?> getSerializer() {
+        return BetterStoneAgeRecipeSerializers.CRAFTING_UNFIRED_DECORATED_POT.get();
     }
 }

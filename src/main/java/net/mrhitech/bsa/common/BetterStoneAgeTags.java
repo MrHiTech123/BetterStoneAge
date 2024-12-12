@@ -8,7 +8,7 @@ import net.mrhitech.bsa.BetterStoneAge;
 
 public class BetterStoneAgeTags {
     public static class Items {
-        public static final TagKey<Item> UNFIRED_SHERDS = create("unfired_sherds");
+        public static final TagKey<Item> UNFIRED_SHERDS = create("ceramic/unfired_sherds");
         
         private static TagKey<Item> create(String modId, String itemId) {
             return TagKey.create(Registries.ITEM, new ResourceLocation(modId, itemId));
