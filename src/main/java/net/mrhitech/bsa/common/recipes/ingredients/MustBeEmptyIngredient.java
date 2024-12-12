@@ -4,8 +4,6 @@ package net.mrhitech.bsa.common.recipes.ingredients;
 import com.google.gson.JsonObject;
 import net.dries007.tfc.common.capabilities.Capabilities;
 import net.dries007.tfc.common.recipes.ingredients.DelegateIngredient;
-import net.dries007.tfc.common.recipes.ingredients.FluidItemIngredient;
-import net.dries007.tfc.common.recipes.ingredients.FluidStackIngredient;
 import net.dries007.tfc.util.Helpers;
 import net.dries007.tfc.util.JsonHelpers;
 import net.minecraft.network.FriendlyByteBuf;

@@ -4,6 +4,7 @@ import net.dries007.tfc.common.TFCCreativeTabs;
 import net.dries007.tfc.common.blocks.rock.RockCategory;
 import net.minecraft.world.item.DyeColor;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.mrhitech.bsa.common.SherdPattern;
 import net.mrhitech.bsa.common.item.BetterStoneAgeItems;
 
 public class BetterStoneAgeCreativeTabs {
@@ -21,6 +22,11 @@ public class BetterStoneAgeCreativeTabs {
             event.accept(BetterStoneAgeItems.SABERTOOTH_FANG);
             
             event.accept(BetterStoneAgeItems.CLAY_DUST);
+            
+            event.accept(BetterStoneAgeItems.UNFIRED_DECORATED_POT);
+            for (SherdPattern pattern : SherdPattern.values()) {
+                event.accept(BetterStoneAgeItems.UNFIRED_SHERDS.get(pattern));
+            }
             
         }
         if (event.getTabKey() == TFCCreativeTabs.WOOD.tab().getKey()) {

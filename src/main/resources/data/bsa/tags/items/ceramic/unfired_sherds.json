@@ -1,0 +1,27 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "replace": false,
+  "values": [
+    "bsa:ceramic/sherd/unfired/angler",
+    "bsa:ceramic/sherd/unfired/archer",
+    "bsa:ceramic/sherd/unfired/arms_up",
+    "bsa:ceramic/sherd/unfired/blade",
+    "bsa:ceramic/sherd/unfired/blank",
+    "bsa:ceramic/sherd/unfired/brewer",
+    "bsa:ceramic/sherd/unfired/burn",
+    "bsa:ceramic/sherd/unfired/danger",
+    "bsa:ceramic/sherd/unfired/explorer",
+    "bsa:ceramic/sherd/unfired/friend",
+    "bsa:ceramic/sherd/unfired/heart",
+    "bsa:ceramic/sherd/unfired/heartbreak",
+    "bsa:ceramic/sherd/unfired/howl",
+    "bsa:ceramic/sherd/unfired/miner",
+    "bsa:ceramic/sherd/unfired/mourner",
+    "bsa:ceramic/sherd/unfired/plenty",
+    "bsa:ceramic/sherd/unfired/prize",
+    "bsa:ceramic/sherd/unfired/sheaf",
+    "bsa:ceramic/sherd/unfired/shelter",
+    "bsa:ceramic/sherd/unfired/skull",
+    "bsa:ceramic/sherd/unfired/snort"
+  ]
+}

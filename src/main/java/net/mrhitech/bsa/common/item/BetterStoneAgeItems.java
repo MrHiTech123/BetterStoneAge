@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 import net.mrhitech.bsa.common.BetterStoneAgeTiers;
+import net.mrhitech.bsa.common.SherdPattern;
 import net.mrhitech.bsa.common.blocks.BetterStoneAgeBlocks;
 import net.mrhitech.bsa.common.food.BetterStoneAgeFoods;
 
@@ -80,6 +81,10 @@ public class BetterStoneAgeItems {
     public static final RegistryObject<Item> HIDE_DOOR = register("hide_door", () -> new DoubleHighBlockItem(BetterStoneAgeBlocks.HIDE_DOOR.get(), new Item.Properties()));
     
     public static final RegistryObject<Item> CLAY_DUST = register("dust/clay", () -> new Item(new Item.Properties()));
+    
+    public static final RegistryObject<Item> UNFIRED_DECORATED_POT = register("ceramic/unfired_decorated_pot", () -> new Item(new Item.Properties()));
+    public static final Map<SherdPattern, RegistryObject<Item>> UNFIRED_SHERDS = Helpers.mapOfKeys(SherdPattern.class, (pattern) -> 
+        register("ceramic/sherd/unfired/" + pattern.getSerializedName(), () -> new Item(new Item.Properties())));
     
     public static <T extends Item> RegistryObject<T> register(String name, Supplier<T> supplier) {
         return ITEMS.register(name, supplier);
