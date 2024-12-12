@@ -13,9 +13,10 @@ BINDING_BONUSES = {'weak': 0, 'medium': 2, 'strong': 4}
 ROCK_CATEGORY_DURABILITIES = {'igneous_extrusive': 70, 'igneous_intrusive': 60, 'metamorphic': 55, 'sedimentary': 50, 'flint': 120}
 NON_BROKEN_GRAINS = ('barley', 'oat', 'rye', 'wheat')
 BROKEN_GRAINS = ('maize', 'rice')
-SHERD_PATTERNS = ('angler', 'archer', 'arms_up', 'blade', 'blank', 'brewer', 'burn', 'danger', 'explorer', 'friend',
-                  'heart', 'heartbreak', 'howl', 'miner', 'mourner', 'plenty', 'prize', 'sheaf', 'shelter', 'skull',
-                  'snort')
+PATTERNED_SHERD_PATTERNS = ('angler', 'archer', 'arms_up', 'blade', 'brewer', 'burn', 'danger', 'explorer', 'friend',
+                            'heart', 'heartbreak', 'howl', 'miner', 'mourner', 'plenty', 'prize', 'sheaf', 'shelter', 'skull',
+                            'snort')
+ALL_SHERD_PATTERNS = PATTERNED_SHERD_PATTERNS + ('blank',)
 
 
 
@@ -125,6 +126,7 @@ def create_item_heats():
     item_heat(rm, ('ceramic', 'unfired_ceramic_jugs'), '#bsa:ceramic/unfired_jugs', 0.8)
     item_heat(rm, ('ceramic', 'unfired_ceramic_pots'), '#bsa:ceramic/unfired_pots', 0.8)
     item_heat(rm, ('ceramic', 'unfired_decorated_pot'), 'bsa:ceramic/unfired_decorated_pot', 0.8)
+    item_heat(rm, ('ceramic', 'unfired_pottery_sherds'), '#bsa:ceramic/unfired_sherds', 0.8)
 
 def create_item_models():
     print('Creating item models...')
@@ -176,7 +178,7 @@ def create_item_models():
     rm.item_model(('hide_door'), 'bsa:item/hide_door')
     rm.item_model(('dust', 'clay'), 'bsa:item/dust/clay').with_lang('Clay Dust')
     
-    for pattern in SHERD_PATTERNS:
+    for pattern in ALL_SHERD_PATTERNS:
         rm.item_model(('ceramic', 'sherd', 'unfired', pattern), f'bsa:item/ceramic/sherd/unfired/{pattern}').with_lang(lang(f'{pattern}_unfired_sherd'))
     rm.item_model(('ceramic', 'sherd', 'fired', 'blank'), 'bsa:item/ceramic/sherd/fired/blank').with_lang(lang('blank_fired_sherd'))
     
@@ -384,8 +386,10 @@ def create_heating_recipes():
     for color in COLORS:
         heat_recipe(rm, ('ceramic', 'jug', color), f'bsa:ceramic/jug/unfired/{color}', POTTERY_MELT, f'bsa:ceramic/jug/glazed/{color}')    
         heat_recipe(rm, ('ceramic', 'pot', color), f'bsa:ceramic/pot/unfired/{color}', POTTERY_MELT, f'bsa:ceramic/pot/glazed/{color}')
-    heat_recipe(rm, ('ceramic', 'decorated_pot'), 'bsa:ceramic/unfired_decorated_pot', POTTERY_MELT, item_stack_provider('minecraft:decorated_pot', copy_sherds=True))
     
+    heat_recipe(rm, ('ceramic', 'decorated_pot'), 'bsa:ceramic/unfired_decorated_pot', POTTERY_MELT, item_stack_provider('minecraft:decorated_pot', copy_sherds=True))
+    for pattern in PATTERNED_SHERD_PATTERNS:
+        heat_recipe(rm, ('ceramic', f'{pattern}_pottery_sherd'), f'bsa:ceramic/sherd/unfired/{pattern}', POTTERY_MELT, f'minecraft:{pattern}_pottery_sherd')
     
 def create_bone_knapping_recipes():
     print('\t\tCreating bone knapping recipes...')
@@ -512,10 +516,12 @@ def create_item_tags():
     rm.item_tag('arrowheads', 'bsa:stone/arrowhead', 'bsa:stone/arrowhead/flint')
     rm.item_tag('tfc:usable_on_tool_rack', 'bsa:stone/shovel/flint', 'bsa:stone/javelin/flint', 'bsa:stone/knife/flint', 'bsa:stone/axe/flint', 'bsa:stone/hammer/flint', 'bsa:stone/hoe/flint', 'bsa:bone/fishing_rod', '#tfc:fluid_item_ingredient_empty_containers')
     
+    rm.item_tag('tfc:clay_recycle_5', '#bsa:ceramic/unfired_sherds')
     rm.item_tag('ceramic/smashable_1', 'tfc:ceramic/bowl', 'minecraft:brick', 'minecraft:flower_pot', 'tfc:ceramic/ingot_mold')
-    rm.item_tag('ceramic/smashable_5', 'tfc:ceramic/vessel', 'tfc:ceramic/large_vessel', 'tfc:ceramic/jug', 'tfc:ceramic/pot', 'tfc:ceramic/spindle_head', 'tfc:pan/empty', 'tfc:ceramic_blowpipe', "tfc:ceramic/axe_head_mold", "tfc:ceramic/chisel_head_mold", "tfc:ceramic/hammer_head_mold", "tfc:ceramic/hoe_head_mold", "tfc:ceramic/javelin_head_mold", "tfc:ceramic/knife_blade_mold", "tfc:ceramic/mace_head_mold", "tfc:ceramic/pickaxe_head_mold", "tfc:ceramic/propick_head_mold", "tfc:ceramic/saw_blade_mold", "tfc:ceramic/shovel_head_mold", "tfc:ceramic/sword_blade_mold", "tfc:ceramic/scythe_blade_mold", "tfc:ceramic/bell_mold")
+    rm.item_tag('ceramic/smashable_5', '#bsa:ceramic/fired_sherds', 'tfc:ceramic/vessel', 'tfc:ceramic/large_vessel', 'tfc:ceramic/jug', 'tfc:ceramic/pot', 'tfc:ceramic/spindle_head', 'tfc:pan/empty', 'tfc:ceramic_blowpipe', "tfc:ceramic/axe_head_mold", "tfc:ceramic/chisel_head_mold", "tfc:ceramic/hammer_head_mold", "tfc:ceramic/hoe_head_mold", "tfc:ceramic/javelin_head_mold", "tfc:ceramic/knife_blade_mold", "tfc:ceramic/mace_head_mold", "tfc:ceramic/pickaxe_head_mold", "tfc:ceramic/propick_head_mold", "tfc:ceramic/saw_blade_mold", "tfc:ceramic/shovel_head_mold", "tfc:ceramic/sword_blade_mold", "tfc:ceramic/scythe_blade_mold", "tfc:ceramic/bell_mold")
     
-    rm.item_tag('ceramic/unfired_sherds', *[f'bsa:ceramic/sherd/unfired/{pattern}' for pattern in SHERD_PATTERNS])
+    rm.item_tag('ceramic/unfired_sherds', *[f'bsa:ceramic/sherd/unfired/{pattern}' for pattern in ALL_SHERD_PATTERNS])
+    rm.item_tag('ceramic/fired_sherds', 'bsa:ceramic/sherd/fired/blank', *[f'minecraft:{pattern}_pottery_sherd' for pattern in PATTERNED_SHERD_PATTERNS])
     
 def create_worldgen_tags():
     print('Creating worldgen tags...')

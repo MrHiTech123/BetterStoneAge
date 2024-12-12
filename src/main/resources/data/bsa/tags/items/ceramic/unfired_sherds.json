@@ -6,7 +6,6 @@
     "bsa:ceramic/sherd/unfired/archer",
     "bsa:ceramic/sherd/unfired/arms_up",
     "bsa:ceramic/sherd/unfired/blade",
-    "bsa:ceramic/sherd/unfired/blank",
     "bsa:ceramic/sherd/unfired/brewer",
     "bsa:ceramic/sherd/unfired/burn",
     "bsa:ceramic/sherd/unfired/danger",
@@ -22,6 +21,7 @@
     "bsa:ceramic/sherd/unfired/sheaf",
     "bsa:ceramic/sherd/unfired/shelter",
     "bsa:ceramic/sherd/unfired/skull",
-    "bsa:ceramic/sherd/unfired/snort"
+    "bsa:ceramic/sherd/unfired/snort",
+    "bsa:ceramic/sherd/unfired/blank"
   ]
 }

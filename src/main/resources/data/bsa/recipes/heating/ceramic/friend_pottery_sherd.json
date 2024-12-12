@@ -1,0 +1,11 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "bsa:ceramic/sherd/unfired/friend"
+  },
+  "result_item": {
+    "item": "minecraft:friend_pottery_sherd"
+  },
+  "temperature": 1399
+}

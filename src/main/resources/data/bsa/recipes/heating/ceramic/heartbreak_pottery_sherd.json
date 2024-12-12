@@ -1,0 +1,11 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "bsa:ceramic/sherd/unfired/heartbreak"
+  },
+  "result_item": {
+    "item": "minecraft:heartbreak_pottery_sherd"
+  },
+  "temperature": 1399
+}
