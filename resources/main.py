@@ -180,7 +180,7 @@ def create_item_models():
     
     for pattern in ALL_SHERD_PATTERNS:
         rm.item_model(('ceramic', 'sherd', 'unfired', pattern), f'bsa:item/ceramic/sherd/unfired/{pattern}').with_lang(lang(f'{pattern}_unfired_sherd'))
-    rm.item_model(('ceramic', 'sherd', 'fired', 'blank'), 'bsa:item/ceramic/sherd/fired/blank').with_lang(lang('blank_fired_sherd'))
+    rm.item_model(('ceramic', 'sherd', 'fired', 'blank'), 'bsa:item/ceramic/sherd/fired/blank').with_lang(lang('blank_pottery_sherd'))
     
 def create_loot_tables():
     print('\tCreating loot tables...')
@@ -395,7 +395,7 @@ def create_heating_recipes():
     heat_recipe(rm, ('ceramic', 'decorated_pot'), 'bsa:ceramic/unfired_decorated_pot', POTTERY_MELT, item_stack_provider('minecraft:decorated_pot', copy_sherds=True))
     for pattern in PATTERNED_SHERD_PATTERNS:
         heat_recipe(rm, ('ceramic', f'{pattern}_pottery_sherd'), f'bsa:ceramic/sherd/unfired/{pattern}', POTTERY_MELT, f'minecraft:{pattern}_pottery_sherd')
-    
+    heat_recipe(rm, ('ceramic', 'blank_pottery_sherd'), f'bsa:ceramic/sherd/unfired/blank', POTTERY_MELT, f'bsa:ceramic/sherd/fired/blank')
 def create_bone_knapping_recipes():
     print('\t\tCreating bone knapping recipes...')
     
