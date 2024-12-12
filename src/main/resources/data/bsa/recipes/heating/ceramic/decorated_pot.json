@@ -1,0 +1,16 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:heating",
+  "ingredient": {
+    "item": "bsa:ceramic/unfired_decorated_pot"
+  },
+  "result_item": {
+    "stack": {
+      "item": "minecraft:decorated_pot"
+    },
+    "modifiers": [
+      "bsa:copy_sherds"
+    ]
+  },
+  "temperature": 1399
+}

@@ -124,6 +124,7 @@ def create_item_heats():
     print('Creating item heat data...')
     item_heat(rm, ('ceramic', 'unfired_ceramic_jugs'), '#bsa:ceramic/unfired_jugs', 0.8)
     item_heat(rm, ('ceramic', 'unfired_ceramic_pots'), '#bsa:ceramic/unfired_pots', 0.8)
+    item_heat(rm, ('ceramic', 'unfired_decorated_pot'), 'bsa:ceramic/unfired_decorated_pot', 0.8)
 
 def create_item_models():
     print('Creating item models...')
@@ -383,7 +384,9 @@ def create_heating_recipes():
     for color in COLORS:
         heat_recipe(rm, ('ceramic', 'jug', color), f'bsa:ceramic/jug/unfired/{color}', POTTERY_MELT, f'bsa:ceramic/jug/glazed/{color}')    
         heat_recipe(rm, ('ceramic', 'pot', color), f'bsa:ceramic/pot/unfired/{color}', POTTERY_MELT, f'bsa:ceramic/pot/glazed/{color}')
-
+    heat_recipe(rm, ('ceramic', 'decorated_pot'), 'bsa:ceramic/unfired_decorated_pot', POTTERY_MELT, item_stack_provider('minecraft:decorated_pot', copy_sherds=True))
+    
+    
 def create_bone_knapping_recipes():
     print('\t\tCreating bone knapping recipes...')
     

@@ -2531,6 +2531,7 @@ def item_stack_provider(
     remove_trait: str = None,  # removes a food trait and adjusts decay accordingly
     empty_bowl: bool = False,  # replaces a soup with its bowl
     copy_forging: bool = False,
+    copy_sherds: bool = False,
     add_bait_to_rod: bool = False,  # adds bait to the rod, uses crafting container
     dye_color: str = None,  # applies a dye color to leather dye-able armor
     meal: Json = None  # makes a meal from input specified in json
@@ -2552,6 +2553,7 @@ def item_stack_provider(
         ('tfc:add_bait_to_rod', add_bait_to_rod),
         ('tfc:add_glass', add_glass),
         ('tfc:add_powder', add_powder),
+        ('bsa:copy_sherds', copy_sherds),
         ({'type': 'tfc:add_heat', 'temperature': add_heat}, add_heat is not None),
         ({'type': 'tfc:add_trait', 'trait': add_trait}, add_trait is not None),
         ({'type': 'tfc:remove_trait', 'trait': remove_trait}, remove_trait is not None),
