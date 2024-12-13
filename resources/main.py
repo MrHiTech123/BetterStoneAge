@@ -260,15 +260,6 @@ def create_barrel_recipes():
     for color in COLORS:
         barrel_sealed_recipe(rm, ('ceramic', 'jug', 'unfired', color), f'Dyeing Unfired Jug {color}', 1000, 'tfc:ceramic/unfired_jug', f'25 tfc:{color}_dye', f'bsa:ceramic/jug/unfired/{color}')
         barrel_sealed_recipe(rm, ('ceramic', 'pot', 'unfired', color), f'Dyeing Unfired Pot {color}', 1000, 'tfc:ceramic/unfired_pot', f'25 tfc:{color}_dye', f'bsa:ceramic/pot/unfired/{color}')
-
-def create_decorated_pot_recipes():
-    print('\t\tCreating decorated pot recipes...')
-    rm.recipe(('crafting', 'unfired_decorated_pot'), 'bsa:crafting_unfired_decorated_pot', {
-        "category": "misc"
-    })
-    
-    disable_recipe(rm, 'minecraft:decorated_pot')
-    disable_recipe(rm, 'minecraft:decorated_pot_simple')
     
     
 
@@ -353,8 +344,10 @@ def create_crafting_recipes():
     damage_shapeless(rm, ('ceramic', 'dust_1'), (must_be_empty('#bsa:ceramic/smashable_1'), '#tfc:hammers'), (1, 'bsa:dust/clay'))
     damage_shapeless(rm, ('ceramic', 'dust_5'), (must_be_empty('#bsa:ceramic/smashable_5'), '#tfc:hammers'), (5, 'bsa:dust/clay'))
     
-    create_decorated_pot_recipes()
+    advanced_shapeless(rm, ('crafting', 'ceramic', 'unfired_decorated_pot'), 4 * ['#bsa:ceramic/unfired_sherds'], item_stack_provider('bsa:ceramic/unfired_decorated_pot', add_sherds=True))
     
+    disable_recipe(rm, 'minecraft:decorated_pot')
+    disable_recipe(rm, 'minecraft:decorated_pot_simple')    
     
 def create_arrowhead_knapping_recipes():
     print('\t\tGenerating arrowhead knapping recipes...')

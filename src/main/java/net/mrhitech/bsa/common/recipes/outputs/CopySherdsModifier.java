@@ -2,12 +2,7 @@ package net.mrhitech.bsa.common.recipes.outputs;
 
 import net.dries007.tfc.common.recipes.outputs.ItemStackModifier;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.DecoratedPotBlock;
-import net.minecraft.world.level.block.entity.DecoratedPotBlockEntity;
-import net.mrhitech.bsa.common.recipes.UnfiredDecoratedPotRecipe;
 
 public enum CopySherdsModifier implements ItemStackModifier.SingleInstance<CopySherdsModifier> {
     INSTANCE;

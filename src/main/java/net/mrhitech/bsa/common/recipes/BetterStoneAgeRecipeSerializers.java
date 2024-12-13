@@ -14,9 +14,6 @@ public class BetterStoneAgeRecipeSerializers {
     public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(Registries.RECIPE_SERIALIZER, BetterStoneAge.MOD_ID);
     
     public static final RegistryObject<PorridgePotRecipe.Serializer> POT_PORRIDGE = RECIPE_SERIALIZERS.register("pot_porridge", PorridgePotRecipe.Serializer::new);
-    public static final RegistryObject<SimpleCraftingRecipeSerializer<UnfiredDecoratedPotRecipe>> CRAFTING_UNFIRED_DECORATED_POT = 
-            RECIPE_SERIALIZERS.register("crafting_unfired_decorated_pot", () -> new SimpleCraftingRecipeSerializer<>(UnfiredDecoratedPotRecipe::new));
-    
 
     
 }

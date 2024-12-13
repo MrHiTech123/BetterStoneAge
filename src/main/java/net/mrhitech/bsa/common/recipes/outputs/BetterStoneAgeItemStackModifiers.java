@@ -8,6 +8,7 @@ import net.mrhitech.bsa.BetterStoneAge;
 
 public class BetterStoneAgeItemStackModifiers {
     public static void registerItemStackModifierTypes() {
+        register("add_sherds", AddSherdsModifier.INSTANCE);
         register("copy_sherds", CopySherdsModifier.INSTANCE);
     }
     

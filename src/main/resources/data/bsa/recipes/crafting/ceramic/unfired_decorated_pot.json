@@ -1,0 +1,26 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:advanced_shapeless_crafting",
+  "ingredients": [
+    {
+      "tag": "bsa:ceramic/unfired_sherds"
+    },
+    {
+      "tag": "bsa:ceramic/unfired_sherds"
+    },
+    {
+      "tag": "bsa:ceramic/unfired_sherds"
+    },
+    {
+      "tag": "bsa:ceramic/unfired_sherds"
+    }
+  ],
+  "result": {
+    "stack": {
+      "item": "bsa:ceramic/unfired_decorated_pot"
+    },
+    "modifiers": [
+      "bsa:add_sherds"
+    ]
+  }
+}
