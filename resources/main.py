@@ -111,9 +111,7 @@ def create_block_models():
     )
     block = rm.block(('hide'))
     make_door(block)
-    
-    rm.item_model(('ceramic', 'unfired_decorated_pot'))
-    
+        
 
 def create_item_foods():
     print('Creating item foods...')
