@@ -1,0 +1,16 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:knapping",
+  "knapping_type": "bsa:sherd",
+  "outside_slot_required": true,
+  "pattern": [
+    "X X X",
+    " X   ",
+    "  X  ",
+    "XXX X",
+    "XX XX"
+  ],
+  "result": {
+    "item": "bsa:ceramic/sherd/unfired/heartbreak"
+  }
+}

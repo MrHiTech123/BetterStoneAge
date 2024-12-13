@@ -1,0 +1,16 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "input": {
+    "ingredient": {
+      "tag": "bsa:sherd_knapping"
+    }
+  },
+  "amount_to_consume": 1,
+  "click_sound": "tfc:item.knapping.clay",
+  "consume_after_complete": true,
+  "use_disabled_texture": true,
+  "spawns_particles": false,
+  "jei_icon_item": {
+    "item": "bsa:ceramic/sherd/unfired/blank"
+  }
+}

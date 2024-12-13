@@ -29,9 +29,13 @@ with open('templates/flat_block_model.json', 'r') as f:
 def bone_knapping(rm: ResourceManager, name_parts: ResourceIdentifier, pattern: List[str], result: ResourceIdentifier, ingredient: str = None, outside_slot_required: bool = False):
     knapping_recipe(rm, name_parts, 'bsa:bone', pattern, result, ingredient, outside_slot_required)
 
+def sherd_knapping(rm: ResourceManager, name_parts: ResourceIdentifier, pattern: List[str], result: ResourceIdentifier, ingredient: str = None, outside_slot_required: bool = False):
+    knapping_recipe(rm, name_parts, 'bsa:sherd', pattern, result, ingredient, outside_slot_required)
+
+def knap_a_sherd_named(rm: ResourceManager, name: str, pattern: List[str]):
+    sherd_knapping(rm, (name), pattern, f'bsa:ceramic/sherd/unfired/{name}', outside_slot_required=True)
+
 def loot_modifier_add_itemstack(rm: ResourceManager, loot_modifiers: list, name_parts, entity_tag, item, count):
-    
-    
     data = {
       "type": "bsa:add_itemstack",
       "conditions": [
@@ -68,7 +72,6 @@ def loot_modifier_add_itemstack_min_max(rm: ResourceManager, loot_modifiers: lis
     
     loot_modifier(rm, loot_modifiers, name_parts, data)
 
-    
 def loot_modifier(rm: ResourceManager, loot_modifiers: list, name_parts, data):
 
     if isinstance(name_parts, str):
@@ -128,8 +131,6 @@ def create_item_heats():
     item_heat(rm, ('ceramic', 'unfired_ceramic_pots'), '#bsa:ceramic/unfired_pots', 0.8)
     item_heat(rm, ('ceramic', 'unfired_decorated_pot'), 'bsa:ceramic/unfired_decorated_pot', 0.8)
     item_heat(rm, ('ceramic', 'unfired_pottery_sherds'), '#bsa:ceramic/unfired_sherds', 0.8)
-
-
 
 def create_item_models():
     print('Creating item models...')
@@ -236,6 +237,7 @@ def create_misc_lang():
     rm.lang('item.bsa.food.porridge', 'Porridge')
     rm.lang('tfc.jei.porridge_pot', 'Porridge Pot')
     rm.lang('tfc.jei.bone_knapping', 'Bone Knapping')
+    rm.lang('tfc.jei.sherd_knapping', 'Sherd Knapping')
     rm.lang('subtitle.item.bsa.knapping.bone', 'Bone Scrapes')
     rm.lang('block.bsa.sinew', 'Sinew')
     rm.lang('config.jade.plugin_tfc.drying_sinew', 'Drying Sinew')
@@ -407,14 +409,21 @@ def create_heating_recipes():
     for pattern in PATTERNED_SHERD_PATTERNS:
         heat_recipe(rm, ('ceramic', f'{pattern}_pottery_sherd'), f'bsa:ceramic/sherd/unfired/{pattern}', POTTERY_MELT, f'minecraft:{pattern}_pottery_sherd')
     heat_recipe(rm, ('ceramic', 'blank_pottery_sherd'), f'bsa:ceramic/sherd/unfired/blank', POTTERY_MELT, f'bsa:ceramic/sherd/fired/blank')
+
 def create_bone_knapping_recipes():
-    print('\t\tCreating bone knapping recipes...')
-    
-    knapping_type(rm, 'bone', '#bsa:bone_knapping', 1, 'bsa:item.knapping.bone', False, False, True, 'minecraft:bone')
-    
+    print('\t\tCreating bone knapping recipes...')    
     bone_knapping(rm, 'fish_hook', ['  X', '  X', '  X', 'X X', ' XX'], 'bsa:bone/fish_hook', '#bsa:bone_knapping')
     bone_knapping(rm, 'needle', ['   XX', '   XX', '  X  ', ' X   ', 'X    '], 'tfc:bone_needle', '#bsa:bone_knapping')
     
+def create_clay_knapping_recipes():
+    print('\t\tCreating clay knapping recipes...')
+    clay_knapping(rm, ('blank_unfired_sherd'), ['  XXX', 'XXXXX', 'XXXXX', '  XXX', ' XXX '], 'bsa:ceramic/sherd/unfired/blank')
+
+def create_knapping_types():
+    print('\t\tCreating knapping types...')
+    knapping_type(rm, 'bone', '#bsa:bone_knapping', 1, 'bsa:item.knapping.bone', False, False, True, 'minecraft:bone')
+    knapping_type(rm, 'sherd', '#bsa:sherd_knapping', 1, 'tfc:item.knapping.clay', True, True, False, 'bsa:ceramic/sherd/unfired/blank')
+
 def create_rock_knapping_recipes():
     print('\t\tCreating rock knapping recipes...')
     for rock_category in ROCK_CATEGORIES:
@@ -438,11 +447,159 @@ def create_rock_knapping_recipes():
     rock_knapping(rm, ('stone', 'shovel_head', 'flint'), [' XXX ', ' XXX ', ' XXX ', ' XXX ', '  X  '], 'bsa:stone/shovel_head/flint', 'minecraft:flint')
     rock_knapping(rm, ('stone', 'multitool_head', 'flint'), ['  X  ', ' XXX ', ' XXX ', 'XXXXX', ' XXX '], 'bsa:stone/multitool_head/flint', 'minecraft:flint')    
 
+def create_sherd_knapping_recipes():
+    print('\t\tCreating sherd knapping recipes...')
+    
+    knap_a_sherd_named(rm, 'angler', [
+        'XXXXX',
+        'XX  X',
+        'X X X',
+        ' XX X',
+        'XXXXX'
+    ])
+    knap_a_sherd_named(rm, 'archer', [
+        'X  XX',
+        'X X X',
+        '     ',
+        'X X X',
+        'X  XX'
+    ])
+    knap_a_sherd_named(rm, 'arms_up', [
+        ' X X ',
+        ' X X ',
+        '     ',
+        'X X X',
+        'X X X'
+    ])
+    knap_a_sherd_named(rm, 'blade', [
+        'XXX  ',
+        'XX   ',
+        'X   X',
+        'X  XX',
+        'XXXXX'
+    ])
+    knap_a_sherd_named(rm, 'brewer', [
+        'X   X',
+        'XX XX',
+        'X   X',
+        '     ',
+        'X   X'
+    ])
+    knap_a_sherd_named(rm, 'burn', [
+        ' X XX',
+        'X  X ',
+        ' X  X',
+        ' XXX ',
+        'X   X'
+    ])
+    knap_a_sherd_named(rm, 'danger', [
+        '     ',
+        ' X X ',
+        '  X  ',
+        'X   X',
+        '     '
+    ])
+    knap_a_sherd_named(rm, 'explorer', [
+        'XXXXX',
+        '  X  ',
+        ' X X ',
+        '  X  ',
+        'XXX X'
+    ])
+    knap_a_sherd_named(rm, 'friend', [
+        'XXXXX',
+        '     ',
+        'X X X',
+        '  X  ',
+        'X    '
+    ])
+    knap_a_sherd_named(rm, 'heart', [
+        'X X X',
+        '     ',
+        '     ',
+        'X   X',
+        'XX XX'
+    ])
+    knap_a_sherd_named(rm, 'heartbreak', [
+        'X X X',
+        ' X   ',
+        '  X  ',
+        'XXX X',
+        'XX XX'
+    ])
+    knap_a_sherd_named(rm, 'howl', [
+        'XX XX',
+        'X X  ',
+        '   XX',
+        '   XX',
+        'XX XX'
+    ])
+    knap_a_sherd_named(rm, 'miner', [
+        'XXXXX',
+        'X   X',
+        ' X X ',
+        'XX XX',
+        'XX XX'
+    ])
+    knap_a_sherd_named(rm, 'mourner', [
+        ' X X ',
+        '  X  ',
+        'XX XX',
+        '     ',
+        'X X X'
+    ])
+    knap_a_sherd_named(rm, 'plenty', [
+        '     ',
+        ' XXX ',
+        ' XX X',
+        '     ',
+        '     '
+    ])
+    knap_a_sherd_named(rm, 'prize', [
+        'X   X',
+        ' XXX ',
+        ' XXX ',
+        'X X X',
+        'XX XX'
+    ])
+    knap_a_sherd_named(rm, 'sheaf', [
+        'X X  ',
+        '  X X',
+        'X    ',
+        'XX XX',
+        'X   X'
+    ])
+    knap_a_sherd_named(rm, 'shelter', [
+        'X   X',
+        '     ',
+        'X  XX',
+        'X  XX',
+        'X  XX'
+    ])
+    knap_a_sherd_named(rm, 'skull', [
+        '     ',
+        ' X X ',
+        '  X  ',
+        ' XXX ',
+        '     '
+    ])
+    knap_a_sherd_named(rm, 'snort', [
+        '  XXX',
+        '     ',
+        'XX X ',
+        '     ',
+        '  X X'
+    ])
+
 def create_knapping_recipes():
     print('\tCreating knapping recipes...')
+    
     create_arrowhead_knapping_recipes()
     create_bone_knapping_recipes()
+    create_clay_knapping_recipes()
+    create_knapping_types()
     create_rock_knapping_recipes()
+    create_sherd_knapping_recipes()
 
 def create_pot_recipes():
     print('\tCreating pot recipes...')
@@ -494,8 +651,8 @@ def create_item_tags():
     rm.item_tag('ceramic/glazed_jugs', 'tfc:ceramic/jug', *[f'bsa:ceramic/jug/glazed/{color}' for color in COLORS])
     rm.item_tag('ceramic/glazed_pots', 'tfc:ceramic/pot', *[f'bsa:ceramic/pot/glazed/{color}' for color in COLORS])
     
-    tfc_rm.item_tag('fluid_item_ingredient_empty_containers', '#bsa:ceramic/glazed_jugs')
-    tfc_rm.fluid_tag('usable_in_jug', '#tfc:dyes')
+    rm.item_tag('tfc:fluid_item_ingredient_empty_containers', '#bsa:ceramic/glazed_jugs')
+    rm.fluid_tag('tfc:usable_in_jug', '#tfc:dyes')
     
     rm.item_tag('bindings/weak', 'tfc:straw', 'tfc:groundcover/dead_grass', 'tfc:glue')
     rm.item_tag('bindings/medium', 'tfc:jute', 'tfc:plant/ivy', 'tfc:plant/hanging_vines', 'tfc:plant/jungle_vines')
@@ -506,27 +663,29 @@ def create_item_tags():
     
     rm.item_tag('sinew_display', 'bsa:sinew', 'bsa:dried_sinew', 'bsa:pounded_sinew', 'bsa:sinew_string')
     
-    forge_rm.item_tag('string', 'bsa:sinew_string')
+    rm.item_tag('forge:string', 'bsa:sinew_string')
     
     rm.item_tag('foods/crushed_grains', *[f'bsa:food/crushed_{grain}_grain' for grain in NON_BROKEN_GRAINS])
-    tfc_rm.item_tag('dynamic_bowl_items', 'bsa:food/porridge')
+    rm.item_tag('tfc:dynamic_bowl_items', 'bsa:food/porridge')
     
-    tfc_rm.item_tag('holds_small_fishing_bait', 'bsa:bone/fishing_rod')
-    tfc_rm.item_tag('any_knapping', '#bsa:bone_knapping')
-    tfc_rm.tag('usable_on_tool_rack', 'bsa:bone/fishing_rod')
-    forge_rm.tag('fishing_rods', 'bsa:bone/fishing_rod')
+    rm.item_tag('tfc:holds_small_fishing_bait', 'bsa:bone/fishing_rod')
     
     rm.item_tag('bone_knapping', 'minecraft:bone')
-    tfc_rm.item_tag('rock_knapping', 'minecraft:flint')
+    rm.item_tag('sherd_knapping', 'bsa:ceramic/sherd/unfired/blank')
+    rm.item_tag('tfc:any_knapping', '#bsa:bone_knapping', '#bsa:sherd_knapping')
     
-    tfc_rm.item_tag('axes', 'bsa:stone/axe/flint')
-    tfc_rm.item_tag('hammers', 'bsa:stone/hammer/flint')
-    tfc_rm.item_tag('hoes', 'bsa:stone/hoe/flint')
-    tfc_rm.item_tag('javelins', 'bsa:stone/javelin/flint')
-    tfc_rm.item_tag('knives', 'bsa:stone/knife/flint')
-    tfc_rm.item_tag('shovels', 'bsa:stone/shovel/flint')
-    tfc_rm.item_tag('stone_tools', *[f'bsa:stone/{tool}_head/flint' for tool in STONE_TOOL_HEADS])
-    tfc_rm.item_tag('inefficient_logging_axes', 'bsa:stone/axe/flint')
+    rm.tag('tfc:usable_on_tool_rack', 'bsa:bone/fishing_rod')
+    rm.tag('forge:fishing_rods', 'bsa:bone/fishing_rod')
+    rm.item_tag('tfc:rock_knapping', 'minecraft:flint')
+    
+    rm.item_tag('tfc:axes', 'bsa:stone/axe/flint')
+    rm.item_tag('tfc:hammers', 'bsa:stone/hammer/flint')
+    rm.item_tag('tfc:hoes', 'bsa:stone/hoe/flint')
+    rm.item_tag('tfc:javelins', 'bsa:stone/javelin/flint')
+    rm.item_tag('tfc:knives', 'bsa:stone/knife/flint')
+    rm.item_tag('tfc:shovels', 'bsa:stone/shovel/flint')
+    rm.item_tag('tfc:stone_tools', *[f'bsa:stone/{tool}_head/flint' for tool in STONE_TOOL_HEADS])
+    rm.item_tag('tfc:inefficient_logging_axes', 'bsa:stone/axe/flint')
     
     rm.item_tag('rock/loose', *[f'tfc:rock/loose/{rock_type}' for rock_type in ROCKS])
     rm.item_tag('arrowheads', 'bsa:stone/arrowhead', 'bsa:stone/arrowhead/flint')
@@ -538,6 +697,8 @@ def create_item_tags():
     
     rm.item_tag('ceramic/unfired_sherds', *[f'bsa:ceramic/sherd/unfired/{pattern}' for pattern in ALL_SHERD_PATTERNS])
     rm.item_tag('ceramic/fired_sherds', 'bsa:ceramic/sherd/fired/blank', *[f'minecraft:{pattern}_pottery_sherd' for pattern in PATTERNED_SHERD_PATTERNS])
+    
+    
     
 def create_worldgen_tags():
     print('Creating worldgen tags...')

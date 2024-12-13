@@ -1,0 +1,15 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:knapping",
+  "knapping_type": "tfc:clay",
+  "pattern": [
+    "  XXX",
+    "XXXXX",
+    "XXXXX",
+    "  XXX",
+    " XXX "
+  ],
+  "result": {
+    "item": "bsa:ceramic/sherd/unfired/blank"
+  }
+}

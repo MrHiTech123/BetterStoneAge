@@ -1,0 +1,16 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:knapping",
+  "knapping_type": "bsa:sherd",
+  "outside_slot_required": true,
+  "pattern": [
+    "X   X",
+    " XXX ",
+    " XXX ",
+    "X X X",
+    "XX XX"
+  ],
+  "result": {
+    "item": "bsa:ceramic/sherd/unfired/prize"
+  }
+}
