@@ -1,9 +1,7 @@
 package net.mrhitech.bsa;
 
 import com.mojang.logging.LogUtils;
-import net.dries007.tfc.common.blocks.rock.RockCategory;
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
