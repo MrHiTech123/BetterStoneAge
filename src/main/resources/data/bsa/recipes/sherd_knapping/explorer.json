@@ -5,9 +5,9 @@
   "outside_slot_required": true,
   "pattern": [
     "XXXXX",
-    "  X  ",
     " X X ",
     "  X  ",
+    " X X ",
     "XXX X"
   ],
   "result": {

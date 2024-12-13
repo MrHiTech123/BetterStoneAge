@@ -495,9 +495,9 @@ def create_sherd_knapping_recipes():
     ])
     knap_a_sherd_named(rm, 'explorer', [
         'XXXXX',
-        '  X  ',
         ' X X ',
         '  X  ',
+        ' X X ',
         'XXX X'
     ])
     knap_a_sherd_named(rm, 'friend', [
