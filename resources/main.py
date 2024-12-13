@@ -129,6 +129,8 @@ def create_item_heats():
     item_heat(rm, ('ceramic', 'unfired_decorated_pot'), 'bsa:ceramic/unfired_decorated_pot', 0.8)
     item_heat(rm, ('ceramic', 'unfired_pottery_sherds'), '#bsa:ceramic/unfired_sherds', 0.8)
 
+
+
 def create_item_models():
     print('Creating item models...')
     for color in COLORS:
@@ -183,6 +185,13 @@ def create_item_models():
         rm.item_model(('ceramic', 'sherd', 'unfired', pattern), f'bsa:item/ceramic/sherd/unfired/{pattern}').with_lang(lang(f'{pattern}_unfired_sherd'))
     rm.item_model(('ceramic', 'sherd', 'fired', 'blank'), 'bsa:item/ceramic/sherd/fired/blank').with_lang(lang('blank_pottery_sherd'))
     
+def create_item_sizes():
+    print('Creating item sizes...')
+    item_size(rm, ('ceramic', 'unfired_decorated_pot'), 'bsa:ceramic/unfired_decorated_pot', Size.very_large, Weight.very_heavy)
+    item_size(rm, ('ceramic', 'decorated_pot'), 'minecraft:decorated_pot', Size.very_large, Weight.very_heavy)
+    
+    
+    
 def create_loot_tables():
     print('\tCreating loot tables...')
     tfc_rm.block_loot('tfc:calcite', {'name': 'tfc:powder/flux', 'functions': [utils.loot_functions({'function': 'minecraft:set_count', 'count': {'min': 1, 'max': 2, 'type': 'minecraft:uniform'}})]})
@@ -231,6 +240,7 @@ def create_misc_lang():
     rm.lang('block.bsa.sinew', 'Sinew')
     rm.lang('config.jade.plugin_tfc.drying_sinew', 'Drying Sinew')
     rm.lang('block.bsa.hide_door', 'Hide Door')
+    rm.lang('item.bsa.ceramic.unfired_decorated_pot', 'Unfired Decorated Pot')
 
 def create_anvil_recipes():
     print('\tCreating anvil recipes...')
@@ -552,6 +562,7 @@ def main():
     create_item_foods()
     create_item_heats()
     create_item_models()
+    create_item_sizes()
     create_loot()
     create_misc_lang()
     create_recipes()
