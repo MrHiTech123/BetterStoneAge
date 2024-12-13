@@ -1,0 +1,43 @@
+{
+  "name": "Decorated Pots",
+  "category": "tfc:bsa",
+  "icon": "minecraft:decorated_pot{BlockEntityTag:{sherds:[\"minecraft:angler_pottery_sherd\", \"minecraft:archer_pottery_sherd\", \"minecraft:heart_pottery_sherd\", \"minecraft:howl_pottery_sherd\"]}}",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Decorated Pots don't actually do anything in this version of Minecraft, but they still make great decorations!"
+    },
+    {
+      "type": "tfc:knapping_recipe",
+      "recipe": "bsa:clay_knapping/blank_unfired_sherd",
+      "text": "The first step to making a Decorated Pot is to knap some blank sherds from clay."
+    },
+    {
+      "type": "tfc:knapping_recipe",
+      "recipe": "bsa:sherd_knapping/archer",
+      "text": "Once you have your sherds, you can knap patterns into them. Note that this is $(bold)not$() clay knapping; blank sherds are needed as an ingredient."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "bsa:crafting/ceramic/unfired_decorated_pot",
+      "text": "Four unfired sherds of any pattern can be crafted into an Unfired Decorated Pot."
+    },
+    {
+      "type": "tfc:heat_recipe",
+      "recipe": "bsa:heating/ceramic/decorated_pot",
+      "text": "The pot can then be fired in a $(l:tfc:getting_started/pit_kiln)Pit Kiln$(), and can then be placed. Be careful! Breaking the pot with a tool will shatter it into sherds!"
+    },
+    {
+      "type": "tfc:heat_recipe",
+      "recipe": "bsa:heating/ceramic/sherd/howl",
+      "text": "Sherds can also be fired independently. Fired sherds are not particularly useful, but can be used for roleplaying purposes (as an early-game alternative to coins, perhaps). $(br2)All sherds can also be $(l:tfc:bsa/clay_dust)salvaged$() for their clay."
+    }
+  ],
+  "read_by_default": true,
+  "extra_recipe_mappings": {
+    "bsa:ceramic/unfired_decorated_pot": 0,
+    "bsa:ceramic/sherd/unfired/blank": 1
+    
+  }
+  
+}

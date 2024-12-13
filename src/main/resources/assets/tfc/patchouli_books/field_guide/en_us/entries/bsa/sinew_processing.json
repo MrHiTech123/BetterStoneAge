@@ -41,7 +41,6 @@
     }
   ],
   "read_by_default": true,
-  "sortnum": 70,
   "extra_recipe_mappings": {
     "bsa:sinew": 0,
     "bsa:dried_sinew": 0,

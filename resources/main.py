@@ -275,8 +275,8 @@ def create_crafting_recipes():
         rm.crafting_shapeless(('crafting', 'ceramic', 'pot', 'unfired', f'{color}_liquid_dye'), ('tfc:ceramic/unfired_pot', fluid_item_ingredient(f'100 tfc:{color}_dye')), f'bsa:ceramic/pot/unfired/{color}')
         
         
-        rm.crafting_shapeless(('crafting', 'ceramic', f'{color}_unfired_vessel_liquid_dye'), ('tfc:ceramic/unfired_vessel', fluid_item_ingredient(f'100 tfc:{color}_dye')), f'tfc:ceramic/{color}_unfired_vessel')
-        rm.crafting_shapeless(('crafting', 'ceramic', f'{color}_unfired_large_vessel_liquid_dye'), ('tfc:ceramic/unfired_large_vessel', fluid_item_ingredient(f'100 tfc:{color}_dye')), f'tfc:ceramic/unfired_large_vessel/{color}')
+        rm.crafting_shapeless(('crafting', 'ceramic', 'unfired_vessel', f'{color}_liquid_dye'), ('tfc:ceramic/unfired_vessel', fluid_item_ingredient(f'100 tfc:{color}_dye')), f'tfc:ceramic/{color}_unfired_vessel')
+        rm.crafting_shapeless(('crafting', 'ceramic', 'unfired_large_vessel', f'{color}_liquid_dye'), ('tfc:ceramic/unfired_large_vessel', fluid_item_ingredient(f'100 tfc:{color}_dye')), f'tfc:ceramic/unfired_large_vessel/{color}')
         
     rm.crafting_shapeless(('crafting', 'dye', 'darken_blue'), ('minecraft:light_blue_dye', 'minecraft:black_dye'), utils.item_stack({'item': 'minecraft:blue_dye', 'count': 2}))
     rm.crafting_shapeless(('crafting', 'dye', 'darken_gray'), ('minecraft:light_gray_dye', 'minecraft:black_dye'), utils.item_stack({'item': 'minecraft:gray_dye', 'count': 2}))
@@ -340,7 +340,7 @@ def create_crafting_recipes():
     rm.crafting_shaped(('crafting', 'hide_door'), ('WH', 'W '), {'W': 'tfc:wattle', 'H': 'tfc:large_raw_hide'}, 'bsa:hide_door')
     extra_products_shapeless(rm, ('crafting', 'hide_door_uncraft'), ('bsa:hide_door'), 'tfc:large_raw_hide', ('tfc:wattle', 'tfc:wattle'))
     for i in range(1, 8 + 1):
-        advanced_shapeless(rm, ('crafting', f'clay_from_ceramic_dust_{i}'), (fluid_item_ingredient('100 minecraft:water'), *(['bsa:dust/clay'] * i)), utils.item_stack((i, 'minecraft:clay_ball')))
+        advanced_shapeless(rm, ('crafting', f'clay_from_clay_dust_{i}'), (fluid_item_ingredient('100 minecraft:water'), *(['bsa:dust/clay'] * i)), utils.item_stack((i, 'minecraft:clay_ball')))
     
     damage_shapeless(rm, ('ceramic', 'dust_1'), (must_be_empty('#bsa:ceramic/smashable_1'), '#tfc:hammers'), (1, 'bsa:dust/clay'))
     damage_shapeless(rm, ('ceramic', 'dust_5'), (must_be_empty('#bsa:ceramic/smashable_5'), '#tfc:hammers'), (5, 'bsa:dust/clay'))
@@ -401,8 +401,8 @@ def create_heating_recipes():
     
     heat_recipe(rm, ('ceramic', 'decorated_pot'), 'bsa:ceramic/unfired_decorated_pot', POTTERY_MELT, item_stack_provider('minecraft:decorated_pot', copy_sherds=True))
     for pattern in PATTERNED_SHERD_PATTERNS:
-        heat_recipe(rm, ('ceramic', f'{pattern}_pottery_sherd'), f'bsa:ceramic/sherd/unfired/{pattern}', POTTERY_MELT, f'minecraft:{pattern}_pottery_sherd')
-    heat_recipe(rm, ('ceramic', 'blank_pottery_sherd'), f'bsa:ceramic/sherd/unfired/blank', POTTERY_MELT, f'bsa:ceramic/sherd/fired/blank')
+        heat_recipe(rm, ('ceramic', 'sherd', pattern), f'bsa:ceramic/sherd/unfired/{pattern}', POTTERY_MELT, f'minecraft:{pattern}_pottery_sherd')
+    heat_recipe(rm, ('ceramic', 'sherd', 'blank'), f'bsa:ceramic/sherd/unfired/blank', POTTERY_MELT, f'bsa:ceramic/sherd/fired/blank')
 
 def create_bone_knapping_recipes():
     print('\t\tCreating bone knapping recipes...')    

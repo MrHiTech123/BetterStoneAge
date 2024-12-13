@@ -33,7 +33,6 @@
     }
   ],
   "read_by_default": true,
-  "sortnum": 60,
   "extra_recipe_mappings": {
     "bsa:stone/multitool_head/igneous_extrusive": 0,
     "bsa:stone/multitool_head/igneous_intrusive": 0,

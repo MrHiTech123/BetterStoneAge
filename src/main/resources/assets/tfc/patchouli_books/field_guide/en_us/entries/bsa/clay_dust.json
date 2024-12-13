@@ -1,0 +1,36 @@
+{
+  "name": "Salvaging Clay Objects",
+  "category": "tfc:bsa",
+  "icon": "bsa:dust/clay",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "All ceramic objects can now be smashed into Clay Dust, and their clay repurposed for use in other things. $(br2)Objects can be smashed into 5 Clay Dust if their recipe gives one item, or 1 Clay Dust if the recipe gives more than 1 item."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "bsa:ceramic/dust_1",
+      "recipe2": "bsa:ceramic/dust_5"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "bsa:crafting/clay_from_clay_dust_1",
+      "recipe2": "bsa:crafting/clay_from_clay_dust_4"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "bsa:crafting/clay_from_clay_dust_8",
+      "text": "Clay Dust can be reconstituted into Clay by crafting it with a water jug."
+    },
+    {
+      "type": "tfc:instant_barrel_recipe",
+      "recipe": "bsa:barrel/clay_from_clay_dust",
+      "text": "Once you acquire a barrel, you can reconstitute clay more efficiently."
+    }
+  ],
+  "read_by_default": true,
+  "extra_recipe_mappings": {
+    "bsa:dust/clay": 0
+  }
+  
+}

@@ -42,7 +42,6 @@
     }
   ],
   "read_by_default": true,
-  "sortnum": 50,
   "extra_recipe_mappings": {
     "minecraft:flint": 0,
     "bsa:stone/axe/flint": 0,

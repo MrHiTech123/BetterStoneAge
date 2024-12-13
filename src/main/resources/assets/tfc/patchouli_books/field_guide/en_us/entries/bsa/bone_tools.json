@@ -39,7 +39,6 @@
     }
   ],
   "read_by_default": true,
-  "sortnum": 10,
   "extra_recipe_mappings": {
     "minecraft:bone": 0,
     "bsa:bone/fish_hook": 0,

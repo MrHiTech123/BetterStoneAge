@@ -48,7 +48,6 @@
     }
   ],
   "read_by_default": true,
-  "sortnum": 50,
   "extra_recipe_mappings": {
     "bsa:food/crushed_barley_grain": 1,
     "bsa:food/crushed_oat_grain": 1,
