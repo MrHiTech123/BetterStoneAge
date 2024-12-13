@@ -261,6 +261,7 @@ def create_barrel_recipes():
         barrel_sealed_recipe(rm, ('ceramic', 'jug', 'unfired', color), f'Dyeing Unfired Jug {color}', 1000, 'tfc:ceramic/unfired_jug', f'25 tfc:{color}_dye', f'bsa:ceramic/jug/unfired/{color}')
         barrel_sealed_recipe(rm, ('ceramic', 'pot', 'unfired', color), f'Dyeing Unfired Pot {color}', 1000, 'tfc:ceramic/unfired_pot', f'25 tfc:{color}_dye', f'bsa:ceramic/pot/unfired/{color}')
     
+    barrel_instant_recipe(rm, ('clay_from_clay_dust'), 'bsa:dust/clay', '100 minecraft:water', 'minecraft:clay_ball')
     
 
 def create_crafting_recipes():
@@ -347,7 +348,7 @@ def create_crafting_recipes():
     advanced_shapeless(rm, ('crafting', 'ceramic', 'unfired_decorated_pot'), 4 * ['#bsa:ceramic/unfired_sherds'], item_stack_provider('bsa:ceramic/unfired_decorated_pot', add_sherds=True))
     
     disable_recipe(rm, 'minecraft:decorated_pot')
-    disable_recipe(rm, 'minecraft:decorated_pot_simple')    
+    disable_recipe(rm, 'minecraft:decorated_pot_simple')
     
 def create_arrowhead_knapping_recipes():
     print('\t\tGenerating arrowhead knapping recipes...')

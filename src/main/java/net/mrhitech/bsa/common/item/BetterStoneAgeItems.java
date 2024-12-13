@@ -84,7 +84,7 @@ public class BetterStoneAgeItems {
     
     public static final RegistryObject<Item> UNFIRED_DECORATED_POT = register("ceramic/unfired_decorated_pot", () -> new UnfiredDecoratedPotItem(new Item.Properties()));
     public static final Map<SherdPattern, RegistryObject<Item>> UNFIRED_SHERDS = Helpers.mapOfKeys(SherdPattern.class, (pattern) -> 
-        register("ceramic/sherd/unfired/" + pattern.getSerializedName(), () -> new UnfiredSherdItem(new Item.Properties(), pattern)));
+        register("ceramic/sherd/unfired/" + pattern.getSerializedName(), () -> new Item(new Item.Properties())));
     public static final RegistryObject<Item> FIRED_BLANK_SHERD = register("ceramic/sherd/fired/blank", () -> new Item(new Item.Properties()));
     
     

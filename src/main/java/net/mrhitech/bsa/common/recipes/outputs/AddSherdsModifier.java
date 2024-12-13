@@ -1,6 +1,8 @@
 package net.mrhitech.bsa.common.recipes.outputs;
 
 import com.google.common.collect.Lists;
+import net.dries007.tfc.client.ClientHelpers;
+import net.dries007.tfc.common.recipes.HeatingRecipe;
 import net.dries007.tfc.common.recipes.RecipeHelpers;
 import net.dries007.tfc.common.recipes.outputs.ItemStackModifier;
 import net.dries007.tfc.util.Helpers;
@@ -11,8 +13,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.DecoratedPotBlockEntity;
 import net.mrhitech.bsa.common.BetterStoneAgeTags;
-import net.mrhitech.bsa.common.item.BetterStoneAgeItems;
-import net.mrhitech.bsa.common.item.UnfiredSherdItem;
 
 import java.util.ArrayList;
 
@@ -58,9 +58,16 @@ public enum AddSherdsModifier implements ItemStackModifier.SingleInstance<AddShe
     }
     
     public Item cookedVersion(Item item) {
-        if (item instanceof UnfiredSherdItem unfiredSherd) {
-            return unfiredSherd.getPattern().getCookedSherd();
+        if (item == null) {
+            return item;
         }
-        return item;
+        // If the item has a heating recipe, return the result of that recipe. Otherwise return the item itself.
+        HeatingRecipe recipe = HeatingRecipe.getRecipe(new ItemStack(item));
+        if (recipe == null) {
+            return item;
+        }
+        else {
+            return recipe.getResultItem(ClientHelpers.getLevelOrThrow().registryAccess()).getItem();
+        }
     }
 }
