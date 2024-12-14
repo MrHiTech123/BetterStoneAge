@@ -349,6 +349,7 @@ def create_crafting_recipes():
     
     disable_recipe(rm, 'minecraft:decorated_pot')
     disable_recipe(rm, 'minecraft:decorated_pot_simple')
+    disable_recipe(rm, 'firmalife:crafting/pottery_sherd')
     
 def create_arrowhead_knapping_recipes():
     print('\t\tGenerating arrowhead knapping recipes...')
