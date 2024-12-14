@@ -73,7 +73,7 @@ side="BOTH"
 
 [[dependencies.bsa]]
 modId="firmalife"
-mandatory=true
+mandatory=false
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
 versionRange="[0,)"
 ordering="AFTER"
