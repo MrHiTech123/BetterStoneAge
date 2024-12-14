@@ -405,7 +405,7 @@ def create_heating_recipes():
     heat_recipe(rm, ('ceramic', 'sherd', 'blank'), f'bsa:ceramic/sherd/unfired/blank', POTTERY_MELT, f'bsa:ceramic/sherd/fired/blank')
 
 def create_bone_knapping_recipes():
-    print('\t\tCreating bone knapping recipes...')    
+    print('\t\tCreating bone knapping recipes...')
     bone_knapping(rm, 'fish_hook', ['  X', '  X', '  X', 'X X', ' XX'], 'bsa:bone/fish_hook', '#bsa:bone_knapping')
     bone_knapping(rm, 'needle', ['   XX', '   XX', '  X  ', ' X   ', 'X    '], 'tfc:bone_needle', '#bsa:bone_knapping')
     
@@ -691,7 +691,7 @@ def create_item_tags():
     
     rm.item_tag('ceramic/unfired_sherds', *[f'bsa:ceramic/sherd/unfired/{pattern}' for pattern in ALL_SHERD_PATTERNS])
     rm.item_tag('ceramic/fired_sherds', 'bsa:ceramic/sherd/fired/blank', *[f'minecraft:{pattern}_pottery_sherd' for pattern in PATTERNED_SHERD_PATTERNS])
-    
+    rm.item_tag('minecraft:decorated_pot_sherds', 'bsa:ceramic/sherd/fired/blank', 'bsa:dust/clay')
     
     
 def create_worldgen_tags():
