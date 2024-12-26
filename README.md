@@ -1,8 +1,6 @@
 ### About
 Better Stone Age is a TerraFirmaCraft addon that enhances the TerraFirmaCraft early game by adding more things to do that do not require copper tools.
 
-### Links
-[Download on Curseforge](https://www.curseforge.com/minecraft/mc-mods/tfc-better-stone-age)
 ### Features
 | ![Sinew drying, with some dried sinew next to it](readme/sinew.png) |
 | ------ |
@@ -17,3 +15,6 @@ Better Stone Age is a TerraFirmaCraft addon that enhances the TerraFirmaCraft ea
 - The ability to recycle fired ceramics
 - A Decorated Pot making system
 - Extensive in-game documentation
+
+### Links
+[Download on Curseforge](https://www.curseforge.com/minecraft/mc-mods/tfc-better-stone-age)
