@@ -87,6 +87,7 @@ public class BetterStoneAgeItems {
         register("ceramic/sherd/unfired/" + pattern.getSerializedName(), () -> new Item(new Item.Properties())));
     public static final RegistryObject<Item> FIRED_BLANK_SHERD = register("ceramic/sherd/fired/blank", () -> new Item(new Item.Properties()));
     
+    public static final RegistryObject<Item> OBSIDIAN = register("obsidian", () -> new Item(new Item.Properties()));
     
     public static <T extends Item> RegistryObject<T> register(String name, Supplier<T> supplier) {
         return ITEMS.register(name, supplier);

@@ -186,6 +186,9 @@ def create_item_models():
         rm.item_model(('ceramic', 'sherd', 'unfired', pattern), f'bsa:item/ceramic/sherd/unfired/{pattern}').with_lang(lang(f'{pattern}_unfired_sherd'))
     rm.item_model(('ceramic', 'sherd', 'fired', 'blank'), 'bsa:item/ceramic/sherd/fired/blank').with_lang(lang('blank_pottery_sherd'))
     
+    rm.item_model(('obsidian'), 'bsa:item/obsidian').with_lang(lang('obsidian'))
+    
+    
 def create_item_sizes():
     print('Creating item sizes...')
     item_size(rm, ('ceramic', 'unfired_decorated_pot'), 'bsa:ceramic/unfired_decorated_pot', Size.very_large, Weight.very_heavy)

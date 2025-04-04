@@ -28,6 +28,7 @@ public class BetterStoneAgeCreativeTabs {
                 event.accept(BetterStoneAgeItems.UNFIRED_SHERDS.get(pattern));
             }
             event.accept(BetterStoneAgeItems.FIRED_BLANK_SHERD);
+            event.accept(BetterStoneAgeItems.OBSIDIAN);
             
         }
         if (event.getTabKey() == TFCCreativeTabs.WOOD.tab().getKey()) {
