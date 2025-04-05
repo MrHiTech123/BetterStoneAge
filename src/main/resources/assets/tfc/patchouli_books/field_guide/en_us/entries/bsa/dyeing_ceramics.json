@@ -22,5 +22,5 @@
       "recipe2": "bsa:crafting/ceramic/jug/unfired/red"
     }
   ],
-  "read_by_default": true,
+  "read_by_default": true
 }
