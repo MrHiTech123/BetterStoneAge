@@ -16,7 +16,7 @@ import net.dries007.tfc.common.blocks.rock.RockCategory;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import net.mrhitech.bsa.common.BetterStoneAgeTiers;
+import net.mrhitech.bsa.common.BetterStoneAgeRockCategory;
 import net.mrhitech.bsa.common.SherdPattern;
 import net.mrhitech.bsa.common.blocks.BetterStoneAgeBlocks;
 import net.mrhitech.bsa.common.food.BetterStoneAgeFoods;
@@ -59,20 +59,13 @@ public class BetterStoneAgeItems {
     public static final RegistryObject<Item> BONE_FISH_HOOK = register("bone/fish_hook", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SABERTOOTH_FANG = register("sabertooth_fang", () -> new Item(new Item.Properties()));
     
-    public static final RegistryObject<Item> FLINT_AXE_HEAD = register("stone/axe_head/flint", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> FLINT_HAMMER_HEAD = register("stone/hammer_head/flint", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> FLINT_HOE_HEAD = register("stone/hoe_head/flint", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> FLINT_JAVELIN_HEAD = register("stone/javelin_head/flint", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> FLINT_KNIFE_HEAD = register("stone/knife_head/flint", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> FLINT_SHOVEL_HEAD = register("stone/shovel_head/flint", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> FLINT_MULTITOOL_HEAD = register("stone/multitool_head/flint", () -> new Item(new Item.Properties()));
-    
-    public static final RegistryObject<Item> FLINT_AXE = register("stone/axe/flint", () -> new AxeItem(BetterStoneAgeTiers.FLINT, ToolItem.calculateVanillaAttackDamage(1.5F, BetterStoneAgeTiers.FLINT), -3.2F, new Item.Properties()));
-    public static final RegistryObject<Item> FLINT_HAMMER = register("stone/hammer/flint", () -> new HammerItem(BetterStoneAgeTiers.FLINT, ToolItem.calculateVanillaAttackDamage(1F, BetterStoneAgeTiers.FLINT), -3.0F, new Item.Properties()));
-    public static final RegistryObject<Item> FLINT_HOE = register("stone/hoe/flint", () -> new HoeItem(BetterStoneAgeTiers.FLINT, -1, -3.0F, new Item.Properties()));
-    public static final RegistryObject<Item> FLINT_JAVELIN = register("stone/javelin/flint", () -> new JavelinItem(BetterStoneAgeTiers.FLINT, ToolItem.calculateVanillaAttackDamage(0.7F, BetterStoneAgeTiers.FLINT), 1.5F * BetterStoneAgeTiers.FLINT.getAttackDamageBonus(), -2.2F, new Item.Properties(), "flint"));
-    public static final RegistryObject<Item> FLINT_KNIFE = register("stone/knife/flint", () -> new ToolItem(BetterStoneAgeTiers.FLINT, ToolItem.calculateVanillaAttackDamage(0.6F, BetterStoneAgeTiers.FLINT), -2.0F, TFCTags.Blocks.MINEABLE_WITH_KNIFE, new Item.Properties()));
-    public static final RegistryObject<Item> FLINT_SHOVEL = register("stone/shovel/flint", () -> new ShovelItem(BetterStoneAgeTiers.FLINT, ToolItem.calculateVanillaAttackDamage(0.0875F, BetterStoneAgeTiers.FLINT), -3.0F, new Item.Properties()));
+    public static final Map<BetterStoneAgeRockCategory, Map<BetterStoneAgeRockCategory.ItemType, RegistryObject<Item>>> STONE = Helpers.mapOfKeys(BetterStoneAgeRockCategory.class, rockCategory ->
+        Helpers.mapOfKeys(BetterStoneAgeRockCategory.ItemType.class, itemType -> 
+            register("stone/" + itemType.getSerializedName() + "/" + rockCategory.getSerializedName(),
+                    () -> itemType.create(rockCategory)
+            )
+        )
+    );
     
     public static final RegistryObject<Item> STONE_ARROWHEAD = register("stone/arrowhead", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> FLINT_ARROWHEAD = register("stone/arrowhead/flint", () -> new Item(new Item.Properties()));

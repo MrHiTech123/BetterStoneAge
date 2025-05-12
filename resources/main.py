@@ -17,7 +17,7 @@ PATTERNED_SHERD_PATTERNS = ('angler', 'archer', 'arms_up', 'blade', 'brewer', 'b
                             'heart', 'heartbreak', 'howl', 'miner', 'mourner', 'plenty', 'prize', 'sheaf', 'shelter', 'skull',
                             'snort')
 ALL_SHERD_PATTERNS = PATTERNED_SHERD_PATTERNS + ('blank',)
-
+BSA_ROCK_CATEGORIES = ('flint', 'obsidian', 'amethyst', 'emerald', 'kimberlite', 'opal', 'pyrite', 'ruby', 'sapphire', 'topaz')
 
 
 with open('templates/pot_model.json', 'r') as f:
@@ -140,8 +140,8 @@ def create_item_models():
         rm.item_model(('ceramic', 'pot', 'glazed', color), f'bsa:item/ceramic/pot/glazed/{color}').with_lang(lang(f'{color}_glazed_pot'))
         rm.item_model(('ceramic', 'pot', 'unfired', color), f'bsa:item/ceramic/pot/unfired/{color}').with_lang(lang(f'{color}_unfired_pot'))
         
-    for rock_category in ROCK_CATEGORIES:
-        rm.item_model(('stone', 'multitool_head', rock_category), 'bsa:item/stone/multitool_head').with_lang('Stone Multitool Head')
+    for category in ROCK_CATEGORIES:
+        rm.item_model(('stone', 'multitool_head', category), 'bsa:item/stone/multitool_head').with_lang('Stone Multitool Head')
     
     rm.item_model(('clay_tablet'), 'bsa:item/clay_tablet')
     rm.item_model(('writeable_clay_tablet'), 'bsa:item/writeable_clay_tablet')
@@ -157,16 +157,16 @@ def create_item_models():
     rm.item_model(('bone', 'fish_hook'), 'bsa:item/bone/fish_hook').with_lang(lang('bone_fish_hook'))
     rm.item_model(('sabertooth_fang'), 'bsa:item/sabertooth_fang').with_lang(lang('sabertooth_fang'))
     
-    for tool in STONE_TOOL_HEADS:
-        if tool not in ('javelin', 'knife'):
-            rm.item_model(('stone', tool, 'flint'), f'bsa:item/stone/flint/{tool}', parent='item/handheld').with_lang(lang(f'Flint {tool}'))
-        rm.item_model(('stone', f'{tool}_head', 'flint'), f'bsa:item/stone/flint/{tool}_head').with_lang(lang(f'Flint {tool} Head'))
-     
-    make_javelin(rm, 'stone/javelin/flint', 'bsa:item/stone/flint/javelin').with_lang('Flint Javelin')
-    rm.item_model(('stone', 'knife', 'flint'), f'bsa:item/stone/flint/knife', parent='tfc:item/handheld_flipped').with_lang('Flint Knife')
+    for category in BSA_ROCK_CATEGORIES:
+        for tool in STONE_TOOL_HEADS:
+            if tool not in ('javelin', 'knife'):
+                rm.item_model(('stone', tool, category), f'bsa:item/stone/{category}/{tool}', parent='item/handheld').with_lang(lang(f'{category} {tool}'))
+            rm.item_model(('stone', f'{tool}_head', category), f'bsa:item/stone/{category}/{tool}_head').with_lang(lang(f'{category} {tool} Head'))
+         
+        make_javelin(rm, f'stone/javelin/{category}', f'bsa:item/stone/{category}/javelin').with_lang(lang(f'{category} Javelin'))
+        rm.item_model(('stone', 'knife', category), f'bsa:item/stone/{category}/knife', parent='tfc:item/handheld_flipped').with_lang(lang(f'{category} Knife'))
+        rm.item_model(('stone', 'multitool_head', category), f'bsa:item/stone/{category}/multitool_head').with_lang(lang(f'{category} Multitool Head'))
     
-    
-    rm.item_model(('stone', 'multitool_head', 'flint'), 'bsa:item/stone/flint/multitool_head').with_lang('Flint Multitool Head')
     rm.item_model(('stone', 'arrowhead'), 'bsa:item/stone/arrowhead').with_lang('Stone Arrowhead')
     rm.item_model(('stone', 'arrowhead', 'flint'), 'bsa:item/stone/flint/arrowhead').with_lang('Flint Arrowhead')
     rm.item_model(('bone', 'arrowhead'), 'bsa:item/bone/arrowhead').with_lang('Bone Arrowhead')

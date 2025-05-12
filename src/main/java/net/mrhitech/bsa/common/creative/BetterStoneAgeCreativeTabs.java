@@ -4,6 +4,7 @@ import net.dries007.tfc.common.TFCCreativeTabs;
 import net.dries007.tfc.common.blocks.rock.RockCategory;
 import net.minecraft.world.item.DyeColor;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.mrhitech.bsa.common.BetterStoneAgeRockCategory;
 import net.mrhitech.bsa.common.SherdPattern;
 import net.mrhitech.bsa.common.item.BetterStoneAgeItems;
 
@@ -60,21 +61,12 @@ public class BetterStoneAgeCreativeTabs {
             for (RockCategory rock_category : RockCategory.values()) {
                 event.accept(BetterStoneAgeItems.MULTITOOL_HEADS.get(rock_category));
             }
-            event.accept(BetterStoneAgeItems.FLINT_AXE_HEAD);
-            event.accept(BetterStoneAgeItems.FLINT_HAMMER_HEAD);
-            event.accept(BetterStoneAgeItems.FLINT_HOE_HEAD);
-            event.accept(BetterStoneAgeItems.FLINT_JAVELIN_HEAD);
-            event.accept(BetterStoneAgeItems.FLINT_KNIFE_HEAD);
-            event.accept(BetterStoneAgeItems.FLINT_SHOVEL_HEAD);
-            event.accept(BetterStoneAgeItems.FLINT_MULTITOOL_HEAD);
             
-            
-            event.accept(BetterStoneAgeItems.FLINT_AXE);
-            event.accept(BetterStoneAgeItems.FLINT_HAMMER);
-            event.accept(BetterStoneAgeItems.FLINT_HOE);
-            event.accept(BetterStoneAgeItems.FLINT_JAVELIN);
-            event.accept(BetterStoneAgeItems.FLINT_KNIFE);
-            event.accept(BetterStoneAgeItems.FLINT_SHOVEL);
+            for (BetterStoneAgeRockCategory category : BetterStoneAgeRockCategory.values()) {
+                for (BetterStoneAgeRockCategory.ItemType type : BetterStoneAgeRockCategory.ItemType.values()) {
+                    event.accept(BetterStoneAgeItems.STONE.get(category).get(type));
+                }
+            }
             
             event.accept(BetterStoneAgeItems.STONE_ARROWHEAD);
             event.accept(BetterStoneAgeItems.FLINT_ARROWHEAD);

@@ -1,0 +1,30 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "loader": "forge:separate_transforms",
+  "gui_light": "front",
+  "overrides": [
+    {
+      "predicate": {
+        "tfc:throwing": 1
+      },
+      "model": "bsa:item/stone/javelin/pyrite_throwing"
+    }
+  ],
+  "base": {
+    "parent": "bsa:item/stone/javelin/pyrite_in_hand"
+  },
+  "perspectives": {
+    "none": {
+      "parent": "bsa:item/stone/javelin/pyrite_gui"
+    },
+    "fixed": {
+      "parent": "bsa:item/stone/javelin/pyrite_gui"
+    },
+    "ground": {
+      "parent": "bsa:item/stone/javelin/pyrite_gui"
+    },
+    "gui": {
+      "parent": "bsa:item/stone/javelin/pyrite_gui"
+    }
+  }
+}
