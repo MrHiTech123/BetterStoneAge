@@ -47,7 +47,7 @@ public enum BetterStoneAgeRockCategory {
         HAMMER_HEAD,
         HOE(rock -> new TFCHoeItem(rock.getTier(), -1, -3.0f, properties())),
         HOE_HEAD,
-        JAVELIN(rock -> new JavelinItem(rock.getTier(), ToolItem.calculateVanillaAttackDamage(0.7f, rock.getTier()), 1.5f * rock.getTier().getAttackDamageBonus(), -2.2F, properties(), "stone")),
+        JAVELIN(rock -> new JavelinItem(rock.getTier(), ToolItem.calculateVanillaAttackDamage(0.7f, rock.getTier()), 1.5f * rock.getTier().getAttackDamageBonus(), -2.2F, properties(), rock.getSerializedName())),
         JAVELIN_HEAD,
         KNIFE(rock -> new ToolItem(rock.getTier(), ToolItem.calculateVanillaAttackDamage(0.6f, rock.getTier()), -2.0F, TFCTags.Blocks.MINEABLE_WITH_KNIFE, properties())),
         KNIFE_HEAD,
