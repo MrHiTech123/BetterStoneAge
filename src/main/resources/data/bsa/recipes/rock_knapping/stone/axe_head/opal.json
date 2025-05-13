@@ -1,0 +1,19 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:knapping",
+  "knapping_type": "tfc:rock",
+  "outside_slot_required": false,
+  "pattern": [
+    " X   ",
+    "XXXX ",
+    "XXXXX",
+    "XXXX ",
+    " X   "
+  ],
+  "ingredient": {
+    "tag": "bsa:knapping/opal"
+  },
+  "result": {
+    "item": "bsa:stone/axe_head/opal"
+  }
+}

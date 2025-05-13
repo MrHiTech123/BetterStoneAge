@@ -1,0 +1,22 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "H",
+    "R"
+  ],
+  "key": {
+    "H": {
+      "item": "bsa:stone/axe_head/amethyst"
+    },
+    "R": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "bsa:stone/axe/amethyst",
+    "nbt": {
+      "Damage": 37
+    }
+  }
+}

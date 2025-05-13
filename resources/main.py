@@ -10,14 +10,14 @@ forge_rm = ResourceManager('forge', 'src/main/resources', 2, False, 'en_us')
 STONE_TOOL_HEADS = ('hammer', 'hoe', 'javelin', 'knife', 'shovel', 'axe')
 STONE_TOOL_BINDINGS = ('weak', 'medium', 'strong')
 BINDING_BONUSES = {'weak': 0, 'medium': 2, 'strong': 4}
-ROCK_CATEGORY_DURABILITIES = {'igneous_extrusive': 70, 'igneous_intrusive': 60, 'metamorphic': 55, 'sedimentary': 50, 'flint': 120}
+ROCK_CATEGORY_DURABILITIES = {'igneous_extrusive': 70, 'igneous_intrusive': 60, 'metamorphic': 55, 'sedimentary': 50, 'flint': 120, 'amethyst': 75, 'emerald': 65, 'diamond': 70, 'opal': 80, 'pyrite': 60, 'ruby': 65, 'sapphire': 65, 'topaz': 65, 'obsidian': 36}
 NON_BROKEN_GRAINS = ('barley', 'oat', 'rye', 'wheat')
 BROKEN_GRAINS = ('maize', 'rice')
 PATTERNED_SHERD_PATTERNS = ('angler', 'archer', 'arms_up', 'blade', 'brewer', 'burn', 'danger', 'explorer', 'friend',
                             'heart', 'heartbreak', 'howl', 'miner', 'mourner', 'plenty', 'prize', 'sheaf', 'shelter', 'skull',
                             'snort')
 ALL_SHERD_PATTERNS = PATTERNED_SHERD_PATTERNS + ('blank',)
-BSA_ROCK_CATEGORIES = ('flint', 'obsidian', 'amethyst', 'emerald', 'kimberlite', 'opal', 'pyrite', 'ruby', 'sapphire', 'topaz')
+BSA_ROCK_CATEGORIES = ('flint', 'obsidian', 'amethyst', 'emerald', 'diamond', 'opal', 'pyrite', 'ruby', 'sapphire', 'topaz')
 
 
 with open('templates/pot_model.json', 'r') as f:
@@ -309,19 +309,19 @@ def create_crafting_recipes():
     
     print('\t\tCreating flint recipes...')
     
-    for tool_type in STONE_TOOL_HEADS:
-        rm.crafting_shaped(('crafting', 'stone', tool_type, 'flint', 'no_binding'), ['H', 'R'], {'H': f'bsa:stone/{tool_type}_head/flint', 'R': '#forge:rods/wooden'}, utils.item_stack({'item': f'bsa:stone/{tool_type}/flint', 'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES['flint'] // 2}}))
-        for binding in STONE_TOOL_BINDINGS:
-            rm.crafting_shaped(('crafting', 'stone', tool_type, 'flint', f'{binding}_binding'), ['BH', 'R '], {'B': f'#bsa:bindings/{binding}', 'H': f'bsa:stone/{tool_type}_head/flint', 'R': '#forge:rods/wooden'}, utils.item_stack(
-                {'item': f'bsa:stone/{tool_type}/flint', 'nbt': {'tfc:forging_bonus': BINDING_BONUSES[binding]}}))
-    
-    rm.crafting_shaped(('crafting', 'stone', 'axe',     'flint', 'multitool'), ['RM'],       {'M': f'bsa:stone/multitool_head/flint', 'R': f'#forge:rods/wooden'}, utils.item_stack({'item': f'bsa:stone/axe/flint',     'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES['flint'] // 2}}))
-    rm.crafting_shaped(('crafting', 'stone', 'hammer',  'flint', 'multitool'), [' R', 'M '], {'M': f'bsa:stone/multitool_head/flint', 'R': f'#forge:rods/wooden'}, utils.item_stack({'item': f'bsa:stone/hammer/flint',  'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES['flint'] // 2}}))
-    rm.crafting_shaped(('crafting', 'stone', 'hoe',     'flint', 'multitool'), ['M', 'R'],   {'M': f'bsa:stone/multitool_head/flint', 'R': f'#forge:rods/wooden'}, utils.item_stack({'item': f'bsa:stone/hoe/flint',     'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES['flint'] // 2}}))
-    rm.crafting_shaped(('crafting', 'stone', 'shovel',  'flint', 'multitool'), ['R', 'M'],   {'M': f'bsa:stone/multitool_head/flint', 'R': f'#forge:rods/wooden'}, utils.item_stack({'item': f'bsa:stone/shovel/flint',  'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES['flint'] // 2}}))
-    rm.crafting_shaped(('crafting', 'stone', 'javelin', 'flint', 'multitool'), [' M', 'R '], {'M': f'bsa:stone/multitool_head/flint', 'R': f'#forge:rods/wooden'}, utils.item_stack({'item': f'bsa:stone/javelin/flint', 'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES['flint'] // 2}}))
-    
-    rm.crafting_shapeless(('crafting', 'stone', 'knife', 'flint', 'multitool'), (f'bsa:stone/multitool_head/flint',), utils.item_stack({'item': f'tfc:stone/knife_head/flint',   'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES['flint'] // 2}}))    
+    for category in BSA_ROCK_CATEGORIES:
+        for tool_type in STONE_TOOL_HEADS:
+            rm.crafting_shaped(('crafting', 'stone', tool_type, category, 'no_binding'), ['H', 'R'], {'H': f'bsa:stone/{tool_type}_head/{category}', 'R': '#forge:rods/wooden'}, utils.item_stack({'item': f'bsa:stone/{tool_type}/{category}', 'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES[category] // 2}}))
+            for binding in STONE_TOOL_BINDINGS:
+                rm.crafting_shaped(('crafting', 'stone', tool_type, category, f'{binding}_binding'), ['BH', 'R '], {'B': f'#bsa:bindings/{binding}', 'H': f'bsa:stone/{tool_type}_head/{category}', 'R': '#forge:rods/wooden'}, utils.item_stack(
+                    {'item': f'bsa:stone/{tool_type}/{category}', 'nbt': {'tfc:forging_bonus': BINDING_BONUSES[binding]}}))
+        rm.crafting_shaped(('crafting', 'stone', 'axe',     category, 'multitool'), ['RM'],       {'M': f'bsa:stone/multitool_head/{category}', 'R': f'#forge:rods/wooden'}, utils.item_stack({'item': f'bsa:stone/axe/{category}',     'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES[category] // 2}}))
+        rm.crafting_shaped(('crafting', 'stone', 'hammer',  category, 'multitool'), [' R', 'M '], {'M': f'bsa:stone/multitool_head/{category}', 'R': f'#forge:rods/wooden'}, utils.item_stack({'item': f'bsa:stone/hammer/{category}',  'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES[category] // 2}}))
+        rm.crafting_shaped(('crafting', 'stone', 'hoe',     category, 'multitool'), ['M', 'R'],   {'M': f'bsa:stone/multitool_head/{category}', 'R': f'#forge:rods/wooden'}, utils.item_stack({'item': f'bsa:stone/hoe/{category}',     'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES[category] // 2}}))
+        rm.crafting_shaped(('crafting', 'stone', 'shovel',  category, 'multitool'), ['R', 'M'],   {'M': f'bsa:stone/multitool_head/{category}', 'R': f'#forge:rods/wooden'}, utils.item_stack({'item': f'bsa:stone/shovel/{category}',  'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES[category] // 2}}))
+        rm.crafting_shaped(('crafting', 'stone', 'javelin', category, 'multitool'), [' M', 'R '], {'M': f'bsa:stone/multitool_head/{category}', 'R': f'#forge:rods/wooden'}, utils.item_stack({'item': f'bsa:stone/javelin/{category}', 'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES[category] // 2}}))
+        
+        rm.crafting_shapeless(('crafting', 'stone', 'knife', category, 'multitool'), (f'bsa:stone/multitool_head/{category}',), utils.item_stack({'item': f'tfc:stone/knife_head/{category}',   'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES[category] // 2}}))
     
     
     damage_shapeless(rm, ('crafting', 'hide_sewing', '1_plus_1'), ('tfc:small_raw_hide', 'tfc:small_raw_hide', '#forge:string', 'tfc:bone_needle'), "tfc:medium_raw_hide")
@@ -428,22 +428,25 @@ def create_rock_knapping_recipes():
         predicate = f'#tfc:{rock_category}_rock'
         rock_knapping(rm, ('stone', 'multitool_head', rock_category), ['  X  ', ' XXX ', ' XXX ', 'XXXXX', ' XXX '], f'bsa:stone/multitool_head/{rock_category}', predicate)
     
-    rock_knapping(rm, ('stone', 'axe_head', 'flint'), [' X   ', 'XXXX ', 'XXXXX', 'XXXX ', ' X   '], 'bsa:stone/axe_head/flint', 'minecraft:flint')
-    rock_knapping(rm, ('stone', 'hammer_head', 'flint'), ['XXXXX', 'XXXXX', '  X  '], 'bsa:stone/hammer_head/flint', 'minecraft:flint')
-    
-    rock_knapping(rm, ('stone', 'hoe_head', 'flint'), ['XXXXX', '   XX'], 'bsa:stone/hoe_head/flint', 'minecraft:flint')
-    rock_knapping(rm, ('stone', 'hoe_head_1', 'flint'), ['XXXXX', '   XX', '     ', 'XXXXX', '   XX'], 'bsa:stone/hoe_head/flint', 'minecraft:flint')
-    rock_knapping(rm, ('stone', 'hoe_head_2', 'flint'), ['XXXXX', '   XX', '     ', 'XXXXX', 'XX   '], 'bsa:stone/hoe_head/flint', 'minecraft:flint')
-    
-    rock_knapping(rm, ('stone', 'javelin_head', 'flint'), ['XXX  ', 'XXXX ', 'XXXXX', ' XXX ', '  X  '], 'bsa:stone/javelin_head/flint', 'minecraft:flint')
-    
-    rock_knapping(rm, ('stone', 'knife_head', 'flint'), [' X', 'XX', 'XX', 'XX', 'XX'], 'bsa:stone/knife_head/flint', 'minecraft:flint')
-    rock_knapping(rm, ('stone', 'knife_head_1', 'flint'), ['X  X ', 'XX XX', 'XX XX', 'XX XX', 'XX XX'], (2, 'bsa:stone/knife_head/flint'), 'minecraft:flint')
-    rock_knapping(rm, ('stone', 'knife_head_2', 'flint'), ['X   X', 'XX XX', 'XX XX', 'XX XX', 'XX XX'], (2, 'bsa:stone/knife_head/flint'), 'minecraft:flint')
-    rock_knapping(rm, ('stone', 'knife_head_3', 'flint'), [' X X ', 'XX XX', 'XX XX', 'XX XX', 'XX XX'], (2, 'bsa:stone/knife_head/flint'), 'minecraft:flint')
-    
-    rock_knapping(rm, ('stone', 'shovel_head', 'flint'), [' XXX ', ' XXX ', ' XXX ', ' XXX ', '  X  '], 'bsa:stone/shovel_head/flint', 'minecraft:flint')
-    rock_knapping(rm, ('stone', 'multitool_head', 'flint'), ['  X  ', ' XXX ', ' XXX ', 'XXXXX', ' XXX '], 'bsa:stone/multitool_head/flint', 'minecraft:flint')    
+    for rock_category in BSA_ROCK_CATEGORIES:
+        predicate = f'#bsa:knapping/{rock_category}'
+        
+        rock_knapping(rm, ('stone', 'axe_head', rock_category), [' X   ', 'XXXX ', 'XXXXX', 'XXXX ', ' X   '], f'bsa:stone/axe_head/{rock_category}', predicate)
+        rock_knapping(rm, ('stone', 'hammer_head', rock_category), ['XXXXX', 'XXXXX', '  X  '], f'bsa:stone/hammer_head/{rock_category}', predicate)
+        
+        rock_knapping(rm, ('stone', 'hoe_head', rock_category), ['XXXXX', '   XX'], f'bsa:stone/hoe_head/{rock_category}', predicate)
+        rock_knapping(rm, ('stone', 'hoe_head_1', rock_category), ['XXXXX', '   XX', '     ', 'XXXXX', '   XX'], f'bsa:stone/hoe_head/{rock_category}', predicate)
+        rock_knapping(rm, ('stone', 'hoe_head_2', rock_category), ['XXXXX', '   XX', '     ', 'XXXXX', 'XX   '], f'bsa:stone/hoe_head/{rock_category}', predicate)
+        
+        rock_knapping(rm, ('stone', 'javelin_head', rock_category), ['XXX  ', 'XXXX ', 'XXXXX', ' XXX ', '  X  '], f'bsa:stone/javelin_head/{rock_category}', predicate)
+        
+        rock_knapping(rm, ('stone', 'knife_head', rock_category), [' X', 'XX', 'XX', 'XX', 'XX'], f'bsa:stone/knife_head/{rock_category}', predicate)
+        rock_knapping(rm, ('stone', 'knife_head_1', rock_category), ['X  X ', 'XX XX', 'XX XX', 'XX XX', 'XX XX'], (2, f'bsa:stone/knife_head/{rock_category}'), predicate)
+        rock_knapping(rm, ('stone', 'knife_head_2', rock_category), ['X   X', 'XX XX', 'XX XX', 'XX XX', 'XX XX'], (2, f'bsa:stone/knife_head/{rock_category}'), predicate)
+        rock_knapping(rm, ('stone', 'knife_head_3', rock_category), [' X X ', 'XX XX', 'XX XX', 'XX XX', 'XX XX'], (2, f'bsa:stone/knife_head/{rock_category}'), predicate)
+        
+        rock_knapping(rm, ('stone', 'shovel_head', rock_category), [' XXX ', ' XXX ', ' XXX ', ' XXX ', '  X  '], f'bsa:stone/shovel_head/{rock_category}', predicate)
+        rock_knapping(rm, ('stone', 'multitool_head', rock_category), ['  X  ', ' XXX ', ' XXX ', 'XXXXX', ' XXX '], f'bsa:stone/multitool_head/{rock_category}', predicate)    
 
 def create_sherd_knapping_recipes():
     print('\t\tCreating sherd knapping recipes...')
@@ -674,20 +677,30 @@ def create_item_tags():
     
     rm.tag('tfc:usable_on_tool_rack', 'bsa:bone/fishing_rod')
     rm.tag('forge:fishing_rods', 'bsa:bone/fishing_rod')
-    rm.item_tag('tfc:rock_knapping', 'minecraft:flint')
     
-    rm.item_tag('tfc:axes', 'bsa:stone/axe/flint')
-    rm.item_tag('tfc:hammers', 'bsa:stone/hammer/flint')
-    rm.item_tag('tfc:hoes', 'bsa:stone/hoe/flint')
-    rm.item_tag('tfc:javelins', 'bsa:stone/javelin/flint')
-    rm.item_tag('tfc:knives', 'bsa:stone/knife/flint')
-    rm.item_tag('tfc:shovels', 'bsa:stone/shovel/flint')
-    rm.item_tag('tfc:stone_tools', *[f'bsa:stone/{tool}_head/flint' for tool in STONE_TOOL_HEADS])
-    rm.item_tag('tfc:inefficient_logging_axes', 'bsa:stone/axe/flint')
+    rm.item_tag(('knapping', 'flint'), 'minecraft:flint')
+    rm.item_tag(('knapping', 'obsidian'), 'bsa:obsidian')
+    
+    for rock_category in BSA_ROCK_CATEGORIES:
+        if rock_category in ('flint', 'obsidian'):
+            continue
+        rm.item_tag(('knapping', rock_category), f'tfc:ore/{rock_category}', f'tfc:gem/{rock_category}')
+    rm.item_tag('tfc:rock_knapping', *[f'#bsa:knapping/{rock_category}' for rock_category in BSA_ROCK_CATEGORIES])
+    
+    rm.item_tag('tfc:axes', *[f'bsa:stone/axe/{rock_category}' for rock_category in BSA_ROCK_CATEGORIES])
+    rm.item_tag('tfc:hammers', *[f'bsa:stone/hammer/{rock_category}' for rock_category in BSA_ROCK_CATEGORIES])
+    rm.item_tag('tfc:hoes', *[f'bsa:stone/hoe/{rock_category}' for rock_category in BSA_ROCK_CATEGORIES])
+    rm.item_tag('tfc:javelins', *[f'bsa:stone/javelin/{rock_category}' for rock_category in BSA_ROCK_CATEGORIES])
+    rm.item_tag('tfc:knives', *[f'bsa:stone/knife/{rock_category}' for rock_category in BSA_ROCK_CATEGORIES])
+    rm.item_tag('tfc:shovels', *[f'bsa:stone/shovel/{rock_category}' for rock_category in BSA_ROCK_CATEGORIES])
+    rm.item_tag('tfc:stone_tools', *[f'bsa:stone/{tool}_head/{rock_category}' for tool in STONE_TOOL_HEADS for rock_category in ROCK_CATEGORIES])
+    rm.item_tag('tfc:inefficient_logging_axes', *[f'bsa:stone/axe/{rock_category}' for rock_category in BSA_ROCK_CATEGORIES])
     
     rm.item_tag('rock/loose', *[f'tfc:rock/loose/{rock_type}' for rock_type in ROCKS])
     rm.item_tag('arrowheads', 'bsa:stone/arrowhead', 'bsa:stone/arrowhead/flint')
-    rm.item_tag('tfc:usable_on_tool_rack', 'bsa:stone/shovel/flint', 'bsa:stone/javelin/flint', 'bsa:stone/knife/flint', 'bsa:stone/axe/flint', 'bsa:stone/hammer/flint', 'bsa:stone/hoe/flint', 'bsa:bone/fishing_rod', '#tfc:fluid_item_ingredient_empty_containers')
+    rm.item_tag('tfc:usable_on_tool_rack', 'bsa:bone/fishing_rod', '#tfc:fluid_item_ingredient_empty_containers',
+        *[f'bsa:stone/{tool}/{rock_category}' for tool in STONE_TOOL_HEADS for rock_category in BSA_ROCK_CATEGORIES]
+    )
     
     rm.item_tag('tfc:clay_recycle_5', '#bsa:ceramic/unfired_sherds', '#bsa:ceramic/unfired_jugs', '#bsa:ceramic/unfired_pots', '#tfc:unfired_vessels', '#tfc:unfired_large_vessels')
     rm.item_tag('ceramic/smashable_1', 'tfc:ceramic/bowl', 'minecraft:brick', 'minecraft:flower_pot', 'tfc:ceramic/ingot_mold')
@@ -701,7 +714,7 @@ def create_item_tags():
 def create_worldgen_tags():
     print('Creating worldgen tags...')
     for biome in TFC_BIOMES:
-        tfc_rm.placed_feature_tag((f'in_biome/surface_decoration/{biome}'), 'bsa:flint_patch')    
+        tfc_rm.placed_feature_tag((f'in_biome/surface_decoration/{biome}'), 'bsa:flint_patch')
     
     
 def create_tags():

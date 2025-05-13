@@ -1,0 +1,25 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BH",
+    "R "
+  ],
+  "key": {
+    "B": {
+      "tag": "bsa:bindings/strong"
+    },
+    "H": {
+      "item": "bsa:stone/shovel_head/topaz"
+    },
+    "R": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "bsa:stone/shovel/topaz",
+    "nbt": {
+      "tfc:forging_bonus": 4
+    }
+  }
+}

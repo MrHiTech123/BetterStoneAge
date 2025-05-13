@@ -2,6 +2,15 @@
   "__comment__": "This file was automatically created by mcresources",
   "replace": false,
   "values": [
-    "minecraft:flint"
+    "#bsa:knapping/flint",
+    "#bsa:knapping/obsidian",
+    "#bsa:knapping/amethyst",
+    "#bsa:knapping/emerald",
+    "#bsa:knapping/diamond",
+    "#bsa:knapping/opal",
+    "#bsa:knapping/pyrite",
+    "#bsa:knapping/ruby",
+    "#bsa:knapping/sapphire",
+    "#bsa:knapping/topaz"
   ]
 }

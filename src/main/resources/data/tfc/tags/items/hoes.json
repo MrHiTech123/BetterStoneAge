@@ -2,6 +2,15 @@
   "__comment__": "This file was automatically created by mcresources",
   "replace": false,
   "values": [
-    "bsa:stone/hoe/flint"
+    "bsa:stone/hoe/flint",
+    "bsa:stone/hoe/obsidian",
+    "bsa:stone/hoe/amethyst",
+    "bsa:stone/hoe/emerald",
+    "bsa:stone/hoe/diamond",
+    "bsa:stone/hoe/opal",
+    "bsa:stone/hoe/pyrite",
+    "bsa:stone/hoe/ruby",
+    "bsa:stone/hoe/sapphire",
+    "bsa:stone/hoe/topaz"
   ]
 }

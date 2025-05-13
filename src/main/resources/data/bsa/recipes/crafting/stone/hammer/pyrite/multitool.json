@@ -1,0 +1,22 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " R",
+    "M "
+  ],
+  "key": {
+    "M": {
+      "item": "bsa:stone/multitool_head/pyrite"
+    },
+    "R": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "bsa:stone/hammer/pyrite",
+    "nbt": {
+      "Damage": 30
+    }
+  }
+}

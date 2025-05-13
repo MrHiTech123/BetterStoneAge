@@ -16,8 +16,8 @@ import java.util.function.Function;
 public enum BetterStoneAgeRockCategory {
     FLINT(BetterStoneAgeTiers.FLINT),
     AMETHYST(BetterStoneAgeTiers.AMETHYST),
+    DIAMOND(BetterStoneAgeTiers.DIAMOND),
     EMERALD(BetterStoneAgeTiers.EMERALD),
-    KIMBERLITE(BetterStoneAgeTiers.KIMBERLITE),
     OPAL(BetterStoneAgeTiers.OPAL),
     PYRITE(BetterStoneAgeTiers.PYRITE),
     RUBY(BetterStoneAgeTiers.RUBY),

@@ -1,0 +1,22 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "H",
+    "R"
+  ],
+  "key": {
+    "H": {
+      "item": "bsa:stone/javelin_head/diamond"
+    },
+    "R": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "bsa:stone/javelin/diamond",
+    "nbt": {
+      "Damage": 35
+    }
+  }
+}

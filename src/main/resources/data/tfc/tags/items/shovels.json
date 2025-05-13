@@ -2,6 +2,15 @@
   "__comment__": "This file was automatically created by mcresources",
   "replace": false,
   "values": [
-    "bsa:stone/shovel/flint"
+    "bsa:stone/shovel/flint",
+    "bsa:stone/shovel/obsidian",
+    "bsa:stone/shovel/amethyst",
+    "bsa:stone/shovel/emerald",
+    "bsa:stone/shovel/diamond",
+    "bsa:stone/shovel/opal",
+    "bsa:stone/shovel/pyrite",
+    "bsa:stone/shovel/ruby",
+    "bsa:stone/shovel/sapphire",
+    "bsa:stone/shovel/topaz"
   ]
 }

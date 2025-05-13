@@ -11,7 +11,7 @@
     " XXX "
   ],
   "ingredient": {
-    "item": "minecraft:flint"
+    "tag": "bsa:knapping/flint"
   },
   "result": {
     "item": "bsa:stone/multitool_head/flint"

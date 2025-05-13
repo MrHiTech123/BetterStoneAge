@@ -1,0 +1,22 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "R",
+    "M"
+  ],
+  "key": {
+    "M": {
+      "item": "bsa:stone/multitool_head/ruby"
+    },
+    "R": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "bsa:stone/shovel/ruby",
+    "nbt": {
+      "Damage": 32
+    }
+  }
+}

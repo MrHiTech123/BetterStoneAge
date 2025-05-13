@@ -2,6 +2,15 @@
   "__comment__": "This file was automatically created by mcresources",
   "replace": false,
   "values": [
-    "bsa:stone/javelin/flint"
+    "bsa:stone/javelin/flint",
+    "bsa:stone/javelin/obsidian",
+    "bsa:stone/javelin/amethyst",
+    "bsa:stone/javelin/emerald",
+    "bsa:stone/javelin/diamond",
+    "bsa:stone/javelin/opal",
+    "bsa:stone/javelin/pyrite",
+    "bsa:stone/javelin/ruby",
+    "bsa:stone/javelin/sapphire",
+    "bsa:stone/javelin/topaz"
   ]
 }

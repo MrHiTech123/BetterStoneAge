@@ -1,0 +1,17 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:knapping",
+  "knapping_type": "tfc:rock",
+  "outside_slot_required": false,
+  "pattern": [
+    "XXXXX",
+    "XXXXX",
+    "  X  "
+  ],
+  "ingredient": {
+    "tag": "bsa:knapping/diamond"
+  },
+  "result": {
+    "item": "bsa:stone/hammer_head/diamond"
+  }
+}

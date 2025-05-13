@@ -1,0 +1,25 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BH",
+    "R "
+  ],
+  "key": {
+    "B": {
+      "tag": "bsa:bindings/medium"
+    },
+    "H": {
+      "item": "bsa:stone/javelin_head/opal"
+    },
+    "R": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "bsa:stone/javelin/opal",
+    "nbt": {
+      "tfc:forging_bonus": 2
+    }
+  }
+}

@@ -2,6 +2,15 @@
   "__comment__": "This file was automatically created by mcresources",
   "replace": false,
   "values": [
-    "bsa:stone/hammer/flint"
+    "bsa:stone/hammer/flint",
+    "bsa:stone/hammer/obsidian",
+    "bsa:stone/hammer/amethyst",
+    "bsa:stone/hammer/emerald",
+    "bsa:stone/hammer/diamond",
+    "bsa:stone/hammer/opal",
+    "bsa:stone/hammer/pyrite",
+    "bsa:stone/hammer/ruby",
+    "bsa:stone/hammer/sapphire",
+    "bsa:stone/hammer/topaz"
   ]
 }

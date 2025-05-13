@@ -1,0 +1,25 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BH",
+    "R "
+  ],
+  "key": {
+    "B": {
+      "tag": "bsa:bindings/weak"
+    },
+    "H": {
+      "item": "bsa:stone/hoe_head/emerald"
+    },
+    "R": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "bsa:stone/hoe/emerald",
+    "nbt": {
+      "tfc:forging_bonus": 0
+    }
+  }
+}

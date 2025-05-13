@@ -18,7 +18,7 @@ public class BetterStoneAgeTiers {
     
     public static final Tier AMETHYST = register("amethyst", TFCTiers.IGNEOUS_EXTRUSIVE, FLINT, Blocks.NEEDS_STONE_TOOL, 0, 75, 4.7f, 2.0f, 5);
     public static final Tier EMERALD = register("emerald", TFCTiers.IGNEOUS_EXTRUSIVE, FLINT, Blocks.NEEDS_STONE_TOOL, 0, 65, 4.4f, 2.0f, 5);
-    public static final Tier KIMBERLITE = register("kimberlite", TFCTiers.IGNEOUS_EXTRUSIVE, FLINT, Blocks.NEEDS_STONE_TOOL, 0, 70, 4.4f, 2.0f, 5);
+    public static final Tier DIAMOND = register("kimberlite", TFCTiers.IGNEOUS_EXTRUSIVE, FLINT, Blocks.NEEDS_STONE_TOOL, 0, 70, 4.4f, 2.0f, 5);
     public static final Tier OPAL = register("opal", TFCTiers.IGNEOUS_EXTRUSIVE, FLINT, Blocks.NEEDS_STONE_TOOL, 0, 80, 4.7f, 2.0f, 5);
     public static final Tier PYRITE = register("pyrite", TFCTiers.IGNEOUS_EXTRUSIVE, FLINT, Blocks.NEEDS_STONE_TOOL, 0, 60, 4.4f, 2.0f, 5);
     public static final Tier RUBY = register("ruby", TFCTiers.IGNEOUS_EXTRUSIVE, FLINT, Blocks.NEEDS_STONE_TOOL, 0, 65, 4.4f, 2.0f, 5);

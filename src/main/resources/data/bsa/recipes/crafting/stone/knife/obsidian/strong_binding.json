@@ -1,0 +1,25 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BH",
+    "R "
+  ],
+  "key": {
+    "B": {
+      "tag": "bsa:bindings/strong"
+    },
+    "H": {
+      "item": "bsa:stone/knife_head/obsidian"
+    },
+    "R": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "bsa:stone/knife/obsidian",
+    "nbt": {
+      "tfc:forging_bonus": 4
+    }
+  }
+}

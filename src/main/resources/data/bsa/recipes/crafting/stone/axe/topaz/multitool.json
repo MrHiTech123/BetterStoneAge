@@ -1,0 +1,21 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RM"
+  ],
+  "key": {
+    "M": {
+      "item": "bsa:stone/multitool_head/topaz"
+    },
+    "R": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "bsa:stone/axe/topaz",
+    "nbt": {
+      "Damage": 32
+    }
+  }
+}

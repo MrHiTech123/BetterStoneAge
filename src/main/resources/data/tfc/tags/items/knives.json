@@ -2,6 +2,15 @@
   "__comment__": "This file was automatically created by mcresources",
   "replace": false,
   "values": [
-    "bsa:stone/knife/flint"
+    "bsa:stone/knife/flint",
+    "bsa:stone/knife/obsidian",
+    "bsa:stone/knife/amethyst",
+    "bsa:stone/knife/emerald",
+    "bsa:stone/knife/diamond",
+    "bsa:stone/knife/opal",
+    "bsa:stone/knife/pyrite",
+    "bsa:stone/knife/ruby",
+    "bsa:stone/knife/sapphire",
+    "bsa:stone/knife/topaz"
   ]
 }

@@ -1,0 +1,15 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "bsa:stone/multitool_head/obsidian"
+    }
+  ],
+  "result": {
+    "item": "tfc:stone/knife_head/obsidian",
+    "nbt": {
+      "Damage": 18
+    }
+  }
+}

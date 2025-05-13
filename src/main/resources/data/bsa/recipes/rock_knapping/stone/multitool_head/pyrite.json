@@ -1,0 +1,19 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "tfc:knapping",
+  "knapping_type": "tfc:rock",
+  "outside_slot_required": false,
+  "pattern": [
+    "  X  ",
+    " XXX ",
+    " XXX ",
+    "XXXXX",
+    " XXX "
+  ],
+  "ingredient": {
+    "tag": "bsa:knapping/pyrite"
+  },
+  "result": {
+    "item": "bsa:stone/multitool_head/pyrite"
+  }
+}

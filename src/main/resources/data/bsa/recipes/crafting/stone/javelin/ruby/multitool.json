@@ -1,0 +1,22 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " M",
+    "R "
+  ],
+  "key": {
+    "M": {
+      "item": "bsa:stone/multitool_head/ruby"
+    },
+    "R": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "bsa:stone/javelin/ruby",
+    "nbt": {
+      "Damage": 32
+    }
+  }
+}

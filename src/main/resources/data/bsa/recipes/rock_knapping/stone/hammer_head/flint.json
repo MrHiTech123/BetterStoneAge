@@ -9,7 +9,7 @@
     "  X  "
   ],
   "ingredient": {
-    "item": "minecraft:flint"
+    "tag": "bsa:knapping/flint"
   },
   "result": {
     "item": "bsa:stone/hammer_head/flint"

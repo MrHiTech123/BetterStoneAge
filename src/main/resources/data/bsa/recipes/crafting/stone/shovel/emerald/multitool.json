@@ -1,0 +1,22 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "R",
+    "M"
+  ],
+  "key": {
+    "M": {
+      "item": "bsa:stone/multitool_head/emerald"
+    },
+    "R": {
+      "tag": "forge:rods/wooden"
+    }
+  },
+  "result": {
+    "item": "bsa:stone/shovel/emerald",
+    "nbt": {
+      "Damage": 32
+    }
+  }
+}
