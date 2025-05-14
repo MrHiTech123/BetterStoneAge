@@ -51,7 +51,7 @@ public class BetterStoneAge
         BetterStoneAgeBlocks.register(modEventBus);
         BetterStoneAgeBlockEntities.register(modEventBus);
         BetterStoneAgeLootModifiers.register(modEventBus);
-        BetterStoneAgeRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
+        BetterStoneAgeRecipeSerializers.register(modEventBus);
         BetterStoneAgeSounds.register(modEventBus);
         BetterStoneAgeRecipeTypes.registerPotRecipeOutputTypes();
         BetterStoneAgeIngredients.registerIngredientTypes();

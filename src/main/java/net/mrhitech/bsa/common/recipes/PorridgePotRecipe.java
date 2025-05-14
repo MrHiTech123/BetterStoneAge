@@ -49,7 +49,7 @@ public class PorridgePotRecipe extends PotRecipe
     }
 
     @Override
-    public PorridgeOutput getOutput(PotBlockEntity.PotInventory inventory)
+    public @NotNull PorridgeOutput getOutput(PotBlockEntity.PotInventory inventory)
     {
         int ingredientCount = 0;
         float water = 20, saturation = 2;
@@ -108,7 +108,7 @@ public class PorridgePotRecipe extends PotRecipe
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer()
+    public @NotNull RecipeSerializer<?> getSerializer()
     {
         return BetterStoneAgeRecipeSerializers.POT_PORRIDGE.get();
     }
@@ -125,7 +125,7 @@ public class PorridgePotRecipe extends PotRecipe
         }
 
         @Override
-        public InteractionResult onInteract(PotBlockEntity entity, Player player, ItemStack clickedWith)
+        public @NotNull InteractionResult onInteract(PotBlockEntity entity, Player player, ItemStack clickedWith)
         {
             if (Helpers.isItem(clickedWith.getItem(), TFCTags.Items.SOUP_BOWLS) && !stack.isEmpty())
             {
