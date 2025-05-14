@@ -18,7 +18,7 @@ PATTERNED_SHERD_PATTERNS = ('angler', 'archer', 'arms_up', 'blade', 'brewer', 'b
                             'snort')
 ALL_SHERD_PATTERNS = PATTERNED_SHERD_PATTERNS + ('blank',)
 BSA_ROCK_CATEGORIES = ('flint', 'obsidian', 'amethyst', 'emerald', 'diamond', 'opal', 'pyrite', 'ruby', 'sapphire', 'topaz')
-
+BSA_ROCK_CATEGORY_NAMES = {k: 'kimberlite' if k == 'diamond' else k for k in BSA_ROCK_CATEGORIES}
 
 with open('templates/pot_model.json', 'r') as f:
     pot_template = f.read()
@@ -159,6 +159,7 @@ def create_item_models():
     
     for category in BSA_ROCK_CATEGORIES:
         for tool in STONE_TOOL_HEADS:
+            category_name = BSA_ROCK_CATEGORY_NAMES[category]
             if tool not in ('javelin', 'knife'):
                 rm.item_model(('stone', tool, category), f'bsa:item/stone/{category}/{tool}', parent='item/handheld').with_lang(lang(f'{category} {tool}'))
             rm.item_model(('stone', f'{tool}_head', category), f'bsa:item/stone/{category}/{tool}_head').with_lang(lang(f'{category} {tool} Head'))
