@@ -158,7 +158,7 @@ public class PorridgePotRecipe extends PotRecipe
         }
 
         @Override
-        public OutputType getType()
+        public @NotNull OutputType getType()
         {
             return PorridgePotRecipe.OUTPUT_TYPE;
         }
