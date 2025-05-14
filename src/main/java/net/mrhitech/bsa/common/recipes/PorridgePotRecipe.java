@@ -16,6 +16,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.mrhitech.bsa.common.item.BetterStoneAgeItems;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import net.dries007.tfc.common.TFCTags;
@@ -179,13 +180,13 @@ public class PorridgePotRecipe extends PotRecipe
     public static class Serializer extends PotRecipe.Serializer<PorridgePotRecipe>
     {
         @Override
-        protected PorridgePotRecipe fromJson(ResourceLocation recipeId, JsonObject json, List<Ingredient> ingredients, FluidStackIngredient fluidIngredient, int duration, float minTemp)
+        protected @NotNull PorridgePotRecipe fromJson(ResourceLocation recipeId, JsonObject json, List<Ingredient> ingredients, FluidStackIngredient fluidIngredient, int duration, float minTemp)
         {
             return new PorridgePotRecipe(recipeId, ingredients, fluidIngredient, duration, minTemp);
         }
 
         @Override
-        protected PorridgePotRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer, List<Ingredient> ingredients, FluidStackIngredient fluidIngredient, int duration, float minTemp)
+        protected @NotNull PorridgePotRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer, List<Ingredient> ingredients, FluidStackIngredient fluidIngredient, int duration, float minTemp)
         {
             return new PorridgePotRecipe(recipeId, ingredients, fluidIngredient, duration, minTemp);
         }
