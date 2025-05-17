@@ -1,29 +1,22 @@
 {
   "__comment__": "This file was automatically created by mcresources",
-  "multipart": [
-    {
-      "when": {
-        "fluid": "empty"
+  "variants": {
+    "": [
+      {
+        "model": "bsa:block/groundcover/obsidian",
+        "y": 90
       },
-      "apply": {
+      {
         "model": "bsa:block/groundcover/obsidian"
-      }
-    },
-    {
-      "when": {
-        "fluid": "water"
       },
-      "apply": {
-        "model": "bsa:block/groundcover/obsidian"
-      }
-    },
-    {
-      "when": {
-        "fluid": "salt_water"
+      {
+        "model": "bsa:block/groundcover/obsidian",
+        "y": 180
       },
-      "apply": {
-        "model": "bsa:block/groundcover/obsidian"
+      {
+        "model": "bsa:block/groundcover/obsidian",
+        "y": 270
       }
-    }
-  ]
+    ]
+  }
 }

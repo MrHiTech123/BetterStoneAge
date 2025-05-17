@@ -115,11 +115,7 @@ def create_block_models():
     make_door(block)
     
     rm.block_model(('groundcover', 'obsidian'), {'0': 'bsa:item/obsidian', 'particle': 'bsa:item/obsidian'}, parent='tfc:block/groundcover/flint')
-    rm.blockstate_multipart(('groundcover', 'obsidian'),
-        [{'fluid': 'empty'}, {'model': 'bsa:block/groundcover/obsidian'}],
-        [{'fluid': 'water'}, {'model': 'bsa:block/groundcover/obsidian'}],
-        [{'fluid': 'salt_water'}, {'model': 'bsa:block/groundcover/obsidian'}],
-    )
+    rm.blockstate(('groundcover', 'obsidian'), variants={'': {'': four_ways('bsa:block/groundcover/obsidian')}})
         
 
 def create_item_foods():
