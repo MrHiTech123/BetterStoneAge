@@ -1,0 +1,8 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "parent": "tfc:block/groundcover/flint",
+  "textures": {
+    "0": "bsa:item/obsidian",
+    "particle": "bsa:item/obsidian"
+  }
+}

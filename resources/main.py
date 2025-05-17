@@ -113,6 +113,13 @@ def create_block_models():
     )
     block = rm.block(('hide'))
     make_door(block)
+    
+    rm.block_model(('groundcover', 'obsidian'), {'0': 'bsa:item/obsidian', 'particle': 'bsa:item/obsidian'}, parent='tfc:block/groundcover/flint')
+    rm.blockstate_multipart(('groundcover', 'obsidian'),
+        [{'fluid': 'empty'}, {'model': 'bsa:block/groundcover/obsidian'}],
+        [{'fluid': 'water'}, {'model': 'bsa:block/groundcover/obsidian'}],
+        [{'fluid': 'salt_water'}, {'model': 'bsa:block/groundcover/obsidian'}],
+    )
         
 
 def create_item_foods():
@@ -185,7 +192,7 @@ def create_item_models():
         rm.item_model(('ceramic', 'sherd', 'unfired', pattern), f'bsa:item/ceramic/sherd/unfired/{pattern}').with_lang(lang(f'{pattern}_unfired_sherd'))
     rm.item_model(('ceramic', 'sherd', 'fired', 'blank'), 'bsa:item/ceramic/sherd/fired/blank').with_lang(lang('blank_pottery_sherd'))
     
-    rm.item_model(('obsidian'), 'bsa:item/obsidian').with_lang(lang('obsidian'))
+    rm.item_model(('obsidian'), 'bsa:item/obsidian')
     
     
 def create_item_sizes():
@@ -201,6 +208,7 @@ def create_loot_tables():
     tfc_rm.block_loot('tfc:charcoal_pile', {'type': 'minecraft:alternatives', 'children': [{'type': 'minecraft:item', 'name': 'tfc:powder/charcoal', 'conditions': [{'condition': 'minecraft:match_tool', 'predicate': {'tag': 'tfc:hammers'}}], 'functions': [{'function': 'minecraft:set_count', 'count': 2}]}, {'type': 'minecraft:item', 'name': 'minecraft:charcoal'}]})
     rm.block_loot('bsa:sinew', {'name': 'bsa:sinew', 'conditions': [loot_tables.block_state_property('bsa:sinew[dried=false]')]}, {'name': 'bsa:dried_sinew', 'conditions': [loot_tables.block_state_property('bsa:sinew[dried=true]')]})
     rm.block_loot('bsa:hide_door', {'name': 'bsa:hide_door', 'conditions': loot_tables.block_state_property('bsa:hide_door[half=lower]')})
+    rm.block_loot('bsa:groundcover/obsidian', {'name': 'bsa:obsidian'})
     
     for rock_category in ROCKS:
         tfc_rm.block_loot(f'tfc:rock/gravel/{rock_category}', {'name': f'tfc:rock/gravel/{rock_category}'})
@@ -244,6 +252,7 @@ def create_misc_lang():
     rm.lang('block.bsa.sinew', 'Sinew')
     rm.lang('config.jade.plugin_tfc.drying_sinew', 'Drying Sinew')
     rm.lang('block.bsa.hide_door', 'Hide Door')
+    rm.lang('block.bsa.groundcover.obsidian', 'Obsidian')
     rm.lang('item.bsa.ceramic.unfired_decorated_pot', 'Unfired Decorated Pot')
 
 def create_anvil_recipes():

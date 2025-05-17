@@ -1,0 +1,29 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "multipart": [
+    {
+      "when": {
+        "fluid": "empty"
+      },
+      "apply": {
+        "model": "bsa:block/groundcover/obsidian"
+      }
+    },
+    {
+      "when": {
+        "fluid": "water"
+      },
+      "apply": {
+        "model": "bsa:block/groundcover/obsidian"
+      }
+    },
+    {
+      "when": {
+        "fluid": "salt_water"
+      },
+      "apply": {
+        "model": "bsa:block/groundcover/obsidian"
+      }
+    }
+  ]
+}

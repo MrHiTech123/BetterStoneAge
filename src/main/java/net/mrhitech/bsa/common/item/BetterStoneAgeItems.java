@@ -2,6 +2,7 @@ package net.mrhitech.bsa.common.item;
 
 import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.TFCTiers;
+import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.items.*;
 import net.dries007.tfc.config.TFCConfig;
 import net.dries007.tfc.util.Helpers;
@@ -19,6 +20,7 @@ import java.util.function.Supplier;
 import net.mrhitech.bsa.common.BetterStoneAgeRockCategory;
 import net.mrhitech.bsa.common.SherdPattern;
 import net.mrhitech.bsa.common.blocks.BetterStoneAgeBlocks;
+import net.mrhitech.bsa.common.blocks.BetterStoneAgeGroundcoverBlockType;
 import net.mrhitech.bsa.common.food.BetterStoneAgeFoods;
 
 public class BetterStoneAgeItems {
@@ -80,7 +82,10 @@ public class BetterStoneAgeItems {
         register("ceramic/sherd/unfired/" + pattern.getSerializedName(), () -> new Item(new Item.Properties())));
     public static final RegistryObject<Item> FIRED_BLANK_SHERD = register("ceramic/sherd/fired/blank", () -> new Item(new Item.Properties()));
     
-    public static final RegistryObject<Item> OBSIDIAN = register("obsidian", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> OBSIDIAN = register("obsidian", () -> new BlockItem(
+            BetterStoneAgeBlocks.GROUNDCOVER.get(BetterStoneAgeGroundcoverBlockType.OBSIDIAN).get(),
+            new Item.Properties()
+    ));
     
     public static <T extends Item> RegistryObject<T> register(String name, Supplier<T> supplier) {
         return ITEMS.register(name, supplier);

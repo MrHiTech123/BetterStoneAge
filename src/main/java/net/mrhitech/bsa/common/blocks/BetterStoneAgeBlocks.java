@@ -3,6 +3,7 @@ package net.mrhitech.bsa.common.blocks;
 import net.dries007.tfc.common.blockentities.AbstractFirepitBlockEntity;
 import net.dries007.tfc.common.blockentities.TFCBlockEntities;
 import net.dries007.tfc.common.blocks.ExtendedProperties;
+import net.dries007.tfc.common.blocks.GroundcoverBlock;
 import net.dries007.tfc.common.blocks.devices.PotBlock;
 import net.dries007.tfc.common.blocks.wood.TFCDoorBlock;
 import net.dries007.tfc.common.items.TFCItems;
@@ -17,6 +18,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -49,14 +51,18 @@ public class BetterStoneAgeBlocks {
     
     public static final RegistryObject<Block> HIDE_DOOR = BLOCKS.register("hide_door", () -> new TFCDoorBlock(ExtendedProperties.of(DyeColor.BLUE).sound(SoundType.WOOD).instrument(NoteBlockInstrument.BASS).strength(0.3F).noOcclusion(), BlockSetType.DARK_OAK));
     
+    public static final Map<BetterStoneAgeGroundcoverBlockType, RegistryObject<Block>> GROUNDCOVER = Helpers.mapOfKeys(BetterStoneAgeGroundcoverBlockType.class, type -> 
+            register("groundcover/" + type.getSerializedName(), () -> groundcover(type), type.createBlockItem()));
+    
+    
     private static ExtendedProperties properties(RegistryWood wood)
     {
         return ExtendedProperties.of(wood.woodColor()).sound(SoundType.WOOD).instrument(NoteBlockInstrument.BASS);
     }
     
-    
-    
-    
+    private static GroundcoverBlock groundcover(BetterStoneAgeGroundcoverBlockType cover) {
+        return new GroundcoverBlock(ExtendedProperties.of(MapColor.PLANT).strength(0.05F, 0.0F).sound(SoundType.NETHER_WART).noCollission().pushReaction(PushReaction.DESTROY), cover.getShape(), cover.getVanillaItem());
+    }
     
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> blockSupplier) {
         return register(name, blockSupplier, (block) -> {
