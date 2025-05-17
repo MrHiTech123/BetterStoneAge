@@ -14,6 +14,7 @@
     "tag": "bsa:knapping/obsidian"
   },
   "result": {
-    "item": "bsa:stone/hoe_head/obsidian"
+    "item": "bsa:stone/hoe_head/obsidian",
+    "count": 2
   }
 }

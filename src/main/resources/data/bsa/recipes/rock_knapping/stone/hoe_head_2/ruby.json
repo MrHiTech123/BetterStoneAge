@@ -14,6 +14,7 @@
     "tag": "bsa:knapping/ruby"
   },
   "result": {
-    "item": "bsa:stone/hoe_head/ruby"
+    "item": "bsa:stone/hoe_head/ruby",
+    "count": 2
   }
 }

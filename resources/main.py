@@ -442,8 +442,8 @@ def create_rock_knapping_recipes():
         rock_knapping(rm, ('stone', 'hammer_head', rock_category), ['XXXXX', 'XXXXX', '  X  '], f'bsa:stone/hammer_head/{rock_category}', predicate)
         
         rock_knapping(rm, ('stone', 'hoe_head', rock_category), ['XXXXX', '   XX'], f'bsa:stone/hoe_head/{rock_category}', predicate)
-        rock_knapping(rm, ('stone', 'hoe_head_1', rock_category), ['XXXXX', '   XX', '     ', 'XXXXX', '   XX'], f'bsa:stone/hoe_head/{rock_category}', predicate)
-        rock_knapping(rm, ('stone', 'hoe_head_2', rock_category), ['XXXXX', '   XX', '     ', 'XXXXX', 'XX   '], f'bsa:stone/hoe_head/{rock_category}', predicate)
+        rock_knapping(rm, ('stone', 'hoe_head_1', rock_category), ['XXXXX', '   XX', '     ', 'XXXXX', '   XX'], (2, f'bsa:stone/hoe_head/{rock_category}'), predicate)
+        rock_knapping(rm, ('stone', 'hoe_head_2', rock_category), ['XXXXX', '   XX', '     ', 'XXXXX', 'XX   '], (2, f'bsa:stone/hoe_head/{rock_category}'), predicate)
         
         rock_knapping(rm, ('stone', 'javelin_head', rock_category), ['XXX  ', 'XXXX ', 'XXXXX', ' XXX ', '  X  '], f'bsa:stone/javelin_head/{rock_category}', predicate)
         

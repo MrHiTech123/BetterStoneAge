@@ -14,6 +14,7 @@
     "tag": "bsa:knapping/diamond"
   },
   "result": {
-    "item": "bsa:stone/hoe_head/diamond"
+    "item": "bsa:stone/hoe_head/diamond",
+    "count": 2
   }
 }

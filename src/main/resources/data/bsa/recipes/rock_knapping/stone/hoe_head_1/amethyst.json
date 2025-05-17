@@ -14,6 +14,7 @@
     "tag": "bsa:knapping/amethyst"
   },
   "result": {
-    "item": "bsa:stone/hoe_head/amethyst"
+    "item": "bsa:stone/hoe_head/amethyst",
+    "count": 2
   }
 }

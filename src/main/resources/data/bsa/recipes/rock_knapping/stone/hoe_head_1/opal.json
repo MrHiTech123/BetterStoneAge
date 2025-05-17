@@ -14,6 +14,7 @@
     "tag": "bsa:knapping/opal"
   },
   "result": {
-    "item": "bsa:stone/hoe_head/opal"
+    "item": "bsa:stone/hoe_head/opal",
+    "count": 2
   }
 }

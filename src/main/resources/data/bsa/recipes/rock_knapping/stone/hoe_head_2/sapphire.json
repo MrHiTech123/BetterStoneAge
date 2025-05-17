@@ -14,6 +14,7 @@
     "tag": "bsa:knapping/sapphire"
   },
   "result": {
-    "item": "bsa:stone/hoe_head/sapphire"
+    "item": "bsa:stone/hoe_head/sapphire",
+    "count": 2
   }
 }

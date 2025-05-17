@@ -14,6 +14,7 @@
     "tag": "bsa:knapping/emerald"
   },
   "result": {
-    "item": "bsa:stone/hoe_head/emerald"
+    "item": "bsa:stone/hoe_head/emerald",
+    "count": 2
   }
 }

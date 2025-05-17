@@ -14,6 +14,7 @@
     "tag": "bsa:knapping/pyrite"
   },
   "result": {
-    "item": "bsa:stone/hoe_head/pyrite"
+    "item": "bsa:stone/hoe_head/pyrite",
+    "count": 2
   }
 }

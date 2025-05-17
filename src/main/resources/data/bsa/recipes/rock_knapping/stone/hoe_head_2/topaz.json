@@ -14,6 +14,7 @@
     "tag": "bsa:knapping/topaz"
   },
   "result": {
-    "item": "bsa:stone/hoe_head/topaz"
+    "item": "bsa:stone/hoe_head/topaz",
+    "count": 2
   }
 }
