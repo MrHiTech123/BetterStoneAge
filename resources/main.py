@@ -115,7 +115,7 @@ def create_block_models():
     make_door(block)
     
     rm.block_model(('groundcover', 'obsidian'), {'0': 'bsa:item/obsidian', 'particle': 'bsa:item/obsidian'}, parent='tfc:block/groundcover/flint')
-    rm.blockstate(('groundcover', 'obsidian'), variants={'': {'': four_ways('bsa:block/groundcover/obsidian')}})
+    rm.blockstate(('groundcover', 'obsidian'), variants={'': four_ways('bsa:block/groundcover/obsidian')}, use_default_model=False)
         
 
 def create_item_foods():
