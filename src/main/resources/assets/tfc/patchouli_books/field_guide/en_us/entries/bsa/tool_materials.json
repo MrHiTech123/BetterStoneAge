@@ -1,0 +1,209 @@
+{
+  "name": "Tool Materials",
+  "category": "tfc:bsa",
+  "icon": "minecraft:flint",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Better Stone Age adds many new stone types for you to make tools out of, both practical and impractical.$(br2)Contents:$(br)$(l:tfc:bsa/tool_materials#flint)Flint$()$(br)$(l:tfc:bsa/tool_materials#obsidian)Obsidian$()$(br)$(l:tfc:bsa/tool_materials#precious_gems)Precious Gems$()"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "minecraft:flint"
+      },
+      "text": "$(thing)Flint$() is a rare and valuable rock that can be found submerged in freshwater lakes.$(br)$(br)This is the only way to obtain it, as it is no longer dropped by gravel.",
+      "anchor": "flint"
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Flint",
+      "multiblock": {
+        "mapping": {
+          "0": "tfc:groundcover/flint",
+          "G": "tfc:rock/gravel/chert"
+        },
+        "pattern": [
+          ["0"],
+          ["G"]
+        ]
+      },
+      "enable_visualize": false
+    },
+    {
+      "type": "tfc:knapping_recipe",
+      "recipe": "bsa:rock_knapping/stone/axe_head/flint",
+      "text": "Like stone, flint can be knapped into tool heads. Flint tools are slightly stronger than stone tools, but worse than copper ones."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "bsa:obsidian"
+      },
+      "text": "Obsidian is another useful material from which to make tool heads. It can be found near volcanoes.",
+      "anchor": "obsidian"
+    },
+    {
+      "type": "patchouli:multiblock",
+      "name": "Obsidian",
+      "multiblock": {
+        "mapping": {
+          "0": "bsa:groundcover/obsidian",
+          "G": "tfc:rock/raw/basalt"
+        },
+        "pattern": [
+          ["0"],
+          ["G"]
+        ]
+      },
+      "enable_visualize": false
+    },
+    {
+      "type": "tfc:knapping_recipe",
+      "recipe": "bsa:rock_knapping/stone/shovel_head/obsidian",
+      "text": "Obsidian tools mine faster and deal more damage than all other types of stone tools, but are also extremely fragile, with very low durability."
+    },
+    {
+      "type": "tfc:knapping_recipe",
+      "recipe": "bsa:rock_knapping/stone/hoe_head_2/topaz",
+      "text": "Precious gemstones can also be knapped into tool heads, but these tools are only as effective as standard stone tools.",
+      "anchor": "precious_gems"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "bsa:crafting/stone/axe/flint/no_binding",
+      "recipe2": "bsa:crafting/stone/axe/diamond/strong_binding"
+    },
+    {
+      "type": "tfc:knapping_recipe",
+      "recipe": "bsa:rock_knapping/stone/multitool_head/obsidian",
+      "text": "These new tools can also have $(l:tfc:bsa/tool_bindings)Tool Bindings$() and be crafted with $(l:tfc:bsa/multitool)Multitools$()."
+    }
+  ],
+  "read_by_default": true,
+  "extra_recipe_mappings": {
+    "minecraft:flint": 1,
+    "bsa:stone/axe/flint": 1,
+    "bsa:stone/hammer/flint": 1,
+    "bsa:stone/hoe/flint": 1,
+    "bsa:stone/javelin/flint": 1,
+    "bsa:stone/knife/flint": 1,
+    "bsa:stone/shovel/flint": 1,
+    "bsa:stone/axe_head/flint": 1,
+    "bsa:stone/hammer_head/flint": 1,
+    "bsa:stone/hoe_head/flint": 1,
+    "bsa:stone/javelin_head/flint": 1,
+    "bsa:stone/knife_head/flint": 1,
+    "bsa:stone/shovel_head/flint": 1,
+    "bsa:obsidian": 4,
+    "bsa:stone/axe/obsidian": 4,
+    "bsa:stone/hammer/obsidian": 4,
+    "bsa:stone/hoe/obsidian": 4,
+    "bsa:stone/javelin/obsidian": 4,
+    "bsa:stone/knife/obsidian": 4,
+    "bsa:stone/shovel/obsidian": 4,
+    "bsa:stone/axe_head/obsidian": 4,
+    "bsa:stone/hammer_head/obsidian": 4,
+    "bsa:stone/hoe_head/obsidian": 4,
+    "bsa:stone/javelin_head/obsidian": 4,
+    "bsa:stone/knife_head/obsidian": 4,
+    "bsa:stone/shovel_head/obsidian": 4,
+    "bsa:stone/axe/amethyst": 7,
+    "bsa:stone/hammer/amethyst": 7,
+    "bsa:stone/hoe/amethyst": 7,
+    "bsa:stone/javelin/amethyst": 7,
+    "bsa:stone/knife/amethyst": 7,
+    "bsa:stone/shovel/amethyst": 7,
+    "bsa:stone/axe_head/amethyst": 7,
+    "bsa:stone/hammer_head/amethyst": 7,
+    "bsa:stone/hoe_head/amethyst": 7,
+    "bsa:stone/javelin_head/amethyst": 7,
+    "bsa:stone/knife_head/amethyst": 7,
+    "bsa:stone/shovel_head/amethyst": 7,
+    "bsa:stone/axe/diamond": 7,
+    "bsa:stone/hammer/diamond": 7,
+    "bsa:stone/hoe/diamond": 7,
+    "bsa:stone/javelin/diamond": 7,
+    "bsa:stone/knife/diamond": 7,
+    "bsa:stone/shovel/diamond": 7,
+    "bsa:stone/axe_head/diamond": 7,
+    "bsa:stone/hammer_head/diamond": 7,
+    "bsa:stone/hoe_head/diamond": 7,
+    "bsa:stone/javelin_head/diamond": 7,
+    "bsa:stone/knife_head/diamond": 7,
+    "bsa:stone/shovel_head/diamond": 7,
+    "bsa:stone/axe/emerald": 7,
+    "bsa:stone/hammer/emerald": 7,
+    "bsa:stone/hoe/emerald": 7,
+    "bsa:stone/javelin/emerald": 7,
+    "bsa:stone/knife/emerald": 7,
+    "bsa:stone/shovel/emerald": 7,
+    "bsa:stone/axe_head/emerald": 7,
+    "bsa:stone/hammer_head/emerald": 7,
+    "bsa:stone/hoe_head/emerald": 7,
+    "bsa:stone/javelin_head/emerald": 7,
+    "bsa:stone/knife_head/emerald": 7,
+    "bsa:stone/shovel_head/emerald": 7,
+    "bsa:stone/axe/opal": 7,
+    "bsa:stone/hammer/opal": 7,
+    "bsa:stone/hoe/opal": 7,
+    "bsa:stone/javelin/opal": 7,
+    "bsa:stone/knife/opal": 7,
+    "bsa:stone/shovel/opal": 7,
+    "bsa:stone/axe_head/opal": 7,
+    "bsa:stone/hammer_head/opal": 7,
+    "bsa:stone/hoe_head/opal": 7,
+    "bsa:stone/javelin_head/opal": 7,
+    "bsa:stone/knife_head/opal": 7,
+    "bsa:stone/shovel_head/opal": 7,
+    "bsa:stone/axe/pyrite": 7,
+    "bsa:stone/hammer/pyrite": 7,
+    "bsa:stone/hoe/pyrite": 7,
+    "bsa:stone/javelin/pyrite": 7,
+    "bsa:stone/knife/pyrite": 7,
+    "bsa:stone/shovel/pyrite": 7,
+    "bsa:stone/axe_head/pyrite": 7,
+    "bsa:stone/hammer_head/pyrite": 7,
+    "bsa:stone/hoe_head/pyrite": 7,
+    "bsa:stone/javelin_head/pyrite": 7,
+    "bsa:stone/knife_head/pyrite": 7,
+    "bsa:stone/shovel_head/pyrite": 7,
+    "bsa:stone/axe/ruby": 7,
+    "bsa:stone/hammer/ruby": 7,
+    "bsa:stone/hoe/ruby": 7,
+    "bsa:stone/javelin/ruby": 7,
+    "bsa:stone/knife/ruby": 7,
+    "bsa:stone/shovel/ruby": 7,
+    "bsa:stone/axe_head/ruby": 7,
+    "bsa:stone/hammer_head/ruby": 7,
+    "bsa:stone/hoe_head/ruby": 7,
+    "bsa:stone/javelin_head/ruby": 7,
+    "bsa:stone/knife_head/ruby": 7,
+    "bsa:stone/shovel_head/ruby": 7,
+    "bsa:stone/axe/sapphire": 7,
+    "bsa:stone/hammer/sapphire": 7,
+    "bsa:stone/hoe/sapphire": 7,
+    "bsa:stone/javelin/sapphire": 7,
+    "bsa:stone/knife/sapphire": 7,
+    "bsa:stone/shovel/sapphire": 7,
+    "bsa:stone/axe_head/sapphire": 7,
+    "bsa:stone/hammer_head/sapphire": 7,
+    "bsa:stone/hoe_head/sapphire": 7,
+    "bsa:stone/javelin_head/sapphire": 7,
+    "bsa:stone/knife_head/sapphire": 7,
+    "bsa:stone/shovel_head/sapphire": 7,
+    "bsa:stone/axe/topaz": 7,
+    "bsa:stone/hammer/topaz": 7,
+    "bsa:stone/hoe/topaz": 7,
+    "bsa:stone/javelin/topaz": 7,
+    "bsa:stone/knife/topaz": 7,
+    "bsa:stone/shovel/topaz": 7,
+    "bsa:stone/axe_head/topaz": 7,
+    "bsa:stone/hammer_head/topaz": 7,
+    "bsa:stone/hoe_head/topaz": 7,
+    "bsa:stone/javelin_head/topaz": 7,
+    "bsa:stone/knife_head/topaz": 7,
+    "bsa:stone/shovel_head/topaz": 7
+  }
+
+}
