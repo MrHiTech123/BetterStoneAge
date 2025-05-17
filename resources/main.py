@@ -209,6 +209,8 @@ def create_loot_tables():
     for rock_category in ROCKS:
         tfc_rm.block_loot(f'tfc:rock/gravel/{rock_category}', {'name': f'tfc:rock/gravel/{rock_category}'})
     
+    rm.block_loot('minecraft:obsidian', {'name': 'bsa:obsidian', 'functions': [utils.loot_functions({'function': 'minecraft:set_count', 'count': {'min': 2, 'max': 4, 'type': 'minecraft:uniform'}})]})
+    
     
 def create_loot_modifiers():
     print('Creating loot modifiers...')
