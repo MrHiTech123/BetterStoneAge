@@ -7,9 +7,6 @@
     }
   ],
   "result": {
-    "item": "tfc:stone/knife_head/flint",
-    "nbt": {
-      "Damage": 60
-    }
+    "item": "bsa:stone/knife_head/flint"
   }
 }

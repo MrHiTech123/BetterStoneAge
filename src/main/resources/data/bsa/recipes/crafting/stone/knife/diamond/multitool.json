@@ -7,9 +7,6 @@
     }
   ],
   "result": {
-    "item": "tfc:stone/knife_head/diamond",
-    "nbt": {
-      "Damage": 35
-    }
+    "item": "bsa:stone/knife_head/diamond"
   }
 }

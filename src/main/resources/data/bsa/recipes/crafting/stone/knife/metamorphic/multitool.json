@@ -7,9 +7,6 @@
     }
   ],
   "result": {
-    "item": "tfc:stone/knife_head/metamorphic",
-    "nbt": {
-      "Damage": 27
-    }
+    "item": "tfc:stone/knife_head/metamorphic"
   }
 }

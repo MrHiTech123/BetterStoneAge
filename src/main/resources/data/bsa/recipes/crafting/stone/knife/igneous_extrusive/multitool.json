@@ -7,9 +7,6 @@
     }
   ],
   "result": {
-    "item": "tfc:stone/knife_head/igneous_extrusive",
-    "nbt": {
-      "Damage": 35
-    }
+    "item": "tfc:stone/knife_head/igneous_extrusive"
   }
 }

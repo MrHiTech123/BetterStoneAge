@@ -309,7 +309,7 @@ def create_crafting_recipes():
         rm.crafting_shaped(('crafting', 'stone', 'shovel',  rock_category, 'multitool'), ['R', 'M'],   {'M': f'bsa:stone/multitool_head/{rock_category}', 'R': f'#forge:rods/wooden'}, utils.item_stack({'item': f'tfc:stone/shovel/{rock_category}',  'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES[rock_category] // 2}}))
         rm.crafting_shaped(('crafting', 'stone', 'javelin', rock_category, 'multitool'), [' M', 'R '], {'M': f'bsa:stone/multitool_head/{rock_category}', 'R': f'#forge:rods/wooden'}, utils.item_stack({'item': f'tfc:stone/javelin/{rock_category}', 'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES[rock_category] // 2}}))
         
-        rm.crafting_shapeless(('crafting', 'stone', 'knife', rock_category, 'multitool'), (f'bsa:stone/multitool_head/{rock_category}',), utils.item_stack({'item': f'tfc:stone/knife_head/{rock_category}',   'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES[rock_category] // 2}}))
+        rm.crafting_shapeless(('crafting', 'stone', 'knife', rock_category, 'multitool'), (f'bsa:stone/multitool_head/{rock_category}',), utils.item_stack({'item': f'tfc:stone/knife_head/{rock_category}'}))
     
     print('\t\tCreating flint recipes...')
     
@@ -325,7 +325,7 @@ def create_crafting_recipes():
         rm.crafting_shaped(('crafting', 'stone', 'shovel',  category, 'multitool'), ['R', 'M'],   {'M': f'bsa:stone/multitool_head/{category}', 'R': f'#forge:rods/wooden'}, utils.item_stack({'item': f'bsa:stone/shovel/{category}',  'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES[category] // 2}}))
         rm.crafting_shaped(('crafting', 'stone', 'javelin', category, 'multitool'), [' M', 'R '], {'M': f'bsa:stone/multitool_head/{category}', 'R': f'#forge:rods/wooden'}, utils.item_stack({'item': f'bsa:stone/javelin/{category}', 'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES[category] // 2}}))
         
-        rm.crafting_shapeless(('crafting', 'stone', 'knife', category, 'multitool'), (f'bsa:stone/multitool_head/{category}',), utils.item_stack({'item': f'tfc:stone/knife_head/{category}',   'nbt': {'Damage': ROCK_CATEGORY_DURABILITIES[category] // 2}}))
+        rm.crafting_shapeless(('crafting', 'stone', 'knife', category, 'multitool'), (f'bsa:stone/multitool_head/{category}',), utils.item_stack({'item': f'bsa:stone/knife_head/{category}'}))
     
     
     damage_shapeless(rm, ('crafting', 'hide_sewing', '1_plus_1'), ('tfc:small_raw_hide', 'tfc:small_raw_hide', '#forge:string', 'tfc:bone_needle'), "tfc:medium_raw_hide")

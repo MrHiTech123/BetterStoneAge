@@ -7,9 +7,6 @@
     }
   ],
   "result": {
-    "item": "tfc:stone/knife_head/ruby",
-    "nbt": {
-      "Damage": 32
-    }
+    "item": "bsa:stone/knife_head/ruby"
   }
 }

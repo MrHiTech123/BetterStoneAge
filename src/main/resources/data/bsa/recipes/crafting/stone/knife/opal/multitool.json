@@ -7,9 +7,6 @@
     }
   ],
   "result": {
-    "item": "tfc:stone/knife_head/opal",
-    "nbt": {
-      "Damage": 40
-    }
+    "item": "bsa:stone/knife_head/opal"
   }
 }

@@ -7,9 +7,6 @@
     }
   ],
   "result": {
-    "item": "tfc:stone/knife_head/amethyst",
-    "nbt": {
-      "Damage": 37
-    }
+    "item": "bsa:stone/knife_head/amethyst"
   }
 }
