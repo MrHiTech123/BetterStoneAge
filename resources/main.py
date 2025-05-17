@@ -116,7 +116,7 @@ def create_block_models():
     
     rm.block_model(('groundcover', 'obsidian'), {'0': 'bsa:item/obsidian', 'particle': 'bsa:item/obsidian'}, parent='tfc:block/groundcover/flint')
     rm.blockstate(('groundcover', 'obsidian'), variants={'': four_ways('bsa:block/groundcover/obsidian')}, use_default_model=False)
-        
+    
 
 def create_item_foods():
     print('Creating item foods...')
@@ -358,6 +358,7 @@ def create_crafting_recipes():
     disable_recipe(rm, 'minecraft:decorated_pot_simple')
     disable_recipe(rm, 'firmalife:crafting/pottery_sherd')
     
+
 def create_arrowhead_knapping_recipes():
     print('\t\tGenerating arrowhead knapping recipes...')
     placements = {
@@ -718,8 +719,8 @@ def create_item_tags():
 def create_worldgen_tags():
     print('Creating worldgen tags...')
     for biome in TFC_BIOMES:
-        tfc_rm.placed_feature_tag((f'in_biome/surface_decoration/{biome}'), 'bsa:flint_patch')
-    
+        rm.placed_feature_tag(f'tfc:in_biome/surface_decoration/{biome}', 'bsa:flint_patch')
+    rm.placed_feature_tag('tfc:feature/volcanoes', 'bsa:obsidian_patch')
     
 def create_tags():
     print('Creating tags...')
@@ -731,7 +732,7 @@ def create_tags():
 def create_worldgen():
     print('Creating worldgen...')
     configured_patch_feature(rm, 'flint', patch_config('tfc:groundcover/flint[fluid=minecraft:water]', 1, 15, 5, 'fresh'), decorate_chance(6), decorate_square(), decorate_climate(-1000, 1000, 0, 1000))
-    
+    configured_patch_feature(rm, 'obsidian', patch_config('bsa:groundcover/obsidian', 1, 15, 5), decorate_chance(3), decorate_square(), decorate_climate(-1000, 1000, 0, 1000))
 
 def main():
     create_block_models()
