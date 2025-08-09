@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
@@ -19,6 +20,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import net.dries007.tfc.client.model.ContainedFluidModel;
+import net.mrhitech.bsa.common.BetterStoneAgeRockCategory;
 import net.mrhitech.bsa.common.blocks.BetterStoneAgeBlocks;
 import net.mrhitech.bsa.common.item.BetterStoneAgeItems;
 
@@ -63,11 +65,18 @@ public class ClientEventHandler {
             ItemBlockRenderTypes.setRenderLayer(BetterStoneAgeBlocks.GLAZED_POTS.get(color).get(), ghostBlock);
         }
         
+        BetterStoneAgeItems.STONE.values().forEach(rockType -> {
+            Item javelin = rockType.get(BetterStoneAgeRockCategory.ItemType.JAVELIN).get();
+            ItemProperties.register(javelin, Helpers.identifier("throwing"), (stack, level, entity, unused) ->
+                entity != null && ((entity.isUsingItem() && entity.getUseItem() == stack) || (entity instanceof Monster monster && monster.isAggressive())) ? 1.0F : 0.0F
+            );
+            
+        });
+        
     }
     
     
     public static void registerColorHandlerItems(RegisterColorHandlersEvent.Item event) {
         BetterStoneAgeItems.GLAZED_JUGS.values().forEach(reg -> event.register(new ContainedFluidModel.Colors(), reg.get()));
     }
-
 }
